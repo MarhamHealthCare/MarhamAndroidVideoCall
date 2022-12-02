@@ -1,0 +1,163 @@
+{
+  "project_info": {
+    "project_number": "207224008013",
+    "firebase_url": "https://marham-58879.firebaseio.com",
+    "project_id": "marham-58879",
+    "storage_bucket": "marham-58879.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207224008013:android:ccefebcb3854047af91b04",
+        "android_client_info": {
+          "package_name": "com.marham.marhamvideocallapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjzAv3bV2ienMH6e3I7GY1Nvlegng85yE"
+        },
+        {
+          "current_key": "AIzaSyC2QdEr9AVArMTB_cWO7K8YnaH1s1EfUjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207224008013-4ih37orkv7dfie6uj9v5vdtqcm419jh4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marham.www",
+                "app_store_id": "1095243102"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207224008013:android:0ea045321da43a11",
+        "android_client_info": {
+          "package_name": "com.ts.marham_connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207224008013-168u3hjo4vj2rjc52nqbtu1vqpqo7vo0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ts.marham_connect",
+            "certificate_hash": "7658e8367eccf7f4699408ae8f439673746ce206"
+          }
+        },
+        {
+          "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjzAv3bV2ienMH6e3I7GY1Nvlegng85yE"
+        },
+        {
+          "current_key": "AIzaSyC2QdEr9AVArMTB_cWO7K8YnaH1s1EfUjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207224008013-4ih37orkv7dfie6uj9v5vdtqcm419jh4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marham.www",
+                "app_store_id": "1095243102"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207224008013:android:070b9477f586739a",
+        "android_client_info": {
+          "package_name": "controllers.marham.marhammed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207224008013-2b5t95aq47qbgsq0vcto5buss10qeval.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "controllers.marham.marhammed",
+            "certificate_hash": "6f834ff2287f7bfd4a1cc8b8550576d3917ff36b"
+          }
+        },
+        {
+          "client_id": "207224008013-78finnlksu43bno145tjhva05i5ok88q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "controllers.marham.marhammed",
+            "certificate_hash": "cce1a34f0fb9757149236a22b0e375f07b5eef76"
+          }
+        },
+        {
+          "client_id": "207224008013-8c9htnh61lnrfmc9duhbb1oq5st0jm4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "controllers.marham.marhammed",
+            "certificate_hash": "30cba89aa7fdd233089e0b5189f7cc927ffd89d8"
+          }
+        },
+        {
+          "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjzAv3bV2ienMH6e3I7GY1Nvlegng85yE"
+        },
+        {
+          "current_key": "AIzaSyC2QdEr9AVArMTB_cWO7K8YnaH1s1EfUjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207224008013-4cbplj1dt5ba5tcrhfe2of3fu1sj5ti8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207224008013-4ih37orkv7dfie6uj9v5vdtqcm419jh4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.marham.www",
+                "app_store_id": "1095243102"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
