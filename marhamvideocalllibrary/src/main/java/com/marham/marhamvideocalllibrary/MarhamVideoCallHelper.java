@@ -2,22 +2,39 @@ package com.marham.marhamvideocalllibrary;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
-
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 
 public class MarhamVideoCallHelper {
 
-    public static void initHelper(Context context) {
-        Toast.makeText(context, "MarhamVideoCallHelper Initialized ...", Toast.LENGTH_SHORT).show();
-        launchBookingFlow(context, MarhamDashboardActivity.class);
+    private String API_KEY;
+    private String fireBaseToken;
+
+    static MarhamVideoCallHelper utils = null;
+
+    public static MarhamVideoCallHelper getInstance() {
+        if (utils == null) return utils = new MarhamVideoCallHelper();
+        else return utils;
     }
 
-    public static void launchBookingFlow(Context context, Class c) {
+    public MarhamVideoCallHelper setAPIKEY(String API_KEY) {
+        this.API_KEY = API_KEY;
+        return this;
+    }
+
+    public MarhamVideoCallHelper setFirebaseToken(String fireBaseToken) {
+        this.fireBaseToken = fireBaseToken;
+        return this;
+    }
+
+    public void launchBookingFlow(Context context, Class c) {
         Intent intent = new Intent(context, c);
         context.startActivity(intent);
-
-
     }
 
+    public String getAPI_KEY() {
+        return API_KEY;
+    }
+
+    public String getFireBaseToken() {
+        return fireBaseToken;
+    }
 }
