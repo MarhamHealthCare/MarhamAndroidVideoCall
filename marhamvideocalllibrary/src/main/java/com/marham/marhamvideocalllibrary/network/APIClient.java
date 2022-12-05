@@ -24,7 +24,13 @@ public class APIClient {
 
     private MarhamVideoCallEndPoints apiService;
 
-    public APIClient(int variable, Context context) {
+    public static APIClient getInstance() {
+        if (apiClient == null) return apiClient = new APIClient();
+        else return apiClient;
+
+    }
+
+    private APIClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.readTimeout(6000, TimeUnit.SECONDS);
