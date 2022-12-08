@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.marham.marhamvideocalllibrary">
 
-    <application>
+    <application
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".activities.BaseActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.MarhamDashboardActivity"
             android:exported="false" />

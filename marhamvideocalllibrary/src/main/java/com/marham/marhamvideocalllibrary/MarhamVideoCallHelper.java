@@ -7,6 +7,7 @@ public class MarhamVideoCallHelper {
 
     private String API_KEY;
     private String fireBaseToken;
+    private int colorPrimary;
 
 
     static MarhamVideoCallHelper utils = null;
@@ -37,5 +38,9 @@ public class MarhamVideoCallHelper {
 
     public String getFireBaseToken() {
         return fireBaseToken;
+    }
+
+    public void setColorPrimary(int colorPrimary) {
+        this.colorPrimary = colorPrimary;
     }
 }

@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="body_text">Text</string>
+    <string name="let_s_find_a_doctor_for_you">Let\'s find a doctor for you!</string>
+    <string name="search_by_doctors_specialities_amp_diseases"><![CDATA[Search by Doctors, Specialities & Diseases]]></string>
+    <string name="my_appointments">My Appointments</string>
+</resources>
