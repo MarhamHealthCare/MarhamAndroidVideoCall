@@ -19,5 +19,13 @@
     <dimen name="one">1dp</dimen>
     <dimen name="sixty_five">65dp</dimen>
     <dimen name="two">2dp</dimen>
+    <dimen name="fifteen_text_size">15sp</dimen>
+    <dimen name="hundred">100dp</dimen>
+    <dimen name="hundred_ten">110dp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="fifty_five">55dp</dimen>
+    <dimen name="eleven_text_size">11sp</dimen>
+    <dimen name="ten_text_size">10sp</dimen>
+    <dimen name="forty">40dp</dimen>
 
 </resources>

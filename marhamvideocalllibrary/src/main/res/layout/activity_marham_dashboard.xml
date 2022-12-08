@@ -68,27 +68,27 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_appointments_views_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/five"
-
-        android:background="@drawable/round_corner_primary_color_and_gradient"
-        android:layout_marginStart="@dimen/fifteen"
-        android:layout_marginEnd="@dimen/fifteen"
-        app:layout_constraintTop_toBottomOf="@+id/search_card_view"
         android:layout_width="@dimen/zero"
-        android:layout_height="@dimen/fifty">
+        android:layout_height="@dimen/fifty"
+        android:layout_marginStart="@dimen/fifteen"
+
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginEnd="@dimen/fifteen"
+        android:background="@drawable/round_corner_primary_color_and_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_card_view">
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/twenty_five"
             android:text="@string/my_appointments"
             android:textColor="@color/white"
             android:textSize="@dimen/forteen_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.marham.marhamvideocalllibrary.customviews.MyImageView
             android:layout_width="@dimen/twenty_five"
@@ -99,6 +99,62 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dashboard_doctor_views_container"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_appointments_views_container">
+
+        <com.marham.marhamvideocalllibrary.customviews.BodyText
+            android:id="@+id/doctor_views_heading_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fifteen"
+
+            android:text="@string/general_physicians"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fifteen_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dashboard_doctors_recycler_view"
+            android:layout_width="@dimen/zero"
+            android:layout_height="@dimen/hundred"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/doctor_views_heading_text_view" />
+
+        <com.marham.marhamvideocalllibrary.customviews.MyButton
+            android:id="@+id/dashboard_doctors_retry_button"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
+            android:background="@drawable/try_again_icon_grey_vector"
+            app:layout_constraintBottom_toBottomOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintEnd_toEndOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintStart_toStartOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintTop_toTopOf="@id/dashboard_doctor_views_container" />
+
+        <ProgressBar
+            android:id="@+id/dashboard_doctors_progress_bar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintEnd_toEndOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintStart_toStartOf="@id/dashboard_doctor_views_container"
+            app:layout_constraintTop_toTopOf="@id/dashboard_doctor_views_container" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
