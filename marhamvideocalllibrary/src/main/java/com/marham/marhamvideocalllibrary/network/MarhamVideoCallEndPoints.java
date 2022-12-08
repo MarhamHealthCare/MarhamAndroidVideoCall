@@ -1,6 +1,7 @@
 package com.marham.marhamvideocalllibrary.network;
 
 import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 
 import java.util.HashMap;
@@ -19,5 +20,9 @@ public interface MarhamVideoCallEndPoints {
 
     @GET("doctor/get-top-doctors")
     Call<DashboardDoctorServerResponse> getDashboardDoctors(@QueryMap HashMap<String, String> info);
+
+    @FormUrlEncoded
+    @POST("index.php?action=get-dashboard-diseases")
+    Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(@FieldMap HashMap<String, String> hashMap);
 
 }

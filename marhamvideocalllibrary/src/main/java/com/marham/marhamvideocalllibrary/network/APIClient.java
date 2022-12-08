@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.marham.marhamvideocalllibrary.BuildConfig;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
+import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 
 import java.io.IOException;
@@ -129,5 +130,7 @@ public class APIClient {
     public Call<DashboardDoctorServerResponse> getDashboardDoctos(HashMap<String, String> info) {
         return apiService.getDashboardDoctors(info);
     }
-
+    public Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(HashMap<String, String> hashMap) {
+        return apiService.getDashboardSpecialitiesWithDiseases(hashMap);
+    }
 }

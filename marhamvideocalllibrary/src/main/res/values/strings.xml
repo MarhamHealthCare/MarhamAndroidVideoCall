@@ -9,4 +9,6 @@
     <string name="fee">Fee</string>
     <string name="app_rating">App Rating</string>
     <string name="reviews">Reviews</string>
+    <string name="top_diseases">Common Diseases</string>
+    <string name="dash">-</string>
 </resources>
