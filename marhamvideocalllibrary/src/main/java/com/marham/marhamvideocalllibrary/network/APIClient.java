@@ -6,6 +6,7 @@ import com.marham.marhamvideocalllibrary.BuildConfig;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
+import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -133,4 +134,9 @@ public class APIClient {
     public Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(HashMap<String, String> hashMap) {
         return apiService.getDashboardSpecialitiesWithDiseases(hashMap);
     }
+
+    public Call<NewAllSpecialitiesServerResponse> getSpecialities(HashMap<String, String> info) {
+        return apiService.getAllSpecialities(info);
+    }
+
 }

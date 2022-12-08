@@ -1,10 +1,13 @@
 package com.marham.marhamvideocalllibrary.model.doctor;
 
+import androidx.annotation.Keep;
+
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.ServerResponse;
 
 import java.util.List;
 
+@Keep
 public class DashboardDoctorServerResponse extends ServerResponse {
     private List<DoctorInfo> data;
 

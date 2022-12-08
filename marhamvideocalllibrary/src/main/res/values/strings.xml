@@ -11,4 +11,7 @@
     <string name="reviews">Reviews</string>
     <string name="top_diseases">Common Diseases</string>
     <string name="dash">-</string>
+    <string name="top_specialities">Top Specialities</string>
+    <string name="book_appointments_in_three_easy_steps">Book appointments in three easy steps</string>
+    <string name="search_for_doctors_by_name_or_specialty">Search for doctors by name or specialty.</string>
 </resources>

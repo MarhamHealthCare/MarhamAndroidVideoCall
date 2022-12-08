@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
@@ -21,6 +22,8 @@ import com.marham.marhamvideocalllibrary.model.ServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
+import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
@@ -39,6 +42,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     private CardView searchCardView;
     private ConstraintLayout myAppointmentsViewsContainer;
 
+    //Top Doctor Views
     private ConstraintLayout dashboardDoctorsViewsContainer;
     private RecyclerView dashboardDoctorsRecyclerView;
     private ProgressBar dashboardDoctorsProgressBar;
@@ -53,9 +57,17 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     private ProgressBar topDiseasesProgressBar;
     private List<Diseases> diseasesArrayList = new ArrayList<>();
 
+    //Top Specialities Views
+    private ConstraintLayout topSpecialitiesViewsContainer;
+    private RecyclerView topSpecialitiesRecyclerView;
+    private MyButton topSpecialitiesRetryButton;
+    private ProgressBar topSpecialitiesProgressBar;
+    private List<Speciality> specialityList = new ArrayList<>();
+
 
     public static final int DASHBOARD_DOCTORS_RECYCLER_VIEW = 0;
     public static final int TOP_DISEASES_RECYCLER_VIEW = 1;
+    public static final int TOP_SPECIALITIES_RECYCLER_VIEW = 2;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
@@ -71,6 +83,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     private void fetchData() {
         getDashboardDoctors();
         getTopDiseases();
+        getTopSpecialities();
     }
 
     @Override
@@ -100,6 +113,12 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         topDiseasesRecyclerView = findViewById(R.id.top_diseases_recycler_view);
         topDiseasesRetryButton = findViewById(R.id.top_diseases_retry_button);
         topDiseasesProgressBar = findViewById(R.id.top_diseases_progress_bar);
+
+        topSpecialitiesViewsContainer = findViewById(R.id.top_specialities_views_container);
+        topSpecialitiesRecyclerView = findViewById(R.id.top_specialities_recycler_view);
+        topSpecialitiesRetryButton = findViewById(R.id.top_specialities_retry_button);
+        topSpecialitiesProgressBar = findViewById(R.id.top_specialities_progress_bar);
+
 
     }
 
@@ -184,6 +203,42 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         topDiseasesRetryButton.setVisibility(View.VISIBLE);
     }
 
+    public void setTopSpecialitiesRecyclerView(List<Speciality> specialityList) {
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
+        gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        topSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
+        TopSpecialitiesAdapter topSpecialitiesAdapter = new TopSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        topSpecialitiesRecyclerView.setAdapter(topSpecialitiesAdapter);
+    }
+
+    public void setViewsBeforeGettingTopSpecialitiesData() {
+        topSpecialitiesViewsContainer.setVisibility(View.VISIBLE);
+        topSpecialitiesRecyclerView.setVisibility(View.INVISIBLE);
+        topSpecialitiesProgressBar.setVisibility(View.VISIBLE);
+        topSpecialitiesRetryButton.setVisibility(View.GONE);
+    }
+
+    public void setViewsAfterGettingTopSpecialitiesData() {
+        topSpecialitiesViewsContainer.setVisibility(View.VISIBLE);
+        topSpecialitiesRecyclerView.setVisibility(View.VISIBLE);
+        topSpecialitiesProgressBar.setVisibility(View.GONE);
+        topSpecialitiesRetryButton.setVisibility(View.GONE);
+    }
+
+    public void setViewsIncaseNoRecordFoundWhileGettingTopSpecialitiesData() {
+        topSpecialitiesViewsContainer.setVisibility(View.GONE);
+        topSpecialitiesRecyclerView.setVisibility(View.INVISIBLE);
+        topSpecialitiesProgressBar.setVisibility(View.GONE);
+        topSpecialitiesRetryButton.setVisibility(View.GONE);
+    }
+
+    public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTopSpecialitiesData() {
+        topSpecialitiesViewsContainer.setVisibility(View.VISIBLE);
+        topSpecialitiesRecyclerView.setVisibility(View.INVISIBLE);
+        topSpecialitiesProgressBar.setVisibility(View.GONE);
+        topSpecialitiesRetryButton.setVisibility(View.VISIBLE);
+    }
+
     private AdapterViewItemClickedListener adpaterViewItemClickedListener = new AdapterViewItemClickedListener() {
         @Override
         public void onAdatviewItemClicked(int position) {
@@ -195,6 +250,12 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
             switch (requestID) {
                 case MarhamDashboardActivity.DASHBOARD_DOCTORS_RECYCLER_VIEW:
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
+                    break;
+                case MarhamDashboardActivity.TOP_DISEASES_RECYCLER_VIEW:
+                    Toast.makeText(MarhamDashboardActivity.this, "Tapped Disease: " + position, Toast.LENGTH_SHORT).show();
+                    break;
+                case MarhamDashboardActivity.TOP_SPECIALITIES_RECYCLER_VIEW:
+                    Toast.makeText(MarhamDashboardActivity.this, "Tapped Speciality " + position, Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -228,6 +289,17 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
 
     }
 
+    public void getTopSpecialities() {
+        setViewsBeforeGettingTopSpecialitiesData();
+        APIClient apiClient = new APIClient();
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
+        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
+        Call<NewAllSpecialitiesServerResponse> call = apiClient.getSpecialities(hashMap);
+        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES);
+        call.enqueue(retroFit2Callback);
+    }
+
     @Override
     public void onSuccess(ServerResponse response) {
         switch (response.getRequestCode()) {
@@ -255,6 +327,19 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
                     setViewsIncaseNoRecordFoundWhileGettingTopDiseasesData();
                 }
                 break;
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                    setViewsAfterGettingTopSpecialitiesData();
+                    NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
+                    specialityList.addAll(newAllSpecialitiesServerResponse.getData().getTopSpecialities());
+                    specialityList.add(new Speciality());
+                    setTopSpecialitiesRecyclerView(specialityList);
+
+                } else {
+                    setViewsIncaseNoRecordFoundWhileGettingTopSpecialitiesData();
+                }
+                break;
+
         }
     }
 
@@ -268,6 +353,9 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
             case AppConstants.API.API_END_POINT_NUMBER.GET_DASHBOARD_TOP_DISEASES:
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTopDiseasesData();
                 break;
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTopSpecialitiesData();
+                break;
         }
     }
 
@@ -280,6 +368,9 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.GET_DASHBOARD_TOP_DISEASES:
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTopDiseasesData();
+                break;
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTopSpecialitiesData();
                 break;
         }
     }

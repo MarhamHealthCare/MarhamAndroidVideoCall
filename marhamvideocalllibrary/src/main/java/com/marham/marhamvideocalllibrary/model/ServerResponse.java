@@ -1,9 +1,12 @@
 package com.marham.marhamvideocalllibrary.model;
 
+import androidx.annotation.Keep;
+
 import java.util.List;
 
 import okhttp3.internal.http2.Header;
 
+@Keep
 public class ServerResponse {
 
 

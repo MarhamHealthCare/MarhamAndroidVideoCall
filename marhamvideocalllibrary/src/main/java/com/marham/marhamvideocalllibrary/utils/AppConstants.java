@@ -12,11 +12,13 @@ public class AppConstants {
         public static class API_KEYS {
             public static final String CITY = "city";
             public static final String TOP_ONLY = "top_only";
+            public static final String NEW_ID = "new";
         }
 
         public static class API_END_POINT_NUMBER {
             public static final int GET_DASHBOARD_DOCTORS = 1;
             public static final int GET_DASHBOARD_TOP_DISEASES = 2;
+            public static final int GET_ALL_SPECIALITIES = 3;
         }
 
         public static class API_ERROR_MESSAGE {
