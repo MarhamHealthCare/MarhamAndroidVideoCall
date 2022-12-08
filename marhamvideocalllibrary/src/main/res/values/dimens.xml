@@ -5,7 +5,7 @@
     <dimen name="forty_five">45dp</dimen>
     <dimen name="fifty">50dp</dimen>
     <dimen name="ten">10dp</dimen>
-    <dimen name="two_hundred_fifty">150dp</dimen>
+    <dimen name="two_hundred_fifty">250dp</dimen>
     <dimen name="fifteen">15dp</dimen>
     <dimen name="zero">0dp</dimen>
     <dimen name="thirty">30dp</dimen>
@@ -27,5 +27,10 @@
     <dimen name="eleven_text_size">11sp</dimen>
     <dimen name="ten_text_size">10sp</dimen>
     <dimen name="forty">40dp</dimen>
+    <dimen name="twelve_text_size">12sp</dimen>
+    <dimen name="two_hundred">200dp</dimen>
+    <dimen name="hundred_eighty">180dp</dimen>
+    <dimen name="thirteen_text_size">13sp</dimen>
+    <dimen name="hundred_twenty">120dp</dimen>
 
 </resources>

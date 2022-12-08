@@ -1,14 +1,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_layout"
-    android:layout_width="@dimen/hundred_ten"
+    android:layout_width="220dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/five"
-    android:alpha="0.8"
-
-
-    app:cardBackgroundColor="@color/top_doctor_green"
-    app:cardCornerRadius="@dimen/five"
+    app:cardCornerRadius="@dimen/ten"
+    app:cardElevation="@dimen/five"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,71 +16,65 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor_picture_image_view"
-            android:layout_width="@dimen/fifty_five"
-            android:layout_height="@dimen/forty_five"
-            android:layout_marginTop="@dimen/ten"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginTop="@dimen/fifteen"
+            android:layout_marginBottom="@dimen/twenty"
             android:src="@drawable/m_doctor_placholder"
-            app:layout_constraintEnd_toEndOf="parent"
+
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
             android:id="@+id/doctor_name_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ten"
+            android:layout_marginStart="@dimen/fifteen"
+
+            android:layout_marginEnd="@dimen/five"
             android:ellipsize="end"
+            android:gravity="end"
             android:maxLines="1"
-            android:text="askjdhaskjdhkasjhdkjashdkjashdkjashdkjashdaksjdhkjashdkjskjdhjkashdk"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/eleven_text_size"
+            android:text="Dr. Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/forteen_text_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_picture_image_view" />
+            app:layout_constraintStart_toEndOf="@+id/doctor_picture_image_view"
+            app:layout_constraintTop_toTopOf="@+id/doctor_picture_image_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_speciality_text_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/doctor_degrees_text_view"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/two"
+            android:layout_marginStart="@dimen/fifteen"
+            android:layout_marginEnd="@dimen/five"
             android:ellipsize="end"
+            android:gravity="end"
             android:maxLines="1"
             android:text="@string/speciality"
             android:textColor="@color/black"
-            android:textSize="@dimen/ten_text_size"
+            android:textSize="@dimen/eleven_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/doctor_picture_image_view"
             app:layout_constraintTop_toBottomOf="@+id/doctor_name_text_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
             android:id="@+id/doctor_experience_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/two"
+
+            android:layout_marginEnd="@dimen/five"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/experience"
             android:textColor="@color/black"
-            android:textSize="@dimen/ten_text_size"
+            android:textSize="@dimen/eleven_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_speciality_text_view" />
 
-        <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_fee_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="@dimen/five"
-            android:layout_marginBottom="@dimen/ten"
-            android:maxLines="1"
-            android:text="@string/fee"
-            android:textColor="@color/black"
-            android:textSize="@dimen/ten_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_experience_text_view" />
+            app:layout_constraintTop_toBottomOf="@+id/doctor_degrees_text_view" />
 
 
         <com.marham.marhamvideocalllibrary.customviews.MyImageView
@@ -92,21 +83,22 @@
             android:layout_height="@dimen/ten"
             android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/one"
-            android:src="@drawable/m_doctor_placholder"
-            app:layout_constraintBottom_toBottomOf="@id/doctor_ratings_text_view"
-            app:layout_constraintEnd_toStartOf="@+id/doctor_ratings_text_view"
-            app:layout_constraintTop_toTopOf="@+id/doctor_ratings_text_view" />
+            android:src="@drawable/start_icon_gold_vector"
+            app:layout_constraintBottom_toBottomOf="@id/doctor_reviews_text_view"
+            app:layout_constraintEnd_toStartOf="@+id/doctor_reviews_text_view"
+            app:layout_constraintTop_toTopOf="@+id/doctor_reviews_text_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_ratings_text_view"
+            android:id="@+id/doctor_reviews_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/five"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginEnd="@dimen/five"
             android:layout_marginBottom="@dimen/ten"
             android:maxLines="1"
-            android:text="@string/app_rating"
+            android:text="@string/reviews"
             android:textColor="@color/black"
-            android:textSize="@dimen/ten_text_size"
+            android:textSize="@dimen/thirteen_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/doctor_experience_text_view" />

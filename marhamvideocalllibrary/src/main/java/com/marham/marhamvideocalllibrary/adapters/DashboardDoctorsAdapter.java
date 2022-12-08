@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
@@ -19,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDoctorViewHolder>{
+public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDoctorViewHolder> {
 
     private Context context;
     private AdapterViewItemClickedListener listener;
@@ -46,18 +45,17 @@ public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDocto
     private void setDoctor(DashboardDoctorViewHolder holder, DoctorInfo doctorInfo) {
         setDoctorPicture(holder, doctorInfo);
         holder.doctorNameTextView.setText(doctorInfo.getDocName());
-        holder.doctorSpecialityTextView.setText(doctorInfo.getSpeciality());
-        holder.doctorExperienceTextView.setText(doctorInfo.getDocExp() + " year(s) of experience");
-        holder.doctorFeeTextView.setText("Rs. " + doctorInfo.getDocFee());
+        holder.doctorDegreesTextView.setText(doctorInfo.getSpeciality());
+        holder.doctorExperienceTextView.setText("Exp." + doctorInfo.getDocExp() + " Year(s)");
+
 
         if (doctorInfo.getRating().equals("0")) {
             holder.doctorRatingsStar.setVisibility(View.INVISIBLE);
-            holder.doctorRatingsTextView.setVisibility(View.INVISIBLE);
+            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " Reviews(s)");
 
         } else {
             holder.doctorRatingsStar.setVisibility(View.VISIBLE);
-            holder.doctorRatingsTextView.setVisibility(View.VISIBLE);
-            holder.doctorRatingsTextView.setText(doctorInfo.getRating() + "/5");
+            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " Reviews(s)");
         }
 
 

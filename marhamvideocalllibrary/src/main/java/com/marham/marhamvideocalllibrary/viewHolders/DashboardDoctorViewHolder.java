@@ -20,11 +20,12 @@ public class DashboardDoctorViewHolder extends RecyclerView.ViewHolder implement
     public CardView parentLayout;
     public CircleImageView doctorPictureImageView;
     public BodyText doctorNameTextView;
-    public BodyText doctorSpecialityTextView;
+    public BodyText doctorDegreesTextView;
     public BodyText doctorExperienceTextView;
-    public BodyText doctorFeeTextView;
+
+    public BodyText doctorReviewsTextView;
     public MyImageView doctorRatingsStar;
-    public BodyText doctorRatingsTextView;
+
 
     private AdapterViewItemClickedListener listener;
     private Context context;
@@ -48,13 +49,10 @@ public class DashboardDoctorViewHolder extends RecyclerView.ViewHolder implement
         parentLayout = view.findViewById(R.id.parent_layout);
         doctorPictureImageView = view.findViewById(R.id.doctor_picture_image_view);
         doctorNameTextView = view.findViewById(R.id.doctor_name_text_view);
-        doctorSpecialityTextView = view.findViewById(R.id.doctor_speciality_text_view);
+        doctorDegreesTextView = view.findViewById(R.id.doctor_degrees_text_view);
         doctorExperienceTextView = view.findViewById(R.id.doctor_experience_text_view);
-        doctorFeeTextView = view.findViewById(R.id.doctor_fee_text_view);
+        doctorReviewsTextView = view.findViewById(R.id.doctor_reviews_text_view);
         doctorRatingsStar = view.findViewById(R.id.doctor_ratings_stars);
-        doctorRatingsTextView = view.findViewById(R.id.doctor_ratings_text_view);
-
-
     }
 
     private void initVariables(AdapterViewItemClickedListener listener, Context context) {
