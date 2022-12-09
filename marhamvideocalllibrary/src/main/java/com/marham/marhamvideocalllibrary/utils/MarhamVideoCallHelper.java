@@ -10,7 +10,7 @@ public class MarhamVideoCallHelper {
     private int colorPrimary;
 
 
-    private static MarhamVideoCallHelper utils = null;
+    private static MarhamVideoCallHelper utils;
 
     public static MarhamVideoCallHelper getInstance() {
         if (utils == null) return utils = new MarhamVideoCallHelper();
