@@ -3,6 +3,9 @@ package com.marham.marhamvideocalllibrary;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class MarhamVideoCallHelper {
 
     private String API_KEY;
