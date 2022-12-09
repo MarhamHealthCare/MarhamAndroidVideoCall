@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
@@ -80,6 +81,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         initializeViews();
         setListeners();
         fetchData();
+        MarhamVideoCallHelper.getInstance();
     }
 
     private void fetchData() {
