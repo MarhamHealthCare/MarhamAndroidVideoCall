@@ -28,7 +28,7 @@ import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
 import com.marham.marhamvideocalllibrary.utils.AppConstants;
-import com.marham.marhamvideocalllibrary.utils.Utils;
+import com.marham.marhamvideocalllibrary.MarhamUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -356,7 +356,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onFailure(ServerResponse response) {
-        Utils.getInstance().showAPIResponseMessage(this, response.getMessage());
+        MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DASHBOARD_DOCTORS:
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDasboardDoctorsData();
@@ -372,7 +372,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onSessionExpiry(ServerResponse response) {
-        Utils.getInstance().showAPIResponseMessage(this, response.getMessage());
+        MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DASHBOARD_DOCTORS:
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDasboardDoctorsData();

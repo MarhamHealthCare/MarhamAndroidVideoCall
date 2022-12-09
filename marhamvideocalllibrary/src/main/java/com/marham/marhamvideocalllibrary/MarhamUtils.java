@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.utils;
+package com.marham.marhamvideocalllibrary;
 
 import android.content.Context;
 import android.view.View;
@@ -6,13 +6,13 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-public class Utils {
+public class MarhamUtils {
 
-    private static Utils ourInstance;
+    private static MarhamUtils ourInstance;
 
-    public static Utils getInstance() {
+    public static MarhamUtils getInstance() {
         if (ourInstance == null) {
-            return ourInstance = new Utils();
+            return ourInstance = new MarhamUtils();
         } else {
             return ourInstance;
         }

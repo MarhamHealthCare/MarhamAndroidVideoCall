@@ -12,7 +12,7 @@ import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
 import com.marham.marhamvideocalllibrary.utils.CircleTransform;
-import com.marham.marhamvideocalllibrary.utils.Utils;
+import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.viewHolders.DashboardDoctorViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -78,7 +78,7 @@ public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDocto
                     .centerCrop()
                     .into(holder.doctorPictureImageView);
         } else {
-            Utils.getInstance().setBackground(context, holder.doctorPictureImageView, doctorPicturePlaceHolder);
+            MarhamUtils.getInstance().setBackground(context, holder.doctorPictureImageView, doctorPicturePlaceHolder);
 
         }
     }
