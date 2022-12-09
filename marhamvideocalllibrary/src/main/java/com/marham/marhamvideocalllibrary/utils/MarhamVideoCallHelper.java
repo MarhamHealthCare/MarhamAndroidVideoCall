@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary;
+package com.marham.marhamvideocalllibrary.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +10,14 @@ public class MarhamVideoCallHelper {
     private int colorPrimary;
 
 
-    static MarhamVideoCallHelper utils = null;
+    private static MarhamVideoCallHelper utils = null;
 
     public static MarhamVideoCallHelper getInstance() {
         if (utils == null) return utils = new MarhamVideoCallHelper();
         else return utils;
     }
+
+
 
     public MarhamVideoCallHelper setAPIKEY(String API_KEY) {
         this.API_KEY = API_KEY;
