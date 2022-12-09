@@ -3,7 +3,7 @@ package com.marham.marhamvideocalllibrary.network;
 import android.content.Context;
 
 import com.marham.marhamvideocalllibrary.BuildConfig;
-import com.marham.marhamvideocalllibrary.utils.MarhamVideoCallHelper;
+import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;

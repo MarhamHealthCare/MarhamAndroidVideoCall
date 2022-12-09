@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.utils;
+package com.marham.marhamvideocalllibrary;
 
 import android.content.Context;
 import android.content.Intent;
