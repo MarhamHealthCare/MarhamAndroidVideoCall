@@ -17,17 +17,15 @@ public class MarhamVideoCallHelper {
         else return utils;
     }
 
-
-
-    public MarhamVideoCallHelper setAPIKEY(String API_KEY) {
-        this.API_KEY = API_KEY;
-        return this;
-    }
-
-    public MarhamVideoCallHelper setFirebaseToken(String fireBaseToken) {
-        this.fireBaseToken = fireBaseToken;
-        return this;
-    }
+//    public MarhamVideoCallHelper setAPIKEY(String API_KEY) {
+//        this.API_KEY = API_KEY;
+//        return this;
+//    }
+//
+//    public MarhamVideoCallHelper setFirebaseToken(String fireBaseToken) {
+//        this.fireBaseToken = fireBaseToken;
+//        return this;
+//    }
 
     public void launchBookingFlow(Context context, Class c) {
         Intent intent = new Intent(context, c);
