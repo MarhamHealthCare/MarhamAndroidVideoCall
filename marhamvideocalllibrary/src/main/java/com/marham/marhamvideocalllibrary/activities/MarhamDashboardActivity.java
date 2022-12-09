@@ -215,7 +215,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     }
 
     public void setTopSpecialitiesRecyclerView(List<Speciality> specialityList) {
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         topSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
         TopSpecialitiesAdapter topSpecialitiesAdapter = new TopSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
