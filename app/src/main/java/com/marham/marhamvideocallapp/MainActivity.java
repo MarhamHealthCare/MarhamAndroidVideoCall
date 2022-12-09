@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button openMarhamAppButton;
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setUpButton();
         Toast.makeText(this, "Main Activity", Toast.LENGTH_SHORT).show();
-
     }
 
     private void setUpButton() {
@@ -33,11 +30,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.open_marham_app_button) {
-            MarhamVideoCallHelper.getInstance().setAPIKEY("").setFirebaseToken("");
-            MarhamVideoCallHelper.getInstance().launchBookingFlow(this, MarhamDashboardActivity.class);
+            MarhamVideoCallHelper.getInstance().setAPIKEY("").setFirebaseToken("").setPhoneNumber("").setName("");
+            MarhamVideoCallHelper.getInstance().launchBookingFlow(this);
         }
-
-
     }
 
 }

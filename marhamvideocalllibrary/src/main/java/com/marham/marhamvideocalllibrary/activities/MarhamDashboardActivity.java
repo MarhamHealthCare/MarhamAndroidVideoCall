@@ -81,7 +81,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         initializeViews();
         setListeners();
         fetchData();
-        MarhamVideoCallHelper.getInstance();
+
     }
 
     private void fetchData() {
