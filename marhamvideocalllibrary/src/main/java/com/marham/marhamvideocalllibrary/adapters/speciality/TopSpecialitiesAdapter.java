@@ -23,9 +23,6 @@ public class TopSpecialitiesAdapter extends RecyclerView.Adapter<TopSpecialityVi
     private AdapterViewItemClickedListener listener;
     private List<Speciality> specialityList;
 
-    private final int DEFAULT = 1;
-    private final int VIEW_ALL = 2;
-
     public TopSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         this.context = context;
         this.specialityList = specialityList;
@@ -55,10 +52,6 @@ public class TopSpecialitiesAdapter extends RecyclerView.Adapter<TopSpecialityVi
             holder.topSpecialityImageView.setBackgroundResource(0);
         }
         holder.topSpecialityTextView.setText(specialityList.get(position).getSpeciality());
-    }
-
-    private void setViewAllView(TopSpecialityViewHolder holder, int position) {
-
     }
 
     @Override

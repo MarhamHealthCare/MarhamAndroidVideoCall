@@ -1,11 +1,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent_layout"
-    android:layout_width="@dimen/hundred_ten"
+    android:layout_width="@dimen/two_hundred"
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/five"
-    android:alpha="0.8"
-
+    android:elevation="@dimen/five"
     app:cardCornerRadius="@dimen/five"
     app:cardUseCompatPadding="true">
 
@@ -17,31 +16,29 @@
             android:id="@+id/top_speciality_image_view"
             android:layout_width="@dimen/thirty_five"
             android:layout_height="@dimen/thirty_five"
-
-            android:layout_marginTop="@dimen/five"
-            android:layout_marginBottom="@dimen/five"
-
-
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
             android:id="@+id/top_speciality_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten"
+            android:layout_marginStart="@dimen/fifteen"
             android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/ten"
             android:ellipsize="end"
-
             android:maxLines="1"
             android:text="@string/dash"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/eleven_text_size"
+            android:textColor="@color/black"
+            android:textSize="@dimen/thirteen_text_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_speciality_image_view" />
+            app:layout_constraintStart_toEndOf="@+id/top_speciality_image_view"
+            app:layout_constraintTop_toTopOf="@+id/top_speciality_image_view" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

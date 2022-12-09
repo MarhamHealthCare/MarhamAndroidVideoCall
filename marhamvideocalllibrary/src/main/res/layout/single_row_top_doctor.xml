@@ -73,16 +73,15 @@
             android:textColor="@color/black"
             android:textSize="@dimen/eleven_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintTop_toBottomOf="@+id/doctor_degrees_text_view" />
 
 
         <com.marham.marhamvideocalllibrary.customviews.MyImageView
             android:id="@+id/doctor_ratings_stars"
-            android:layout_width="@dimen/ten"
-            android:layout_height="@dimen/ten"
+            android:layout_width="@dimen/fifteen"
+            android:layout_height="@dimen/fifteen"
             android:layout_marginTop="@dimen/two"
-            android:layout_marginEnd="@dimen/one"
+            android:layout_marginEnd="@dimen/five"
             android:src="@drawable/start_icon_gold_vector"
             app:layout_constraintBottom_toBottomOf="@id/doctor_reviews_text_view"
             app:layout_constraintEnd_toStartOf="@+id/doctor_reviews_text_view"

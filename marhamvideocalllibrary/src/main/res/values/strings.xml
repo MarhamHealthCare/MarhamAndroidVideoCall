@@ -14,4 +14,8 @@
     <string name="top_specialities">Top Specialities</string>
     <string name="book_appointments_in_three_easy_steps">Book appointments in three easy steps</string>
     <string name="search_for_doctors_by_name_or_specialty">Search for doctors by name or specialty.</string>
+    <string name="most_common_diseases">Most Common Diseases</string>
+    <string name="select_a_doctor_accordingly">Select a doctor accordingly.</string>
+    <string name="book_a_video_consultation_and_get_quality_medical_help">Book a video consultation and get quality medical help.</string>
+    <string name="view_all">View All</string>
 </resources>

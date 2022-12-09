@@ -55,6 +55,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     private RecyclerView topDiseasesRecyclerView;
     private MyButton topDiseasesRetryButton;
     private ProgressBar topDiseasesProgressBar;
+    private ConstraintLayout viewAllDiseasesViewsContainer;
     private List<Diseases> diseasesArrayList = new ArrayList<>();
 
     //Top Specialities Views
@@ -62,6 +63,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
     private RecyclerView topSpecialitiesRecyclerView;
     private MyButton topSpecialitiesRetryButton;
     private ProgressBar topSpecialitiesProgressBar;
+    private ConstraintLayout viewAllSpecialitiesViewsContainer;
     private List<Speciality> specialityList = new ArrayList<>();
 
 
@@ -88,6 +90,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
+        super.onClick(v);
         int viewId = v.getId();
         if (R.id.search_card_view == viewId) {
             Toast.makeText(this, "Tapped Search Bar", Toast.LENGTH_SHORT).show();
@@ -97,10 +100,15 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
             getDashboardDoctors();
         } else if (R.id.top_diseases_retry_button == viewId) {
             getTopDiseases();
+        } else if (R.id.view_all_diseases_views_container == viewId) {
+            Toast.makeText(this, "View All Diseases", Toast.LENGTH_SHORT).show();
+        } else if (R.id.view_all_specialities_views_container == viewId) {
+            Toast.makeText(this, "View All Specialities", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void initializeViews() {
+        initializeTopBar();
         searchCardView = findViewById(R.id.search_card_view);
         myAppointmentsViewsContainer = findViewById(R.id.my_appointments_views_container);
 
@@ -113,12 +121,13 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         topDiseasesRecyclerView = findViewById(R.id.top_diseases_recycler_view);
         topDiseasesRetryButton = findViewById(R.id.top_diseases_retry_button);
         topDiseasesProgressBar = findViewById(R.id.top_diseases_progress_bar);
+        viewAllDiseasesViewsContainer = findViewById(R.id.view_all_diseases_views_container);
 
         topSpecialitiesViewsContainer = findViewById(R.id.top_specialities_views_container);
         topSpecialitiesRecyclerView = findViewById(R.id.top_specialities_recycler_view);
         topSpecialitiesRetryButton = findViewById(R.id.top_specialities_retry_button);
         topSpecialitiesProgressBar = findViewById(R.id.top_specialities_progress_bar);
-
+        viewAllSpecialitiesViewsContainer = findViewById(R.id.view_all_specialities_views_container);
 
     }
 
@@ -127,6 +136,8 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         myAppointmentsViewsContainer.setOnClickListener(this);
         dashboardDoctorsRetryButton.setOnClickListener(this);
         topDiseasesRetryButton.setOnClickListener(this);
+        viewAllDiseasesViewsContainer.setOnClickListener(this);
+        viewAllSpecialitiesViewsContainer.setOnClickListener(this);
     }
 
     public void setTopDoctorsRecyclerView(List<DoctorInfo> doctorInfoList) {
