@@ -32,5 +32,6 @@
     <dimen name="hundred_eighty">180dp</dimen>
     <dimen name="thirteen_text_size">13sp</dimen>
     <dimen name="hundred_twenty">120dp</dimen>
+    <dimen name="eighty">80dp</dimen>
 
 </resources>

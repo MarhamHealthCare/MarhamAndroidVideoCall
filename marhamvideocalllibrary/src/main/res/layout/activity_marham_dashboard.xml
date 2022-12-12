@@ -229,7 +229,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/top_diseases_recycler_view"
                     android:layout_width="@dimen/zero"
-                    android:layout_height="80dp"
+                    android:layout_height="@dimen/eighty"
                     android:layout_marginStart="@dimen/ten"
                     android:layout_marginTop="@dimen/ten"
                     android:layout_marginEnd="@dimen/ten"
