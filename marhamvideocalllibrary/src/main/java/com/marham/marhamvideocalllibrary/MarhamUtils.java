@@ -1,6 +1,8 @@
 package com.marham.marhamvideocalllibrary;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,8 +29,16 @@ public class MarhamUtils {
         }
     }
 
-    public void showAPIResponseMessage(Context context,String message){
+    public void showAPIResponseMessage(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void startActivity(Activity activity, Class c, Boolean killCurrentActivity) {
+        Intent intent = new Intent(activity, c);
+        activity.startActivity(intent);
+        if (killCurrentActivity) {
+            activity.finish();
+        }
     }
 
 }

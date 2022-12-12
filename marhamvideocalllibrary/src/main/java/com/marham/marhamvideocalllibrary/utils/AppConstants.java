@@ -19,6 +19,7 @@ public class AppConstants {
             public static final int GET_DASHBOARD_DOCTORS = 1;
             public static final int GET_DASHBOARD_TOP_DISEASES = 2;
             public static final int GET_ALL_SPECIALITIES = 3;
+            public static final int GET_ALL_DISEASES = 4;
         }
 
         public static class API_ERROR_MESSAGE {

@@ -1,0 +1,74 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/five"
+    app:cardCornerRadius="@dimen/five"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/disease_image_view"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginBottom="@dimen/five"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.marham.marhamvideocalllibrary.customviews.BodyText
+            android:id="@+id/disease_text_view"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/five"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:text="@string/dash"
+            android:textColor="@color/black"
+            android:textSize="@dimen/twelve_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/diseases_forward_arrow_icon"
+            app:layout_constraintStart_toEndOf="@+id/disease_image_view"
+            app:layout_constraintTop_toTopOf="@+id/disease_image_view" />
+
+        <com.marham.marhamvideocalllibrary.customviews.BodyText
+            android:id="@+id/disease_description_text_view"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/five"
+            android:layout_marginEnd="@dimen/five"
+            android:layout_marginBottom="@dimen/ten"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="2"
+            android:text="@string/dash"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/eleven_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/diseases_forward_arrow_icon"
+            app:layout_constraintStart_toEndOf="@+id/disease_image_view"
+
+            app:layout_constraintTop_toBottomOf="@+id/disease_text_view" />
+
+        <com.marham.marhamvideocalllibrary.customviews.MyImageView
+            android:id="@+id/diseases_forward_arrow_icon"
+            android:layout_width="@dimen/fifteen"
+            android:layout_height="@dimen/fifteen"
+            android:layout_marginEnd="@dimen/five"
+            android:background="@drawable/forward_arrow_grey_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

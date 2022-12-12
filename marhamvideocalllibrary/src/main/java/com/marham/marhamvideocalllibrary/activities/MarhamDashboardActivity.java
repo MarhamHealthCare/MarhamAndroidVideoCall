@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
+import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
+import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
+import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
@@ -29,7 +31,6 @@ import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
 import com.marham.marhamvideocalllibrary.utils.AppConstants;
-import com.marham.marhamvideocalllibrary.MarhamUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public class MarhamDashboardActivity extends BaseActivity implements View.OnClickListener, ServerConnectListener {
+public class MarhamDashboardActivity extends BaseActivity implements ServerConnectListener {
 
     public static final String TAG = "Marham Video Call: ";
     private CardView searchCardView;
@@ -81,7 +82,6 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         initializeViews();
         setListeners();
         fetchData();
-
     }
 
     private void fetchData() {
@@ -103,7 +103,7 @@ public class MarhamDashboardActivity extends BaseActivity implements View.OnClic
         } else if (R.id.top_diseases_retry_button == viewId) {
             getTopDiseases();
         } else if (R.id.view_all_diseases_views_container == viewId) {
-            Toast.makeText(this, "View All Diseases", Toast.LENGTH_SHORT).show();
+            MarhamUtils.getInstance().startActivity(this, SearchDiseaseActivity.class, false);
         } else if (R.id.view_all_specialities_views_container == viewId) {
             Toast.makeText(this, "View All Specialities", Toast.LENGTH_SHORT).show();
         }

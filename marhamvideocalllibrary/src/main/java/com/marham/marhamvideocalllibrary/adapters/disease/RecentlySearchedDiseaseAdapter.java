@@ -11,20 +11,20 @@ import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.viewHolders.disease.BaseDiseaseViewHolder;
-import com.marham.marhamvideocalllibrary.viewHolders.disease.TopDiseaseViewHolder;
+import com.marham.marhamvideocalllibrary.viewHolders.disease.RecentlySearchedDiseaseViewHolder;
 
 import java.util.List;
 
-public class TopDiseaseAdapter extends BaseDiseaseAdapter {
-    public TopDiseaseAdapter(Context context, List<Diseases> diseasesList, AdapterViewItemClickedListener listener) {
+public class RecentlySearchedDiseaseAdapter extends BaseDiseaseAdapter {
+    public RecentlySearchedDiseaseAdapter(Context context, List<Diseases> diseasesList, AdapterViewItemClickedListener listener) {
         super(context, diseasesList, listener);
     }
 
     @NonNull
     @Override
-    public TopDiseaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_row_top_diseases, viewGroup, false);
-        return new TopDiseaseViewHolder(view, listener);
+    public RecentlySearchedDiseaseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.single_row_recent_diseases, viewGroup, false);
+        return new RecentlySearchedDiseaseViewHolder(view, listener);
     }
 
     @Override

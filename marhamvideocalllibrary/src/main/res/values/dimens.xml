@@ -33,5 +33,6 @@
     <dimen name="thirteen_text_size">13sp</dimen>
     <dimen name="hundred_twenty">120dp</dimen>
     <dimen name="eighty">80dp</dimen>
+    <dimen name="hundred_fifty">150dp</dimen>
 
 </resources>

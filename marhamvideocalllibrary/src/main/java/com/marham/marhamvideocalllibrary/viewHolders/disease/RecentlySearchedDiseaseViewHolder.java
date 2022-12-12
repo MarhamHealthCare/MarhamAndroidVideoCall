@@ -7,11 +7,10 @@ import androidx.annotation.NonNull;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 
-public class TopDiseaseViewHolder extends BaseDiseaseViewHolder {
+public class RecentlySearchedDiseaseViewHolder extends BaseDiseaseViewHolder {
 
-    public TopDiseaseViewHolder(@NonNull View view, AdapterViewItemClickedListener listener) {
+    public RecentlySearchedDiseaseViewHolder(@NonNull View view, AdapterViewItemClickedListener listener) {
         super(view, listener);
-
     }
 
     @Override
@@ -19,7 +18,7 @@ public class TopDiseaseViewHolder extends BaseDiseaseViewHolder {
         super.onClick(view);
         int viewId = view.getId();
         if (viewId == parentLayout.getId()) {
-            listener.onAdatviewItemClicked(getAdapterPosition(), BaseDiseaseAdapter.TOP_DISEASES);
+            listener.onAdatviewItemClicked(getAdapterPosition(), BaseDiseaseAdapter.RECENTLY_SEARCHED_DISEASES);
         }
     }
 
