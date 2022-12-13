@@ -43,7 +43,6 @@ public class BaseDiseaseAdapter extends RecyclerView.Adapter<BaseDiseaseViewHold
 
     @Override
     public void onBindViewHolder(BaseDiseaseViewHolder holder, int position) {
-        getItemViewType(position);
         setDisease(holder, position);
     }
 

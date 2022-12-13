@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.viewHolders.disease;
+package com.marham.marhamvideocalllibrary.viewHolders.speciality;
 
 import android.view.View;
 
@@ -7,19 +7,21 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.R;
+import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BaseDiseaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class BaseSpecialityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public CardView parentLayout;
-    public CircleImageView diseaseImageView;
-    public BodyText diseaseTextView;
+    public CircleImageView specialityImageView;
+    public BodyText specialityTextView;
+
 
     protected AdapterViewItemClickedListener listener;
 
-    public BaseDiseaseViewHolder(@NonNull View view, AdapterViewItemClickedListener listener) {
+    public BaseSpecialityViewHolder(@NonNull View view, AdapterViewItemClickedListener listener) {
         super(view);
         initGui(view);
         initVariables(listener);
@@ -33,8 +35,8 @@ public class BaseDiseaseViewHolder extends RecyclerView.ViewHolder implements Vi
 
     private void initGui(View view) {
         parentLayout = view.findViewById(R.id.parent_layout);
-        diseaseImageView = view.findViewById(R.id.disease_image_view);
-        diseaseTextView = view.findViewById(R.id.disease_text_view);
+        specialityImageView = view.findViewById(R.id.speciality_image_view);
+        specialityTextView = view.findViewById(R.id.speciality_text_view);
     }
 
     private void initVariables(AdapterViewItemClickedListener listener) {
@@ -44,6 +46,5 @@ public class BaseDiseaseViewHolder extends RecyclerView.ViewHolder implements Vi
     private void setListeners() {
         parentLayout.setOnClickListener(this);
     }
-
 
 }

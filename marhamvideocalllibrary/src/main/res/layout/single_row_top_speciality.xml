@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/top_speciality_image_view"
+            android:id="@+id/speciality_image_view"
             android:layout_width="@dimen/thirty_five"
             android:layout_height="@dimen/thirty_five"
             android:layout_marginStart="@dimen/ten"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/top_speciality_text_view"
+            android:id="@+id/speciality_text_view"
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fifteen"
@@ -37,8 +37,8 @@
             android:textSize="@dimen/thirteen_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/top_speciality_image_view"
-            app:layout_constraintTop_toTopOf="@+id/top_speciality_image_view" />
+            app:layout_constraintStart_toEndOf="@+id/speciality_image_view"
+            app:layout_constraintTop_toTopOf="@+id/speciality_image_view" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

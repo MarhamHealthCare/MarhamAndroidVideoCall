@@ -15,9 +15,8 @@ import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
-import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
-import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
@@ -220,7 +219,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         topSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
-        TopSpecialitiesAdapter topSpecialitiesAdapter = new TopSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        BaseSpecialitiesAdapter topSpecialitiesAdapter = new BaseSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
         topSpecialitiesRecyclerView.setAdapter(topSpecialitiesAdapter);
     }
 
