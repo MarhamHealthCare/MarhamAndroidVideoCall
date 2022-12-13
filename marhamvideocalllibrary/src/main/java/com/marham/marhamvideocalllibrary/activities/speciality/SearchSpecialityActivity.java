@@ -1,11 +1,5 @@
 package com.marham.marhamvideocalllibrary.activities.speciality;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,13 +7,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
-import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
-import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
-import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
-import com.marham.marhamvideocalllibrary.adapters.disease.RecentlySearchedDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.AllSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.RecentlySearchedSpecialitiesAdapter;
@@ -28,8 +23,6 @@ import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.ServerResponse;
-import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
-import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
@@ -131,9 +124,9 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
     }
 
     public void setAllSpeciaitiesRecyclerView(List<Speciality> specialityList) {
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        allSpecialitiesRecyclerView.setLayoutManager(linearLayoutManager);
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        allSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
         allSpecialitiesAdapter = new AllSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
         allSpecialitiesRecyclerView.setAdapter(allSpecialitiesAdapter);
     }

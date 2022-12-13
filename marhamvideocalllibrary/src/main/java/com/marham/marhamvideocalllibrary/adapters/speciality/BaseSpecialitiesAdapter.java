@@ -35,6 +35,7 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     public BaseSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         this.context = context;
         this.specialityList = specialityList;
+        this.filteredSpecialityList = specialityList;
         this.listener = listener;
     }
 
@@ -51,8 +52,8 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     }
 
     private void setSpeciality(BaseSpecialityViewHolder holder, int position) {
-        if (specialityList.get(position).getNewIcon() != null && specialityList.get(position).getNewIcon().length() > 0) {
-            Picasso.get().load(specialityList.get(position).getNewIcon())
+        if (filteredSpecialityList.get(position).getNewIcon() != null && filteredSpecialityList.get(position).getNewIcon().length() > 0) {
+            Picasso.get().load(filteredSpecialityList.get(position).getNewIcon())
                     .transform(new CircleTransform())
                     .fit()
                     .centerCrop()
@@ -60,12 +61,12 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
         } else {
             holder.specialityImageView.setBackgroundResource(0);
         }
-        holder.specialityTextView.setText(specialityList.get(position).getSpeciality());
+        holder.specialityTextView.setText(filteredSpecialityList.get(position).getSpeciality());
     }
 
     @Override
     public int getItemCount() {
-        return specialityList.size();
+        return filteredSpecialityList.size();
     }
 
     @Override
