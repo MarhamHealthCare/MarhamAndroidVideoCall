@@ -1,4 +1,10 @@
-package com.marham.marhamvideocalllibrary.activities.disease;
+package com.marham.marhamvideocalllibrary.activities.speciality;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -7,14 +13,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.RecentlySearchedDiseaseAdapter;
@@ -25,6 +27,7 @@ import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListene
 import com.marham.marhamvideocalllibrary.model.ServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
+import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
@@ -36,20 +39,20 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public class SearchDiseaseActivity extends BaseActivity implements ServerConnectListener {
+public class SearchSpecialityActivity extends BaseActivity implements ServerConnectListener {
 
     private ConstraintLayout parentLayout;
 
     private BodyEditText searchView;
 
-    private ConstraintLayout recentlySearchedDiseasesViewsContainer;
-    private RecyclerView recentlySearchedDiseasesRecyclerView;
+    private ConstraintLayout recentlySearchedSpecialitiesViewsContainer;
+    private RecyclerView recentlySearchedSpecialitiesRecyclerView;
 
-    private ConstraintLayout allDiseasesViewsContainer;
-    private RecyclerView allDiseasesRecyclerView;
+    private ConstraintLayout allSpecialitiesViewsContainer;
+    private RecyclerView allSpecialitiesRecyclerView;
 
-    private MyButton diseasesRetryButton;
-    private ProgressBar diseasesProgressBar;
+    private MyButton specialitiesRetryButton;
+    private ProgressBar specialitiesProgressBar;
     private BodyText noRecordFoundTextView;
 
     private List<Diseases> recentlySearchedDiseasesArrayList = new ArrayList<>();
@@ -61,18 +64,19 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_disease);
+        setContentView(R.layout.activity_search_speciality);
         initializeViews();
         setListeners();
-        getTopDiseases();
+        getTopSpecialities();
+
     }
 
     @Override
     public void onClick(View v) {
         super.onClick(v);
         int viewId = v.getId();
-        if (R.id.diseases_retry_button == viewId) {
-            getTopDiseases();
+        if (R.id.specialities_retry_button == viewId) {
+            getTopSpecialities();
         }
     }
 
@@ -82,19 +86,19 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
 
         searchView = findViewById(R.id.search_edit_text);
 
-        recentlySearchedDiseasesViewsContainer = findViewById(R.id.recently_searched_diseases_views_container);
-        recentlySearchedDiseasesRecyclerView = findViewById(R.id.recently_searched_diseases_recycler_view);
+        recentlySearchedSpecialitiesViewsContainer = findViewById(R.id.recently_searched_specialities_views_container);
+        recentlySearchedSpecialitiesRecyclerView = findViewById(R.id.recently_searched_specialities_recycler_view);
 
-        allDiseasesViewsContainer = findViewById(R.id.all_diseases_views_container);
-        allDiseasesRecyclerView = findViewById(R.id.all_diseases_recycler_view);
+        allSpecialitiesViewsContainer = findViewById(R.id.all_specialities_views_container);
+        allSpecialitiesRecyclerView = findViewById(R.id.all_specialities_recycler_view);
 
-        diseasesRetryButton = findViewById(R.id.diseases_retry_button);
-        diseasesProgressBar = findViewById(R.id.diseases_progress_bar);
+        specialitiesRetryButton = findViewById(R.id.specialities_retry_button);
+        specialitiesProgressBar = findViewById(R.id.specialities_progress_bar);
         noRecordFoundTextView = findViewById(R.id.no_record_found_text_view);
     }
 
     private void setListeners() {
-        diseasesRetryButton.setOnClickListener(this);
+        specialitiesRetryButton.setOnClickListener(this);
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -117,17 +121,17 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     public void setRecentlySearchedDiseaseRecyclerView(List<Diseases> diseasesList) {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recentlySearchedDiseasesRecyclerView.setLayoutManager(gridLayoutManager);
+        recentlySearchedSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
         RecentlySearchedDiseaseAdapter recentlySearchedDiseaseAdapter = new RecentlySearchedDiseaseAdapter(this, diseasesList, adpaterViewItemClickedListener);
-        recentlySearchedDiseasesRecyclerView.setAdapter(recentlySearchedDiseaseAdapter);
+        recentlySearchedSpecialitiesRecyclerView.setAdapter(recentlySearchedDiseaseAdapter);
     }
 
     public void setAllDiseaseRecyclerView(List<Diseases> diseasesList) {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        allDiseasesRecyclerView.setLayoutManager(linearLayoutManager);
+        allSpecialitiesRecyclerView.setLayoutManager(linearLayoutManager);
         allDiseaseAdapter = new AllDiseaseAdapter(this, diseasesList, adpaterViewItemClickedListener);
-        allDiseasesRecyclerView.setAdapter(allDiseaseAdapter);
+        allSpecialitiesRecyclerView.setAdapter(allDiseaseAdapter);
     }
 
     private void setDiseasesList(DashboardDiseasesServerResponse dashboardDiseasesServerResponse) {
@@ -138,34 +142,33 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
         setAllDiseaseRecyclerView(allDiseasesArrayList);
     }
 
-    public void setViewsBeforeGettingDiseasesData() {
+    public void setViewsBeforeGettingSpecialitiesData() {
         parentLayout.setVisibility(View.GONE);
-        diseasesProgressBar.setVisibility(View.VISIBLE);
-        diseasesRetryButton.setVisibility(View.GONE);
+        specialitiesProgressBar.setVisibility(View.VISIBLE);
+        specialitiesRetryButton.setVisibility(View.GONE);
         noRecordFoundTextView.setVisibility(View.GONE);
     }
 
-    public void setViewsAfterGettingTopDiseasesData() {
+    public void setViewsAfterGettingSpecialitiesData() {
         parentLayout.setVisibility(View.VISIBLE);
-        diseasesProgressBar.setVisibility(View.GONE);
-        diseasesRetryButton.setVisibility(View.GONE);
+        specialitiesProgressBar.setVisibility(View.GONE);
+        specialitiesRetryButton.setVisibility(View.GONE);
         noRecordFoundTextView.setVisibility(View.GONE);
     }
 
-    public void setViewsIncaseNoRecordFoundWhileGettingDiseasesData() {
+    public void setViewsIncaseNoRecordFoundWhileGettingSpecialitiesData() {
         parentLayout.setVisibility(View.GONE);
-        diseasesProgressBar.setVisibility(View.GONE);
-        diseasesRetryButton.setVisibility(View.GONE);
+        specialitiesProgressBar.setVisibility(View.GONE);
+        specialitiesRetryButton.setVisibility(View.GONE);
         noRecordFoundTextView.setVisibility(View.VISIBLE);
     }
 
-    public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDiseasesData() {
+    public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingSpecialitiesData() {
         parentLayout.setVisibility(View.GONE);
-        diseasesProgressBar.setVisibility(View.GONE);
-        diseasesRetryButton.setVisibility(View.VISIBLE);
+        specialitiesProgressBar.setVisibility(View.GONE);
+        specialitiesRetryButton.setVisibility(View.VISIBLE);
         noRecordFoundTextView.setVisibility(View.GONE);
     }
-
 
     private AdapterViewItemClickedListener adpaterViewItemClickedListener = new AdapterViewItemClickedListener() {
         @Override
@@ -177,10 +180,10 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
         public void onAdatviewItemClicked(int position, int requestID) {
             switch (requestID) {
                 case BaseDiseaseAdapter.RECENTLY_SEARCHED_DISEASES:
-                    Toast.makeText(SearchDiseaseActivity.this, "Tapped Recently Searched:" + position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchSpecialityActivity.this, "Tapped Recently Searched:" + position, Toast.LENGTH_SHORT).show();
                     break;
                 case BaseDiseaseAdapter.ALL_DISEASES:
-                    Toast.makeText(SearchDiseaseActivity.this, "Tapped All :" + position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchSpecialityActivity.this, "Tapped All :" + position, Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -191,30 +194,27 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
         }
     };
 
-
-    public void getTopDiseases() {
-        setViewsBeforeGettingDiseasesData();
+    public void getTopSpecialities() {
+        setViewsBeforeGettingSpecialitiesData();
         APIClient apiClient = new APIClient();
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
-        Call<DashboardDiseasesServerResponse> call;
-        call = apiClient.getDashboardSpecialitiesWithDiseases(hashMap);
-        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES);
+        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
+        Call<NewAllSpecialitiesServerResponse> call = apiClient.getSpecialities(hashMap);
+        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES);
         call.enqueue(retroFit2Callback);
-
     }
 
     @Override
     public void onSuccess(ServerResponse response) {
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
-                    setViewsAfterGettingTopDiseasesData();
+                    setViewsAfterGettingSpecialitiesData();
                     DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
                     setDiseasesList(dashboardDiseasesServerResponse);
-
                 } else {
-                    setViewsIncaseNoRecordFoundWhileGettingDiseasesData();
+                    setViewsIncaseNoRecordFoundWhileGettingSpecialitiesData();
                 }
                 break;
         }
@@ -224,8 +224,8 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     public void onFailure(ServerResponse response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
-                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDiseasesData();
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingSpecialitiesData();
                 break;
         }
     }
@@ -234,9 +234,11 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     public void onSessionExpiry(ServerResponse response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
-                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDiseasesData();
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingSpecialitiesData();
                 break;
         }
     }
+
+
 }
