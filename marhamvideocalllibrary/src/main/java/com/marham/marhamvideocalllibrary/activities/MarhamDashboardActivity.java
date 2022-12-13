@@ -14,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
+import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
+import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
@@ -69,8 +72,6 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
 
 
     public static final int DASHBOARD_DOCTORS_RECYCLER_VIEW = 0;
-    public static final int TOP_DISEASES_RECYCLER_VIEW = 1;
-    public static final int TOP_SPECIALITIES_RECYCLER_VIEW = 2;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
@@ -104,7 +105,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         } else if (R.id.view_all_diseases_views_container == viewId) {
             MarhamUtils.getInstance().startActivity(this, SearchDiseaseActivity.class, false);
         } else if (R.id.view_all_specialities_views_container == viewId) {
-            Toast.makeText(this, "View All Specialities", Toast.LENGTH_SHORT).show();
+            MarhamUtils.getInstance().startActivity(this, SearchSpecialityActivity.class, false);
         }
     }
 
@@ -219,7 +220,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         topSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
-        BaseSpecialitiesAdapter topSpecialitiesAdapter = new BaseSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        TopSpecialitiesAdapter topSpecialitiesAdapter = new TopSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
         topSpecialitiesRecyclerView.setAdapter(topSpecialitiesAdapter);
     }
 
@@ -263,10 +264,10 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
                 case MarhamDashboardActivity.DASHBOARD_DOCTORS_RECYCLER_VIEW:
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
                     break;
-                case MarhamDashboardActivity.TOP_DISEASES_RECYCLER_VIEW:
+                case BaseDiseaseAdapter.TOP_DISEASES:
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Disease: " + position, Toast.LENGTH_SHORT).show();
                     break;
-                case MarhamDashboardActivity.TOP_SPECIALITIES_RECYCLER_VIEW:
+                case BaseSpecialitiesAdapter.TOP_SPECIALITIES:
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Speciality " + position, Toast.LENGTH_SHORT).show();
                     break;
             }

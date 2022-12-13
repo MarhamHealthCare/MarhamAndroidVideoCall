@@ -16,7 +16,7 @@ public class MyImageView extends AppCompatImageView {
      */
     public MyImageView(Context context) {
         super(context);
-        // TODO Auto-generated constructor stub
+
         setBackgroundColor(0xFFFFFF);
     }
 
@@ -26,7 +26,7 @@ public class MyImageView extends AppCompatImageView {
      */
     public MyImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // TODO Auto-generated constructor stub
+
     }
 
     /**
@@ -36,12 +36,12 @@ public class MyImageView extends AppCompatImageView {
      */
     public MyImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        // TODO Auto-generated constructor stub
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO Auto-generated method stub
+
         super.onDraw(canvas);
         System.out.println("Painting content");
         Paint paint = new Paint(Paint.LINEAR_TEXT_FLAG);
@@ -54,7 +54,6 @@ public class MyImageView extends AppCompatImageView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        // TODO Auto-generated method stub
         Log.d("Hello Android", "Got a touch event: " + event.getAction());
         return super.onTouchEvent(event);
 

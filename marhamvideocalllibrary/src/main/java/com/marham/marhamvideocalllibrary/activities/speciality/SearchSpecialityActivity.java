@@ -20,6 +20,9 @@ import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivit
 import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.RecentlySearchedDiseaseAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.AllSpecialitiesAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;
+import com.marham.marhamvideocalllibrary.adapters.speciality.RecentlySearchedSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.BodyEditText;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
@@ -28,6 +31,7 @@ import com.marham.marhamvideocalllibrary.model.ServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
@@ -55,9 +59,9 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
     private ProgressBar specialitiesProgressBar;
     private BodyText noRecordFoundTextView;
 
-    private List<Diseases> recentlySearchedDiseasesArrayList = new ArrayList<>();
-    private List<Diseases> allDiseasesArrayList = new ArrayList<>();
-    private AllDiseaseAdapter allDiseaseAdapter;
+    private List<Speciality> recentlySearchedSpecialitiesArrayList = new ArrayList<>();
+    private List<Speciality> allSpecialitiesArrayList = new ArrayList<>();
+    private AllSpecialitiesAdapter allSpecialitiesAdapter;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
@@ -112,34 +116,34 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
 
             @Override
             public void afterTextChanged(Editable s) {
-                allDiseaseAdapter.getFilter().filter(s);
+                allSpecialitiesAdapter.getFilter().filter(s);
             }
         });
 
     }
 
-    public void setRecentlySearchedDiseaseRecyclerView(List<Diseases> diseasesList) {
+    public void setRecentlySearchedSpecialitiesRecyclerView(List<Speciality> specialityList) {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recentlySearchedSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
-        RecentlySearchedDiseaseAdapter recentlySearchedDiseaseAdapter = new RecentlySearchedDiseaseAdapter(this, diseasesList, adpaterViewItemClickedListener);
-        recentlySearchedSpecialitiesRecyclerView.setAdapter(recentlySearchedDiseaseAdapter);
+        RecentlySearchedSpecialitiesAdapter recentlySearchedSpecialitiesAdapter = new RecentlySearchedSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        recentlySearchedSpecialitiesRecyclerView.setAdapter(recentlySearchedSpecialitiesAdapter);
     }
 
-    public void setAllDiseaseRecyclerView(List<Diseases> diseasesList) {
+    public void setAllSpeciaitiesRecyclerView(List<Speciality> specialityList) {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         allSpecialitiesRecyclerView.setLayoutManager(linearLayoutManager);
-        allDiseaseAdapter = new AllDiseaseAdapter(this, diseasesList, adpaterViewItemClickedListener);
-        allSpecialitiesRecyclerView.setAdapter(allDiseaseAdapter);
+        allSpecialitiesAdapter = new AllSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        allSpecialitiesRecyclerView.setAdapter(allSpecialitiesAdapter);
     }
 
-    private void setDiseasesList(DashboardDiseasesServerResponse dashboardDiseasesServerResponse) {
-        recentlySearchedDiseasesArrayList.addAll(dashboardDiseasesServerResponse.getData());
-        setRecentlySearchedDiseaseRecyclerView(recentlySearchedDiseasesArrayList);
+    private void setSpecialitiesList(NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse) {
+        recentlySearchedSpecialitiesArrayList.addAll(newAllSpecialitiesServerResponse.getData().getSpecialities());
+        setRecentlySearchedSpecialitiesRecyclerView(recentlySearchedSpecialitiesArrayList);
 
-        allDiseasesArrayList.addAll(dashboardDiseasesServerResponse.getData());
-        setAllDiseaseRecyclerView(allDiseasesArrayList);
+        allSpecialitiesArrayList.addAll(newAllSpecialitiesServerResponse.getData().getSpecialities());
+        setAllSpeciaitiesRecyclerView(allSpecialitiesArrayList);
     }
 
     public void setViewsBeforeGettingSpecialitiesData() {
@@ -179,10 +183,10 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
         @Override
         public void onAdatviewItemClicked(int position, int requestID) {
             switch (requestID) {
-                case BaseDiseaseAdapter.RECENTLY_SEARCHED_DISEASES:
+                case BaseSpecialitiesAdapter.RECENTLY_SEARCHED_SPECIALITIES:
                     Toast.makeText(SearchSpecialityActivity.this, "Tapped Recently Searched:" + position, Toast.LENGTH_SHORT).show();
                     break;
-                case BaseDiseaseAdapter.ALL_DISEASES:
+                case BaseSpecialitiesAdapter.ALL_SPECIALITIES:
                     Toast.makeText(SearchSpecialityActivity.this, "Tapped All :" + position, Toast.LENGTH_SHORT).show();
                     break;
             }
@@ -211,8 +215,8 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingSpecialitiesData();
-                    DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
-                    setDiseasesList(dashboardDiseasesServerResponse);
+                    NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
+                    setSpecialitiesList(newAllSpecialitiesServerResponse);
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingSpecialitiesData();
                 }

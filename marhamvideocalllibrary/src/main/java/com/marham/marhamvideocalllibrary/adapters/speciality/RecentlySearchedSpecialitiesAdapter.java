@@ -24,7 +24,7 @@ public class RecentlySearchedSpecialitiesAdapter extends  BaseSpecialitiesAdapte
     @NonNull
     @Override
     public RecentlySearchedSpecialityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_row_top_speciality, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.single_row_recent_speciality, viewGroup, false);
         return new RecentlySearchedSpecialityViewHolder(view, listener);
     }
 

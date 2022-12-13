@@ -16,7 +16,9 @@
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_top_bar.xml" value="0.14356884057971014" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/round_corner_light_blue_and_white_gradient.xml" value="0.16847826086956522" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_disease.xml" value="0.17300724637681159" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_specialities.xml" value="0.10054347826086957" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_recent_diseases.xml" value="0.17300724637681159" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_recent_speciality.xml" value="0.10054347826086957" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_diseases.xml" value="0.151268115942029" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_doctor.xml" value="0.375" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_speciality.xml" value="0.25" />

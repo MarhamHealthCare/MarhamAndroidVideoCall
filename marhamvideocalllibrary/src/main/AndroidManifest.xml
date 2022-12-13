@@ -4,7 +4,7 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".SearchSpecialityActivity"
+            android:name=".activities.speciality.SearchSpecialityActivity"
             android:exported="false" />
         <activity
             android:name=".activities.disease.SearchDiseaseActivity"

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
+import com.marham.marhamvideocalllibrary.viewHolders.speciality.AllSpecialityViewHolder;
 import com.marham.marhamvideocalllibrary.viewHolders.speciality.BaseSpecialityViewHolder;
 import com.marham.marhamvideocalllibrary.viewHolders.speciality.RecentlySearchedSpecialityViewHolder;
 
@@ -23,9 +24,9 @@ public class AllSpecialitiesAdapter  extends  BaseSpecialitiesAdapter{
 
     @NonNull
     @Override
-    public RecentlySearchedSpecialityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_row_top_speciality, viewGroup, false);
-        return new RecentlySearchedSpecialityViewHolder(view, listener);
+    public AllSpecialityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.single_row_all_specialities, viewGroup, false);
+        return new AllSpecialityViewHolder(view, listener);
     }
 
     @Override

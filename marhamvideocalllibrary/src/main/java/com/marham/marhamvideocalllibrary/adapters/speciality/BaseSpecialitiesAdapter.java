@@ -4,28 +4,33 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
+import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.utils.CircleTransform;
 import com.marham.marhamvideocalllibrary.viewHolders.speciality.BaseSpecialityViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpecialityViewHolder> {
+public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpecialityViewHolder> implements Filterable {
 
     protected Context context;
     protected AdapterViewItemClickedListener listener;
     protected List<Speciality> specialityList;
+    protected List<Speciality> filteredSpecialityList;
 
-    public static final int TOP_SPECIALITIES = 1;
-    public static final int RECENTLY_SEARCHED_SPECIALITIES = 2;
-    public static final int ALL_SPECIALITIES = 3;
+    public static final int TOP_SPECIALITIES = 4;
+    public static final int RECENTLY_SEARCHED_SPECIALITIES = 5;
+    public static final int ALL_SPECIALITIES = 6;
 
     public BaseSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         this.context = context;
@@ -61,6 +66,41 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     @Override
     public int getItemCount() {
         return specialityList.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    filteredSpecialityList = specialityList;
+                } else {
+                    List<Speciality> filteredList = new ArrayList<>();
+
+                    for (Speciality speciality : specialityList) {
+
+                        if (speciality.getSpeciality().toLowerCase().contains(charString)) {
+                            filteredList.add(speciality);
+                        }
+                    }
+
+                    filteredSpecialityList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredSpecialityList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredSpecialityList = (List<Speciality>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
 
