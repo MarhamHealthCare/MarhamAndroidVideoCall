@@ -52,12 +52,10 @@ public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDocto
         if (doctorInfo.getRating().equals("0")) {
             holder.doctorRatingsStar.setVisibility(View.INVISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.INVISIBLE);
-            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews(s)");
-
         } else {
             holder.doctorRatingsStar.setVisibility(View.VISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.VISIBLE);
-            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews(s)");
+            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " review(s)");
         }
 
 
