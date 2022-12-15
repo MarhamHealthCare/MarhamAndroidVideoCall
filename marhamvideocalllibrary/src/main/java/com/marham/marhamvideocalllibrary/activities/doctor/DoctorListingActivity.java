@@ -33,6 +33,7 @@ import com.marham.marhamvideocalllibrary.utils.AppConstants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.SortedMap;
 
 import retrofit2.Call;
 
@@ -51,16 +52,23 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
-    public static final int FILTERS_RECYCLER_VIEW = 0;
-    public static final int DOCTORS_RECYCLER_VIEW = 1;
-
     private Speciality speciality;
     private Diseases diseases;
+    private int listingType;
+    private String objectId;
+    private String objectName;
+    private String listingTypeString;
 
-    private String filterType;
     boolean isCallInProgress = false;
     boolean isEndReachSearch = false;
     private int currentPage = 1;
+
+    public static final int FILTERS_RECYCLER_VIEW = 0;
+    public static final int DOCTORS_RECYCLER_VIEW = 1;
+
+    public static final String specialityListTypeString = "listType";
+    public static final int DOCTOR_LISTING_TYPE_SPECIALITY = 0;
+    public static final int DOCTOR_LISTING_TYPE_DISEASE = 1;
 
     private List<DoctorInfo> doctorInfoList = new ArrayList<>();
 
@@ -78,7 +86,9 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onClick(View view) {
         int viewId = view.getId();
         if (R.id.filters_retry_button == viewId) {
-            Toast.makeText(this, "Filters Retry Button", Toast.LENGTH_SHORT).show();
+            getDoctorListingFilters();
+        }else if(R.id.doctors_recycler_view == viewId){
+            getVCDoctors(currentPage);
         }
     }
 
@@ -96,6 +106,8 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     }
 
     private void initVariables() {
+        receiveIntent();
+
         DoctorListingFilter allDoctorsFilter = new DoctorListingFilter();
         allDoctorsFilter.setId("1");
         allDoctorsFilter.setTitle("All");
@@ -123,6 +135,28 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         doctorListingFilters.add(mostExperiencedFilter);
         doctorListingFilters.add(lowestFeeFilter);
         doctorListingFilters.add(femaleDoctor);
+
+    }
+
+    private void receiveIntent(){
+        Bundle bundle = getIntent().getExtras();
+        listingType = bundle.getInt(DoctorListingActivity.specialityListTypeString);
+
+        switch (listingType){
+            case DoctorListingActivity.DOCTOR_LISTING_TYPE_SPECIALITY:
+                speciality = bundle.getParcelable(Speciality.class.getCanonicalName());
+                objectId = speciality.getSpID();
+                objectName = speciality.getSpecialityName();
+                listingTypeString = "";
+                break;
+
+            case DoctorListingActivity.DOCTOR_LISTING_TYPE_DISEASE:
+                diseases = bundle.getParcelable(Diseases.class.getCanonicalName());
+                objectId = diseases.getId();
+                objectName = diseases.getDisease();
+                listingTypeString = "Disease";
+                break;
+        }
 
     }
 
@@ -232,6 +266,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                     break;
 
                 case DoctorListingActivity.DOCTORS_RECYCLER_VIEW:
+                    Toast.makeText(DoctorListingActivity.this,"Selected Doctor: "+position, Toast.LENGTH_SHORT).show();
                     break;
 
             }
@@ -271,9 +306,9 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         if (current_page == 1) {
             setViewsBeforeGettingDoctorListing();
         }
-        setCurrentPage(current_page);
+        currentPage = current_page + 1;
         APIClient apiClient = new APIClient();
-        call = apiClient.getAllDoctors("", "", "", "", "", getObjectId(), current_page, "", "", "", "", "1", "", "0", "", "", "2", "1", "en", "0");
+        call = apiClient.getAllDoctors("", "", "", "", "", objectId, current_page, "", "", "", "", "1", listingTypeString, "0", "", "", "2", "1", "en", "0");
         retroFit2Callback = new RetroFit2Callback<>(DoctorListingActivity.this, this, AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING);
         call.enqueue(retroFit2Callback);
     }
@@ -343,22 +378,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListing();
                 break;
         }
-    }
-
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    private String getObjectId() {
-        return "";
-    }
-
-    private String getObjectTitle() {
-        return "";
-    }
-
-    private String getFilter(){
-        return "";
     }
 
 }

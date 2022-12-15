@@ -3,6 +3,7 @@ package com.marham.marhamvideocalllibrary;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -36,6 +37,15 @@ public class MarhamUtils {
     public void startActivity(Activity activity, Class c, Boolean killCurrentActivity) {
         Intent intent = new Intent(activity, c);
         activity.startActivity(intent);
+        if (killCurrentActivity) {
+            activity.finish();
+        }
+    }
+
+    public void startActivity(Activity activity, Class c, Boolean killCurrentActivity, Bundle bundle) {
+        Intent intent = new Intent(activity, c);
+        activity.startActivity(intent);
+        intent.putExtras(bundle);
         if (killCurrentActivity) {
             activity.finish();
         }

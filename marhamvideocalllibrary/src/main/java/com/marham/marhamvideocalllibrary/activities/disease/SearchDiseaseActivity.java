@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
+import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.RecentlySearchedDiseaseAdapter;
@@ -175,14 +177,17 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
 
         @Override
         public void onAdatviewItemClicked(int position, int requestID) {
+            Bundle bundle = new Bundle();
+            bundle.putInt(DoctorListingActivity.specialityListTypeString, DoctorListingActivity.DOCTOR_LISTING_TYPE_DISEASE);
             switch (requestID) {
                 case BaseDiseaseAdapter.RECENTLY_SEARCHED_DISEASES:
-                    Toast.makeText(SearchDiseaseActivity.this, "Tapped Recently Searched:" + position, Toast.LENGTH_SHORT).show();
+                    bundle.putParcelable(Diseases.class.getCanonicalName(), recentlySearchedDiseasesArrayList.get(position));
                     break;
                 case BaseDiseaseAdapter.ALL_DISEASES:
-                    Toast.makeText(SearchDiseaseActivity.this, "Tapped All :" + position, Toast.LENGTH_SHORT).show();
+                    bundle.putParcelable(Diseases.class.getCanonicalName(), allDiseasesArrayList.get(position));
                     break;
             }
+            MarhamUtils.getInstance().startActivity(SearchDiseaseActivity.this, DoctorListingActivity.class, false,bundle);
         }
 
         @Override

@@ -171,7 +171,6 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         dashboardDoctorsRetryButton.setVisibility(View.GONE);
     }
 
-
     public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDasboardDoctorsData() {
         dashboardDoctorsViewsContainer.setVisibility(View.VISIBLE);
         dashboardDoctorsRecyclerView.setVisibility(View.INVISIBLE);
@@ -264,10 +263,16 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
                     break;
                 case BaseDiseaseAdapter.TOP_DISEASES:
-                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(DoctorListingActivity.specialityListTypeString, DoctorListingActivity.DOCTOR_LISTING_TYPE_DISEASE);
+                    bundle.putParcelable(Diseases.class.getCanonicalName(), diseasesArrayList.get(position));
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false,bundle);
                     break;
                 case BaseSpecialitiesAdapter.TOP_SPECIALITIES:
-                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false);
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt(DoctorListingActivity.specialityListTypeString, DoctorListingActivity.DOCTOR_LISTING_TYPE_SPECIALITY);
+                    bundle2.putParcelable(Speciality.class.getCanonicalName(), specialityList.get(position));
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class,false,bundle2);
                     break;
             }
         }
@@ -333,7 +338,6 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
                     DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
                     diseasesArrayList.clear();
                     diseasesArrayList.addAll(dashboardDiseasesServerResponse.getData());
-                    diseasesArrayList.add(new Diseases());
                     setTopDiseaseRecyclerView(diseasesArrayList);
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingTopDiseasesData();
