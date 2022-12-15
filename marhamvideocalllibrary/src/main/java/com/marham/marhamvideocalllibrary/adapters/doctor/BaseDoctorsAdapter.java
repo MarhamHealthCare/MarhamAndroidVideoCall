@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.adapters;
+package com.marham.marhamvideocalllibrary.adapters.doctor;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,18 +13,22 @@ import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListene
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
 import com.marham.marhamvideocalllibrary.utils.CircleTransform;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
-import com.marham.marhamvideocalllibrary.viewHolders.DashboardDoctorViewHolder;
+import com.marham.marhamvideocalllibrary.viewHolders.doctor.BaseDoctorViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDoctorViewHolder> {
+public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolder> {
 
-    private Context context;
-    private AdapterViewItemClickedListener listener;
-    private List<DoctorInfo> doctorInfoList;
+    protected Context context;
+    protected AdapterViewItemClickedListener listener;
+    protected List<DoctorInfo> doctorInfoList;
 
-    public DashboardDoctorsAdapter(Context context, List<DoctorInfo> doctorInfoList, AdapterViewItemClickedListener listener) {
+    public static final int DOCTOR_DASBHBOARD_RECYCLER_VIEW = 0;
+    public static final int DOCTOR_LISTING_RECYCLER_VIEW = 1;
+
+
+    public BaseDoctorsAdapter(Context context, List<DoctorInfo> doctorInfoList, AdapterViewItemClickedListener listener) {
         this.context = context;
         this.doctorInfoList = doctorInfoList;
         this.listener = listener;
@@ -32,17 +36,16 @@ public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDocto
 
     @NonNull
     @Override
-    public DashboardDoctorViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_row_top_doctor, viewGroup, false);
-        return new DashboardDoctorViewHolder(view, listener, context);
+    public BaseDoctorViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(DashboardDoctorViewHolder holder, int position) {
+    public void onBindViewHolder(BaseDoctorViewHolder holder, int position) {
         setDoctor(holder, doctorInfoList.get(position));
     }
 
-    private void setDoctor(DashboardDoctorViewHolder holder, DoctorInfo doctorInfo) {
+    private void setDoctor(BaseDoctorViewHolder holder, DoctorInfo doctorInfo) {
         setDoctorPicture(holder, doctorInfo);
         holder.doctorNameTextView.setText(doctorInfo.getDocName());
         holder.doctorDegreesTextView.setText(doctorInfo.getSpeciality());
@@ -61,7 +64,7 @@ public class DashboardDoctorsAdapter extends RecyclerView.Adapter<DashboardDocto
 
     }
 
-    private void setDoctorPicture(DashboardDoctorViewHolder holder, DoctorInfo doctorInfo) {
+    private void setDoctorPicture(BaseDoctorViewHolder holder, DoctorInfo doctorInfo) {
         int doctorPicturePlaceHolder;
         if (doctorInfo.getGender().equals("0")) {
             doctorPicturePlaceHolder = R.drawable.f_doctor_placeholder;

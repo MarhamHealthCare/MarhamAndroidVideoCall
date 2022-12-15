@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.viewHolders;
+package com.marham.marhamvideocalllibrary.viewHolders.doctor;
 
 import android.content.Context;
 import android.view.View;
@@ -15,7 +15,7 @@ import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListene
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DashboardDoctorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class BaseDoctorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public CardView parentLayout;
     public CircleImageView doctorPictureImageView;
@@ -26,23 +26,18 @@ public class DashboardDoctorViewHolder extends RecyclerView.ViewHolder implement
     public BodyText doctorReviewsTextView;
     public MyImageView doctorRatingsStar;
 
+    protected AdapterViewItemClickedListener listener;
 
-    private AdapterViewItemClickedListener listener;
-    private Context context;
-
-    public DashboardDoctorViewHolder(@NonNull View view, AdapterViewItemClickedListener listener, Context context) {
+    public BaseDoctorViewHolder(@NonNull View view, AdapterViewItemClickedListener listener) {
         super(view);
         initGui(view);
-        initVariables(listener, context);
+        initVariables(listener);
         setListeners();
     }
 
     @Override
     public void onClick(View view) {
-        int viewId = view.getId();
-        if (viewId == parentLayout.getId()) {
-            listener.onAdatviewItemClicked(getAdapterPosition(), MarhamDashboardActivity.DASHBOARD_DOCTORS_RECYCLER_VIEW);
-        }
+
     }
 
     private void initGui(View view) {
@@ -55,9 +50,8 @@ public class DashboardDoctorViewHolder extends RecyclerView.ViewHolder implement
         doctorRatingsStar = view.findViewById(R.id.doctor_ratings_stars);
     }
 
-    private void initVariables(AdapterViewItemClickedListener listener, Context context) {
+    private void initVariables(AdapterViewItemClickedListener listener) {
         this.listener = listener;
-        this.context = context;
     }
 
     private void setListeners() {

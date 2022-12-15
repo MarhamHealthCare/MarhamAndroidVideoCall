@@ -35,5 +35,6 @@
     <dimen name="eighty">80dp</dimen>
     <dimen name="hundred_fifty">150dp</dimen>
     <dimen name="hundred_thirty">130dp</dimen>
+    <dimen name="ninty">90dp</dimen>
 
 </resources>

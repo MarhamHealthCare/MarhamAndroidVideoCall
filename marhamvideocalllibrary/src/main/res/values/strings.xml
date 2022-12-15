@@ -23,4 +23,5 @@
     <string name="no_record_found">No Record Found</string>
     <string name="all_specialities">All Specialities</string>
     <string name="filter_amp_sort"><![CDATA[Filter & Sort]]></string>
+    <string name="book_appointment">Book Appointment</string>
 </resources>

@@ -16,9 +16,10 @@ import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
-import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
+import com.marham.marhamvideocalllibrary.adapters.doctor.BaseDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.TopDiseaseAdapter;
+import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorDasboardAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
@@ -71,8 +72,6 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
     private ConstraintLayout viewAllSpecialitiesViewsContainer;
     private List<Speciality> specialityList = new ArrayList<>();
 
-
-    public static final int DASHBOARD_DOCTORS_RECYCLER_VIEW = 0;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
@@ -147,10 +146,9 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         dashboardDoctorsRecyclerView.setLayoutManager(gridLayoutManager);
-        DashboardDoctorsAdapter dashboardDoctorsAdapter = new DashboardDoctorsAdapter(this, doctorInfoList, adpaterViewItemClickedListener);
-        dashboardDoctorsRecyclerView.setAdapter(dashboardDoctorsAdapter);
+        DoctorDasboardAdapter doctorDasboardAdapter = new DoctorDasboardAdapter(this, doctorInfoList, adpaterViewItemClickedListener);
+        dashboardDoctorsRecyclerView.setAdapter(doctorDasboardAdapter);
     }
-
 
     public void setViewsBeforeGettingDasboardDoctorsData() {
         dashboardDoctorsViewsContainer.setVisibility(View.VISIBLE);
@@ -262,7 +260,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         @Override
         public void onAdatviewItemClicked(int position, int requestID) {
             switch (requestID) {
-                case MarhamDashboardActivity.DASHBOARD_DOCTORS_RECYCLER_VIEW:
+                case BaseDoctorsAdapter.DOCTOR_DASBHBOARD_RECYCLER_VIEW:
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
                     break;
                 case BaseDiseaseAdapter.TOP_DISEASES:

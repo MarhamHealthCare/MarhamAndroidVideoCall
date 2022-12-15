@@ -24,9 +24,9 @@ public class BaseDiseaseAdapter extends RecyclerView.Adapter<BaseDiseaseViewHold
     private final List<Diseases> diseasesList;
     private List<Diseases> filteredDiseaseList;
 
-    public static final int TOP_DISEASES = 7;
-    public static final int RECENTLY_SEARCHED_DISEASES = 8;
-    public static final int ALL_DISEASES = 9;
+    public static final int TOP_DISEASES = 100;
+    public static final int RECENTLY_SEARCHED_DISEASES = 101;
+    public static final int ALL_DISEASES = 102;
 
     public BaseDiseaseAdapter(Context context, List<Diseases> diseasesList, AdapterViewItemClickedListener listener) {
         this.context = context;

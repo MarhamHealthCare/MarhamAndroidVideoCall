@@ -1,8 +1,6 @@
 package com.marham.marhamvideocalllibrary.activities.doctor;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -15,19 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
-import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
-import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
-import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorFiltersAdapter;
-import com.marham.marhamvideocalllibrary.adapters.speciality.TopSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.ServerResponse;
-import com.marham.marhamvideocalllibrary.model.disease.Diseases;
-import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.filter.DoctorListingFilter;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
-import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
@@ -45,13 +36,16 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     private RecyclerView filterRecyclerView;
     private MyButton filtersTryAgainButton;
     private ProgressBar filtersProgressBar;
-
     private List<DoctorListingFilter> doctorListingFilters;
+
+    private ConstraintLayout doctorListingViewsContainer;
+    private RecyclerView doctorsRecyclerView;
+    private MyButton doctorsRetryButton;
+    private ProgressBar doctorsProgressBar;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
     public static final int FILTERS_RECYCLER_VIEW = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,19 +60,24 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onClick(View view) {
         int viewId = view.getId();
         if (R.id.filters_retry_button == viewId) {
-            Toast.makeText(this,"Filters Retry Button",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Filters Retry Button", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void initializeViews(){
+    private void initializeViews() {
         initializeTopBar();
         filtersViewsContainer = findViewById(R.id.filters_views_container);
         filterRecyclerView = findViewById(R.id.filters_recycler_view);
         filtersTryAgainButton = findViewById(R.id.filters_retry_button);
         filtersProgressBar = findViewById(R.id.filters_progress_bar);
+
+        doctorListingViewsContainer = findViewById(R.id.dr_listing_views_container);
+        doctorsRecyclerView = findViewById(R.id.doctors_recycler_view);
+        doctorsRetryButton = findViewById(R.id.doctors_retry_button);
+        doctorsProgressBar = findViewById(R.id.doctors_progress_bar);
     }
 
-    private void initVariables(){
+    private void initVariables() {
         DoctorListingFilter allDoctorsFilter = new DoctorListingFilter();
         allDoctorsFilter.setId("1");
         allDoctorsFilter.setTitle("All");
@@ -109,7 +108,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
 
     }
 
-    private void setListeners(){
+    private void setListeners() {
         filtersTryAgainButton.setOnClickListener(this);
     }
 
@@ -172,23 +171,12 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         }
     };
 
-    private void setFilter(int position){
-        for(int i = 0; i<doctorListingFilters.size();i++){
+    private void setFilter(int position) {
+        for (int i = 0; i < doctorListingFilters.size(); i++) {
             doctorListingFilters.get(i).setSelected(position == i);
         }
-
         filterRecyclerView.getAdapter().notifyDataSetChanged();
-
-//        final Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-                // Do something after 5s = 5000ms
-                filterRecyclerView.smoothScrollToPosition(position);
-//            }
-//        }, 1000);
-
-
+        filterRecyclerView.smoothScrollToPosition(position);
     }
 
     public void getDoctorListingFilters() {
@@ -211,7 +199,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                     NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
 //                    doctorInfoList.clear();
 //                    doctorInfoList.addAll(topDoctorServerResponse.getData());
-                   setFiltersRecyclerView(doctorListingFilters);
+                    setFiltersRecyclerView(doctorListingFilters);
 
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingDoctorListingFilters();
