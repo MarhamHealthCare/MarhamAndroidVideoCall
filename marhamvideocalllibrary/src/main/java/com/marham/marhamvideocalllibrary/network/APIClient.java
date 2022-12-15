@@ -139,4 +139,8 @@ public class APIClient {
         return apiService.getAllSpecialities(info);
     }
 
+    public Call<NewAllSpecialitiesServerResponse> getDoctorListingFilters(HashMap<String, String> info) {
+        return apiService.getDoctorListingFilters(info);
+    }
+
 }

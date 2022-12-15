@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
+import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.DashboardDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
@@ -265,10 +266,10 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
                     Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
                     break;
                 case BaseDiseaseAdapter.TOP_DISEASES:
-                    Toast.makeText(MarhamDashboardActivity.this, "Tapped Disease: " + position, Toast.LENGTH_SHORT).show();
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false);
                     break;
                 case BaseSpecialitiesAdapter.TOP_SPECIALITIES:
-                    Toast.makeText(MarhamDashboardActivity.this, "Tapped Speciality " + position, Toast.LENGTH_SHORT).show();
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false);
                     break;
             }
         }
