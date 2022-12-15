@@ -21,6 +21,7 @@ public class AppConstants {
             public static final int GET_ALL_SPECIALITIES = 3;
             public static final int GET_ALL_DISEASES = 4;
             public static final int GET_DOCTOR_LISTING_FILTERS = 5;
+            public static final int GET_VC_DOCTORS_LISTING = 6;
         }
 
         public static class API_ERROR_MESSAGE {
