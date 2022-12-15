@@ -28,9 +28,9 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     protected List<Speciality> specialityList;
     protected List<Speciality> filteredSpecialityList;
 
-    public static final int TOP_SPECIALITIES = 4;
-    public static final int RECENTLY_SEARCHED_SPECIALITIES = 5;
-    public static final int ALL_SPECIALITIES = 6;
+    public static final int TOP_SPECIALITIES = 200;
+    public static final int RECENTLY_SEARCHED_SPECIALITIES = 201;
+    public static final int ALL_SPECIALITIES = 202;
 
     public BaseSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         this.context = context;

@@ -35,6 +35,7 @@ public class DoctorListingAdapter extends BaseDoctorsAdapter{
     public void onBindViewHolder(BaseDoctorViewHolder holder, int position) {
         super.onBindViewHolder(holder,position);
         DoctorListingViewHolder doctorListingFilterViewHolder = (DoctorListingViewHolder) holder;
+
         doctorListingFilterViewHolder.doctorFeeTextView.setText(MessageFormat.format("Rs. {0}", doctorInfoList.get(position).getDocFee()));
     }
 

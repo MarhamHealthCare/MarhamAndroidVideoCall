@@ -44,8 +44,8 @@ public class MarhamUtils {
 
     public void startActivity(Activity activity, Class c, Boolean killCurrentActivity, Bundle bundle) {
         Intent intent = new Intent(activity, c);
-        activity.startActivity(intent);
         intent.putExtras(bundle);
+        activity.startActivity(intent);
         if (killCurrentActivity) {
             activity.finish();
         }

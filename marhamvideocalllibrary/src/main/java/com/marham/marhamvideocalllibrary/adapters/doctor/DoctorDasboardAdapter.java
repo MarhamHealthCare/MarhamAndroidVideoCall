@@ -25,7 +25,7 @@ public class DoctorDasboardAdapter extends BaseDoctorsAdapter{
     @Override
     public BaseDoctorViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.single_row_top_doctor, viewGroup, false);
-        return new DoctorDashboardViewHolder(view, listener, context);
+        return new DoctorDashboardViewHolder(view, listener);
     }
 
 

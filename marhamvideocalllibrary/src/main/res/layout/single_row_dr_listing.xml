@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_corner_light_blue_and_white_gradient_vertical"
         android:paddingStart="@dimen/six"
         android:paddingEnd="@dimen/six">
 
@@ -22,8 +23,6 @@
             android:layout_marginTop="@dimen/fifteen"
             android:layout_marginBottom="@dimen/twenty"
             android:src="@drawable/m_doctor_placholder"
-
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,17 +90,19 @@
             android:textColor="@color/black"
             android:textSize="@dimen/twelve_text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/doctor_experience_text_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.MyButton
             android:id="@+id/book_appointment_button"
             android:layout_width="@dimen/hundred_fifty"
-            android:layout_height="@dimen/twenty_five"
+            android:layout_height="@dimen/thirty"
             android:layout_marginEnd="@dimen/fifteen"
             android:text="@string/book_appointment"
+            android:layout_marginBottom="@dimen/ten"
+            android:clickable="false"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="@dimen/fifteen"
             android:textColor="@color/white"
             android:background="@drawable/rounded_corners_color_primary_5_dp"
@@ -115,6 +116,7 @@
             android:layout_height="@dimen/fifteen"
             android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/five"
+            android:layout_marginStart="@dimen/two"
             android:src="@drawable/start_icon_gold_vector"
             app:layout_constraintBottom_toBottomOf="@id/doctor_reviews_text_view"
             app:layout_constraintStart_toStartOf="@+id/doctor_picture_image_view"
@@ -125,7 +127,7 @@
             android:id="@+id/doctor_reviews_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fifteen"
+            android:layout_marginStart="@dimen/ten"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginEnd="@dimen/five"
             android:layout_marginBottom="@dimen/ten"
@@ -133,7 +135,7 @@
             android:text="@string/reviews"
             android:textColor="@color/black"
             android:textSize="@dimen/thirteen_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintStart_toEndOf="@+id/doctor_ratings_stars"
             app:layout_constraintTop_toBottomOf="@+id/doctor_picture_image_view" />
 

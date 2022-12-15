@@ -36,5 +36,6 @@
     <dimen name="hundred_fifty">150dp</dimen>
     <dimen name="hundred_thirty">130dp</dimen>
     <dimen name="ninty">90dp</dimen>
+    <dimen name="twelve">12dp</dimen>
 
 </resources>

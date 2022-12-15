@@ -102,6 +102,8 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
             getDashboardDoctors();
         } else if (R.id.top_diseases_retry_button == viewId) {
             getTopDiseases();
+        }  else if (R.id.top_specialities_retry_button == viewId) {
+            getTopSpecialities();
         } else if (R.id.view_all_diseases_views_container == viewId) {
             MarhamUtils.getInstance().startActivity(this, SearchDiseaseActivity.class, false);
         } else if (R.id.view_all_specialities_views_container == viewId) {
@@ -138,6 +140,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         myAppointmentsViewsContainer.setOnClickListener(this);
         dashboardDoctorsRetryButton.setOnClickListener(this);
         topDiseasesRetryButton.setOnClickListener(this);
+        topSpecialitiesRetryButton.setOnClickListener(this);
         viewAllDiseasesViewsContainer.setOnClickListener(this);
         viewAllSpecialitiesViewsContainer.setOnClickListener(this);
     }

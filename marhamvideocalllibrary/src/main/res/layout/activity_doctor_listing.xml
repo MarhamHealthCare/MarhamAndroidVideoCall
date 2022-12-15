@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/ten"
-            android:layout_marginStart="@dimen/ten"
+            android:layout_marginStart="@dimen/fifteen"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:id="@+id/filter_heading_text_view"
@@ -34,10 +34,10 @@
             android:id="@+id/filters_recycler_view"
             app:layout_constraintTop_toBottomOf="@+id/filter_heading_text_view"
             android:layout_width="match_parent"
-            android:layout_marginStart="@dimen/ten"
+            android:layout_marginStart="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:layout_marginEnd="@dimen/ten"
-            android:layout_height="@dimen/hundred"/>
+            android:layout_height="@dimen/sixty"/>
 
         <com.marham.marhamvideocalllibrary.customviews.MyButton
             android:id="@+id/filters_retry_button"
@@ -76,7 +76,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_marginTop="@dimen/ten"
-            android:layout_marginStart="@dimen/ten"
+            android:layout_marginStart="@dimen/fifteen"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:id="@+id/dr_count_and_speciality_text_view"
@@ -88,21 +88,11 @@
             android:id="@+id/doctors_recycler_view"
             app:layout_constraintTop_toBottomOf="@+id/dr_count_and_speciality_text_view"
             android:layout_width="match_parent"
-            android:layout_marginStart="@dimen/ten"
+            android:layout_marginStart="@dimen/twelve"
             android:layout_marginTop="@dimen/ten"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="@dimen/ten"
             android:layout_height="@dimen/zero"/>
-
-        <com.marham.marhamvideocalllibrary.customviews.MyButton
-            android:id="@+id/doctors_retry_button"
-            android:layout_width="@dimen/forty"
-            android:layout_height="@dimen/forty"
-            android:background="@drawable/try_again_icon_grey_vector"
-            app:layout_constraintBottom_toBottomOf="@id/doctors_recycler_view"
-            app:layout_constraintEnd_toEndOf="@id/doctors_recycler_view"
-            app:layout_constraintStart_toStartOf="@id/doctors_recycler_view"
-            app:layout_constraintTop_toTopOf="@id/doctors_recycler_view" />
 
         <ProgressBar
             android:id="@+id/doctors_progress_bar"
@@ -114,6 +104,25 @@
             app:layout_constraintStart_toStartOf="@id/doctors_recycler_view"
             app:layout_constraintTop_toTopOf="@id/doctors_recycler_view" />
 
+        <com.marham.marhamvideocalllibrary.customviews.BodyText
+            android:id="@+id/doctors_no_record_found_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@string/no_record_found"
+            app:layout_constraintBottom_toBottomOf="@id/doctors_recycler_view"
+            app:layout_constraintEnd_toEndOf="@id/doctors_recycler_view"
+            app:layout_constraintStart_toStartOf="@id/doctors_recycler_view"
+            app:layout_constraintTop_toTopOf="@id/doctors_recycler_view"/>
+        <com.marham.marhamvideocalllibrary.customviews.MyButton
+            android:id="@+id/doctors_retry_button"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/forty"
+            android:background="@drawable/try_again_icon_grey_vector"
+            app:layout_constraintBottom_toBottomOf="@id/doctors_recycler_view"
+            app:layout_constraintEnd_toEndOf="@id/doctors_recycler_view"
+            app:layout_constraintStart_toStartOf="@id/doctors_recycler_view"
+            app:layout_constraintTop_toTopOf="@id/doctors_recycler_view" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

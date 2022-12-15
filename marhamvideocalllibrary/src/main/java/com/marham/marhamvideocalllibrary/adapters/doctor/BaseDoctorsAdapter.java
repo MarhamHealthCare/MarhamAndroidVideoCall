@@ -24,8 +24,8 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
     protected AdapterViewItemClickedListener listener;
     protected List<DoctorInfo> doctorInfoList;
 
-    public static final int DOCTOR_DASBHBOARD_RECYCLER_VIEW = 0;
-    public static final int DOCTOR_LISTING_RECYCLER_VIEW = 1;
+    public static final int DOCTOR_DASBHBOARD_RECYCLER_VIEW = 100;
+    public static final int DOCTOR_LISTING_RECYCLER_VIEW = 101;
 
 
     public BaseDoctorsAdapter(Context context, List<DoctorInfo> doctorInfoList, AdapterViewItemClickedListener listener) {
@@ -58,7 +58,18 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
         } else {
             holder.doctorRatingsStar.setVisibility(View.VISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.VISIBLE);
-            holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " review(s)");
+
+            if(doctorInfo.getTotalReviews()!=null) {
+                int reviewsCount = Integer.parseInt(doctorInfo.getTotalReviews());
+                if (reviewsCount >= 100) {
+                    holder.doctorReviewsTextView.setText("100+ reviews");
+                } else {
+                    holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
+                }
+            }else{
+                holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
+            }
+
         }
 
 
