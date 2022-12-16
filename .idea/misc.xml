@@ -5,11 +5,13 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14356884057971014" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/doctor_profile_header_gradient.xml" value="0.1535" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/forward_arrow_grey_vector.xml" value="0.175" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient.xml" value="0.1915" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/try_again_icon_grey_vector.xml" value="0.1225" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_listing.xml" value="0.335" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_profile.xml" value="0.17617753623188406" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_marham_dashboard.xml" value="0.25" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_disease.xml" value="0.16927083333333334" />

@@ -16,4 +16,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="doctor_profile_header_gradeint_start_color">#6E39B0</color>
+    <color name="doctor_profile_header_gradeint_end_color">#00DBF8</color>
 </resources>
