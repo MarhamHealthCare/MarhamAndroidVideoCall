@@ -12,6 +12,7 @@ import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorExperienceAdapter;
+import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorReviewsAdapter;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.model.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.Hospital;
@@ -54,6 +55,9 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     private ConstraintLayout doctorExperiencesViewsContainer;
     private RecyclerView doctorExperiencesRecyclerView;
 
+    private ConstraintLayout doctorReviewsViewsContainer;
+    private RecyclerView doctorReviewsRecyclerView;
+
     private DoctorProfileGenericData doctorProfileGenericData;
     private DoctorInfo doctorInfo;
     private List<Hospital> hospitalList = new ArrayList<>();
@@ -86,6 +90,8 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         aboutDoctorTextView = findViewById(R.id.about_doctor_text_view);
         doctorExperiencesViewsContainer = findViewById(R.id.doctor_experiences_views_container);
         doctorExperiencesRecyclerView = findViewById(R.id.doctor_experiences_recycler_view);
+        doctorReviewsViewsContainer = findViewById(R.id.reviews_views_container);
+        doctorReviewsRecyclerView = findViewById(R.id.doctor_reviews_recycler_view);
     }
 
     private void initializeVariables(){
@@ -110,7 +116,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         statsViewsContainer(doctorProfileGenericData);
         setAboutMe(doctorProfileGenericData);
         setExperience(doctorProfileGenericData);
-        setReviews(newDoctorProfileServerResponse);
+        setDoctorReviews(doctorProfileGenericData);
     }
 
     private void setHospitals(NewDoctorProfileServerResponse newDoctorProfileServerResponse) {
@@ -151,28 +157,6 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
        if(doctorProfileGenericData.getDetails().getDocExp() != null && !doctorProfileGenericData.getDetails().getDocExp().equals("") && !doctorProfileGenericData.getDetails().getDocExp().equals("0")){
            doctorCategoryAndExperienceTextView.append("with over "+doctorProfileGenericData.getDetails().getDocExp()+" year(s) of experience" );
         }
-//
-//        if (doctorProfileGenericData.getDetails().getSatisfactionScore() != null) {
-//            holder.getPatientSatisfactionField().setText(details.getDetails().getSatisfactionScore() + "%");
-//        } else {
-//            holder.getPatientSatisfactionField().setVisibility(View.GONE);
-//        }
-//
-//        if (doctorProfileGenericData.getDetails().getTotalReviews() != null && !doctorProfileGenericData.getDetails().getTotalReviews().isEmpty() && !details.getDetails().getTotalReviews().equals("0")) {
-//            if (SharedPreferenceHelper.getInstance().getSharedPreferenceBoolean(this, AppConstants.isListingConvertedIntoUrdu, false)) {
-//                holder.getDoctorTotalReviewsFiled().setText(details.getDetails().getTotalReviews() + " ریویوز ");
-//            } else {
-//                holder.getDoctorTotalReviewsFiled().setText(details.getDetails().getTotalReviews());
-//            }
-//            holder.getDoctorTotalReviewsFiled().setVisibility(View.VISIBLE);
-//            holder.getDocTotalReviewsCountfield().setVisibility(View.VISIBLE);
-//            if (!Utils.getInstance().isEnglishView(this)) {
-//                holder.getReviewsTextview().setVisibility(View.VISIBLE);
-//            }
-//            holder.getDocTotalReviewsCountfield().setText(details.getDetails().getTotalReviews());
-//        } else {
-//            holder.getDoctorTotalReviewsFiled().setVisibility(View.GONE);
-//        }
 
     }
 
@@ -220,11 +204,19 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         doctorExperiencesRecyclerView.setNestedScrollingEnabled(false);
     }
 
-    private void setReviews(NewDoctorProfileServerResponse newDoctorProfileServerResponse) {
-//        if (newDoctorProfileServerResponse.getData().getReviews() != null && !newDoctorProfileServerResponse.getData().getReviews().isEmpty()) {
-//
-//        } else {
-//        }
+    private void setDoctorReviews(DoctorProfileGenericData doctorProfileGenericData) {
+        if (doctorProfileGenericData.getReviews() != null && !doctorProfileGenericData.getReviews().isEmpty()) {
+            doctorExperiencesViewsContainer.setVisibility(View.VISIBLE);
+            setDoctorReviewsRecyclerView(doctorProfileGenericData.getReviews());
+        } else {
+            doctorExperiencesViewsContainer.setVisibility(View.GONE);
+        }
+    }
+
+    private void setDoctorReviewsRecyclerView(List<Reviews> reviewsList){
+        doctorReviewsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        doctorReviewsRecyclerView.setAdapter(new DoctorReviewsAdapter(this, reviewsList));
+        doctorReviewsRecyclerView.setNestedScrollingEnabled(false);
     }
 
     public void setViewsBeforeGettingDoctorsDetails() {

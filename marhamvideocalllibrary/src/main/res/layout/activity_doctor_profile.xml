@@ -271,9 +271,9 @@
                     android:layout_marginEnd="@dimen/twenty_five"
                     android:text="@string/dash"
                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
                     android:textSize="@dimen/thirteen_text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/about_doctor_heading_text_view" />
 
@@ -300,16 +300,52 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
                     android:id="@+id/doctor_experiences_recycler_view"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/twenty"
                     android:layout_marginTop="@dimen/fifteen"
                     android:layout_marginEnd="@dimen/fifteen"
+                    android:layout_marginBottom="@dimen/fifteen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/experience_heading_text_view" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/doctor_reviews_views_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/doctor_experiences_views_container">
+
+                <com.marham.marhamvideocalllibrary.customviews.BodyText
+                    android:id="@+id/doctor_reviews_heading_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/fifteen"
+                    android:text="Positive reviews"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/forteen_text_size"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/doctor_reviews_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ten"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:layout_marginEnd="@dimen/ten"
+                    android:layout_marginBottom="@dimen/fifteen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctor_reviews_heading_text_view" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
