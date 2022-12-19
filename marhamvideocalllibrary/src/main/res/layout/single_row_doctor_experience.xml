@@ -1,0 +1,30 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/five">
+
+    <View
+        android:id="@+id/dot_view"
+        android:layout_width="@dimen/five"
+        android:layout_height="@dimen/five"
+        android:layout_marginStart="@dimen/ten"
+        android:layout_marginTop="@dimen/five"
+        android:background="@drawable/dot_icon_vector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/doctor_experience_text_view" />
+
+    <com.marham.marhamvideocalllibrary.customviews.BodyText
+        android:id="@+id/doctor_experience_text_view"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/five"
+        android:layout_marginEnd="@dimen/fifteen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dot_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

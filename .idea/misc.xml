@@ -11,15 +11,18 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/try_again_icon_grey_vector.xml" value="0.1225" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_listing.xml" value="0.335" />
-        <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_profile.xml" value="0.17617753623188406" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_profile.xml" value="0.375" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_marham_dashboard.xml" value="0.25" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_disease.xml" value="0.16927083333333334" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_speciality.xml" value="0.17300724637681159" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/layout_progress_bar.xml" value="0.12635869565217392" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/layout_retry_button.xml" value="0.12635869565217392" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_top_bar.xml" value="0.14356884057971014" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/round_corner_light_blue_and_white_gradient.xml" value="0.16847826086956522" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_disease.xml" value="0.17300724637681159" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_specialities.xml" value="0.10054347826086957" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_doctor_experience.xml" value="0.335" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_doctor_listing_filter.xml" value="0.15081521739130435" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_dr_listing.xml" value="0.335" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_recent_diseases.xml" value="0.17300724637681159" />

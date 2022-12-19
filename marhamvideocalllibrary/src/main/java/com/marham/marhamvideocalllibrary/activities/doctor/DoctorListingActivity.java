@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.BaseDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorFiltersAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorListingAdapter;
@@ -139,8 +140,8 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         doctorInfoList.clear();
     }
 
-    private void initializeViews() {
-        initializeTopBar();
+    protected void initializeViews() {
+        super.initializeViews();
         filtersViewsContainer = findViewById(R.id.filters_views_container);
         filterRecyclerView = findViewById(R.id.filters_recycler_view);
         filtersTryAgainButton = findViewById(R.id.filters_retry_button);
@@ -274,7 +275,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         doctorsNoRecordFoundTextView.setVisibility(View.GONE);
     }
 
-
     private AdapterViewItemClickedListener adpaterViewItemClickedListener = new AdapterViewItemClickedListener() {
         @Override
         public void onAdatviewItemClicked(int position) {
@@ -291,7 +291,10 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                     break;
 
                 case BaseDoctorsAdapter.DOCTOR_LISTING_RECYCLER_VIEW:
-                    Toast.makeText(DoctorListingActivity.this,"Selected Doctor: "+position, Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(DoctorInfo.class.getCanonicalName(), doctorInfoList.get(position));
+                    MarhamUtils.getInstance().startActivity(DoctorListingActivity.this, DoctorProfileActivity.class, false,bundle);
+
                     break;
 
             }
@@ -341,6 +344,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onSuccess(ServerResponse response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
+                // TODO: replace with new filters API
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingDoctorListingFilters();
                     NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;

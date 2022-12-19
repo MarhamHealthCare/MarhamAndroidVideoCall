@@ -78,8 +78,8 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
         }
     }
 
-    private void initializeViews() {
-        initializeTopBar();
+    protected void initializeViews() {
+        super.initializeViews();
         parentLayout = findViewById(R.id.parent_layout);
 
         searchView = findViewById(R.id.search_edit_text);

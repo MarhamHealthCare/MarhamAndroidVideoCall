@@ -13,6 +13,12 @@ public class AppConstants {
             public static final String CITY = "city";
             public static final String TOP_ONLY = "top_only";
             public static final String NEW_ID = "new";
+            public static final String DOCTOR_ID_KEY = "dID";
+            public static final String PAGE_KEY = "page";
+            public static final String LOGGED_IN_USER_ID_KEY = "loggedInUserId";
+            public static final String DEVICE_TOKEN_KEY = "devicetoken";
+            public static final String DEVICE_TYPE_KEY = "deviceType";
+            public static final String LANGUAGE_KEY = "language";
         }
 
         public static class API_END_POINT_NUMBER {
@@ -22,11 +28,20 @@ public class AppConstants {
             public static final int GET_ALL_DISEASES = 4;
             public static final int GET_DOCTOR_LISTING_FILTERS = 5;
             public static final int GET_VC_DOCTORS_LISTING = 6;
+            public static final int GET_DOCTORS_DETAILS = 7;
         }
 
         public static class API_ERROR_MESSAGE {
             public static final String NETWORK_ERROR_MESSAGE = "Network not available! Please check if your device is connected to the Internet and try again.";
             public static final String JSON_PARSING_MESSAGE = "Unable to comprehend response from server";
+        }
+
+        public static class DEVICE_TYPE{
+            public static final String ANDROID = "1";
+        }
+
+        public static class LANGUAGE{
+            public static final String ENGLISH = "en";
         }
     }
 }

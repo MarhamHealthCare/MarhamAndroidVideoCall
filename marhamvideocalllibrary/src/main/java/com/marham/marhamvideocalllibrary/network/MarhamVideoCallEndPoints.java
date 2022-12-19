@@ -5,6 +5,7 @@ import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerRe
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorListingFiltersServerResponse;
+import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 
 import java.util.HashMap;
@@ -40,5 +41,9 @@ public interface MarhamVideoCallEndPoints {
     @FormUrlEncoded
     @POST("index.php?action=drlisting")
     Call<AllDoctorResponse> getAllDoctors(@Field("area") String area, @Field("lat") String latitude, @Field("lng") String longitude, @Field("city") String city, @Field("name") String name, @Field("id") String i, @Field("page") int pageNumber, @Field("feeRange") String fee, @Field("gender") String gender, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("search_filter") String searchFilter, @Field("isCmd") String isCmd, @Field("discount") String discount, @Field("availability") String availability, @Field("hospitalType") String hospitalType, @Field("new") String neww, @Field("language") String language, @Field("corporateListing") String corporateListing);
+
+    @FormUrlEncoded
+    @POST("index.php?action=doctorDetail")
+    Call<NewDoctorProfileServerResponse> getDoctorDetail(@FieldMap HashMap<String, String> hashMap);
 
 }

@@ -24,4 +24,8 @@
     <string name="all_specialities">All Specialities</string>
     <string name="filter_amp_sort"><![CDATA[Filter & Sort]]></string>
     <string name="book_appointment">Book Appointment</string>
+    <string name="satisfaction_nscore">Satisfaction\nscore</string>
+    <string name="positive_reviews">Positive\nreviews</string>
+    <string name="years_of_nsaving_lives">Years of\nsaving lives</string>
+    <string name="about">About</string>
 </resources>

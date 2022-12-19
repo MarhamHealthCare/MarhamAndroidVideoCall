@@ -15,6 +15,7 @@ import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
+import com.marham.marhamvideocalllibrary.activities.doctor.DoctorProfileActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.BaseDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
@@ -111,8 +112,8 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         }
     }
 
-    private void initializeViews() {
-        initializeTopBar();
+    protected void initializeViews() {
+        super.initializeViews();
         searchCardView = findViewById(R.id.search_card_view);
         myAppointmentsViewsContainer = findViewById(R.id.my_appointments_views_container);
 
@@ -263,13 +264,15 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         public void onAdatviewItemClicked(int position, int requestID) {
             switch (requestID) {
                 case BaseDoctorsAdapter.DOCTOR_DASBHBOARD_RECYCLER_VIEW:
-                    Toast.makeText(MarhamDashboardActivity.this, "Tapped Doctor: " + position, Toast.LENGTH_SHORT).show();
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(DoctorInfo.class.getCanonicalName(), doctorInfoList.get(position));
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorProfileActivity.class, false,bundle);
                     break;
                 case BaseDiseaseAdapter.TOP_DISEASES:
-                    Bundle bundle = new Bundle();
-                    bundle.putInt(DoctorListingActivity.specialityListTypeString, DoctorListingActivity.DOCTOR_LISTING_TYPE_DISEASE);
-                    bundle.putParcelable(Diseases.class.getCanonicalName(), diseasesArrayList.get(position));
-                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false,bundle);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putInt(DoctorListingActivity.specialityListTypeString, DoctorListingActivity.DOCTOR_LISTING_TYPE_DISEASE);
+                    bundle1.putParcelable(Diseases.class.getCanonicalName(), diseasesArrayList.get(position));
+                    MarhamUtils.getInstance().startActivity(MarhamDashboardActivity.this, DoctorListingActivity.class, false,bundle1);
                     break;
                 case BaseSpecialitiesAdapter.TOP_SPECIALITIES:
                     Bundle bundle2 = new Bundle();
