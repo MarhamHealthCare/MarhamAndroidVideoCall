@@ -3,6 +3,7 @@ package com.marham.marhamvideocalllibrary.activities.doctor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +59,8 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     private ConstraintLayout doctorReviewsViewsContainer;
     private RecyclerView doctorReviewsRecyclerView;
 
+    private ConstraintLayout bookVideoConsultationViewsContainer;
+
     private DoctorProfileGenericData doctorProfileGenericData;
     private DoctorInfo doctorInfo;
     private List<Hospital> hospitalList = new ArrayList<>();
@@ -71,7 +74,19 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         setContentView(R.layout.activity_doctor_profile);
         intializeViews();
         initializeVariables();
+        setListeners();
         getDoctorDetails(doctorInfo.getDlID());
+    }
+
+    @Override
+    public void onClick(View view) {
+        super.onClick(view);
+        int viewId = view.getId();
+        if(viewId == R.id.retry_button){
+            getDoctorDetails(doctorInfo.getDlID());
+        } else if (viewId == R.id.book_consultation_views_container) {
+            openBookVideConsultationScreen();
+        }
     }
 
     private void intializeViews() {
@@ -92,10 +107,15 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         doctorExperiencesRecyclerView = findViewById(R.id.doctor_experiences_recycler_view);
         doctorReviewsViewsContainer = findViewById(R.id.reviews_views_container);
         doctorReviewsRecyclerView = findViewById(R.id.doctor_reviews_recycler_view);
+        bookVideoConsultationViewsContainer = findViewById(R.id.book_consultation_views_container);
     }
 
-    private void initializeVariables(){
+    private void initializeVariables() {
         receiveIntent();
+    }
+
+    private void setListeners() {
+        bookVideoConsultationViewsContainer.setOnClickListener(this);
     }
 
     private void receiveIntent() {
@@ -122,8 +142,6 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     private void setHospitals(NewDoctorProfileServerResponse newDoctorProfileServerResponse) {
         if (newDoctorProfileServerResponse.getData().getHospitals() != null && !newDoctorProfileServerResponse.getData().getHospitals().isEmpty()) {
             hospitalList = newDoctorProfileServerResponse.getData().getHospitals();
-        } else {
-
         }
     }
 
@@ -154,22 +172,22 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
             doctorCategoryAndExperienceTextView.setText(doctorProfileGenericData.getDetails().getCatName());
         }
 
-       if(doctorProfileGenericData.getDetails().getDocExp() != null && !doctorProfileGenericData.getDetails().getDocExp().equals("") && !doctorProfileGenericData.getDetails().getDocExp().equals("0")){
-           doctorCategoryAndExperienceTextView.append("with over "+doctorProfileGenericData.getDetails().getDocExp()+" year(s) of experience" );
+        if (doctorProfileGenericData.getDetails().getDocExp() != null && !doctorProfileGenericData.getDetails().getDocExp().equals("") && !doctorProfileGenericData.getDetails().getDocExp().equals("0")) {
+            doctorCategoryAndExperienceTextView.append("with over " + doctorProfileGenericData.getDetails().getDocExp() + " year(s) of experience");
         }
 
     }
 
-    private void statsViewsContainer(DoctorProfileGenericData doctorProfileGenericData){
-        if(doctorProfileGenericData.getDetails().getDocExp() != null && !doctorProfileGenericData.getDetails().getDocExp().equals("") && !doctorProfileGenericData.getDetails().getDocExp().equals("0")){
+    private void statsViewsContainer(DoctorProfileGenericData doctorProfileGenericData) {
+        if (doctorProfileGenericData.getDetails().getDocExp() != null && !doctorProfileGenericData.getDetails().getDocExp().equals("") && !doctorProfileGenericData.getDetails().getDocExp().equals("0")) {
             yearsOfExperienceTextView.setText(doctorProfileGenericData.getDetails().getDocExp());
         }
 
-        if(doctorProfileGenericData.getDetails().getSatisfactionScore() != null && !doctorProfileGenericData.getDetails().getSatisfactionScore().equals("") && !doctorProfileGenericData.getDetails().getSatisfactionScore().equals("0")){
-            doctorSatisfactionTextView.setText(doctorProfileGenericData.getDetails().getSatisfactionScore()+"%");
+        if (doctorProfileGenericData.getDetails().getSatisfactionScore() != null && !doctorProfileGenericData.getDetails().getSatisfactionScore().equals("") && !doctorProfileGenericData.getDetails().getSatisfactionScore().equals("0")) {
+            doctorSatisfactionTextView.setText(doctorProfileGenericData.getDetails().getSatisfactionScore() + "%");
         }
 
-        if(doctorProfileGenericData.getDetails().getTotalReviews() != null && !doctorProfileGenericData.getDetails().getTotalReviews().equals("") && !doctorProfileGenericData.getDetails().getTotalReviews().equals("0")){
+        if (doctorProfileGenericData.getDetails().getTotalReviews() != null && !doctorProfileGenericData.getDetails().getTotalReviews().equals("") && !doctorProfileGenericData.getDetails().getTotalReviews().equals("0")) {
             reviewsTextView.setText(doctorProfileGenericData.getDetails().getTotalReviews());
         }
 
@@ -179,7 +197,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         if (doctorProfileGenericData.getExtendedInfo() != null) {
             if (doctorProfileGenericData.getExtendedInfo().getAboutMe() != null && !doctorProfileGenericData.getExtendedInfo().getAboutMe().isEmpty()) {
                 aboutDoctorViewsContainer.setVisibility(View.VISIBLE);
-                aboutDoctorHeadingTextView.setText("About "+doctorProfileGenericData.getDetails(). getDocName());
+                aboutDoctorHeadingTextView.setText("About " + doctorProfileGenericData.getDetails().getDocName());
                 aboutDoctorTextView.setText(doctorProfileGenericData.getExtendedInfo().getAboutMe());
             } else {
                 aboutDoctorViewsContainer.setVisibility(View.GONE);
@@ -213,7 +231,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         }
     }
 
-    private void setDoctorReviewsRecyclerView(List<Reviews> reviewsList){
+    private void setDoctorReviewsRecyclerView(List<Reviews> reviewsList) {
         doctorReviewsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         doctorReviewsRecyclerView.setAdapter(new DoctorReviewsAdapter(this, reviewsList));
         doctorReviewsRecyclerView.setNestedScrollingEnabled(false);
@@ -221,26 +239,55 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
 
     public void setViewsBeforeGettingDoctorsDetails() {
         scrollView.setVisibility(View.GONE);
+        bookVideoConsultationViewsContainer.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         retryButton.setVisibility(View.GONE);
     }
 
     public void setViewsAfterGettingDoctorsDetails() {
         scrollView.setVisibility(View.VISIBLE);
+        bookVideoConsultationViewsContainer.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
         retryButton.setVisibility(View.GONE);
     }
 
     public void setViewsIncaseNoRecordFoundWhileGettingDoctorsDetails() {
         scrollView.setVisibility(View.GONE);
+        bookVideoConsultationViewsContainer.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         retryButton.setVisibility(View.GONE);
     }
 
     public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorsDetails() {
         scrollView.setVisibility(View.GONE);
+        bookVideoConsultationViewsContainer.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
         retryButton.setVisibility(View.VISIBLE);
+    }
+
+    private Hospital getVideoConsultationHospital() {
+        if (hospitalList != null && hospitalList.size() > 0) {
+            for (int i = 0; i < hospitalList.size(); i++) {
+                if (hospitalList.get(i).getHospitalType().equals(AppConstants.HOSPITAL_TYPE.VIDEO_CONSULTATION)) {
+                    return hospitalList.get(i);
+                }
+            }
+        } else {
+            Toast.makeText(this, "Could not Book Video Consultation", Toast.LENGTH_SHORT).show();
+        }
+        return null;
+    }
+
+    private void openBookVideConsultationScreen() {
+        Hospital hospital = getVideoConsultationHospital();
+        if (hospital != null) {
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(Hospital.class.getCanonicalName(), hospital);
+            bundle.putParcelable(DoctorInfo.class.getCanonicalName(),doctorInfo);
+            MarhamUtils.getInstance().startActivity(this,BookVideoConsultationActivity.class,true,bundle);
+        }else {
+            Toast.makeText(this, "Could not Book Video Consultation", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void getDoctorDetails(String dlID) {

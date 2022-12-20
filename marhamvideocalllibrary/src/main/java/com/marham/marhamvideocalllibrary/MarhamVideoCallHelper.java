@@ -11,10 +11,10 @@ import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 public class MarhamVideoCallHelper {
 
     private String API_KEY;
-    private String fireBaseToken;
+    private String fireBaseToken = "fRHe-d--TkqGplJG_tgPJP:APA91bE9v2J6hop0mcaVx7wLYzT7n1iQRtTlNBaw-wxoEk9Wo4VvAlsnx0FJYYPEM8-q8CibWuo7Lpz4CczqalmSOKUsxS-mqQ4yDc4u-ZT5zg9fCuev56SYfRcq53Tt1tH94VHvHrhe";
     private String phoneNumber;
     private String name;
-    private int colorPrimary;
+    private String userId = "140060";
 
     private static MarhamVideoCallHelper utils;
 
@@ -56,7 +56,15 @@ public class MarhamVideoCallHelper {
         return fireBaseToken;
     }
 
-    public void setColorPrimary(int colorPrimary) {
-        this.colorPrimary = colorPrimary;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

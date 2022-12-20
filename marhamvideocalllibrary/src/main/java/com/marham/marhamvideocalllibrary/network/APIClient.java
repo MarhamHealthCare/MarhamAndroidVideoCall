@@ -8,6 +8,7 @@ import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerRe
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
+import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 
 import java.io.IOException;
@@ -151,6 +152,10 @@ public class APIClient {
 
     public Call<NewDoctorProfileServerResponse> getDoctorDetail(HashMap<String, String> hashMap) {
         return apiService.getDoctorDetail(hashMap);
+    }
+
+    public Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(String hospitalID, String date, String loggedInUserId, String token, String deviceType, String hospitalType, String dID, String isVariation, String inHouseDoctorRequest) {
+        return apiService.getHospitalAvailableDaysAndDates(hospitalID, date, loggedInUserId, token, deviceType, hospitalType, dID, isVariation, inHouseDoctorRequest);
     }
 
 }

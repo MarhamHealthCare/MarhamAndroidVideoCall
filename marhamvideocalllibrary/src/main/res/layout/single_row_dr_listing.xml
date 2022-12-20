@@ -46,11 +46,11 @@
             app:layout_constraintTop_toTopOf="@+id/doctor_picture_image_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_degrees_text_view"
+            android:id="@+id/doctor_speciality_text_view"
             android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fifteen"
-            android:layout_marginTop="@dimen/five"
+            android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/fifteen"
             android:ellipsize="end"
             android:gravity="end"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="@dimen/five"
+            android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/fifteen"
             android:ellipsize="end"
             android:maxLines="1"
@@ -75,14 +75,14 @@
             android:textColor="@color/black"
             android:textSize="@dimen/eleven_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_degrees_text_view" />
+            app:layout_constraintTop_toBottomOf="@+id/doctor_speciality_text_view" />
 
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
             android:id="@+id/doctor_fee_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/five"
+            android:layout_marginTop="@dimen/two"
             android:layout_marginEnd="@dimen/fifteen"
             android:ellipsize="end"
             android:maxLines="1"

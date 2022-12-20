@@ -22,7 +22,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/book_consultation_views_container"
         app:layout_constraintTop_toBottomOf="@+id/top_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,8 +138,8 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/twelve_text_size"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/years_of_experience_text_view"
+                        app:layout_constraintStart_toStartOf="@+id/years_of_experience_text_view"
                         app:layout_constraintTop_toBottomOf="@+id/years_of_experience_text_view" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -184,18 +184,18 @@
 
                     <View
                         android:id="@+id/line1"
-                        android:layout_width="@dimen/twenty"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey"
+                        android:layout_width="@dimen/point_five_dp"
+                        android:layout_height="@dimen/sixty"
+                        android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <View
                         android:id="@+id/line2"
-                        android:layout_width="@dimen/twenty"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey"
+                        android:layout_width="@dimen/point_five_dp"
+                        android:layout_height="@dimen/sixty"
+                        android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -234,8 +234,8 @@
                         android:textColor="@color/grey"
                         android:textSize="@dimen/twelve_text_size"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/reviews_text_view"
+                        app:layout_constraintStart_toStartOf="@+id/reviews_text_view"
                         app:layout_constraintTop_toBottomOf="@+id/reviews_text_view" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -354,6 +354,51 @@
 
 
     </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/book_consultation_views_container"
+        android:layout_width="@dimen/zero"
+        android:background="@drawable/doctor_profile_header_gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scroll_view"
+        android:layout_height="@dimen/fifty">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content">
+
+            <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/video_consultation_icon"
+                android:background="@drawable/book_video_consultation_icon_white_vector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="@dimen/twenty"
+                android:layout_height="@dimen/fifteen"/>
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/book_consultation_text_view"
+                app:layout_constraintStart_toEndOf="@+id/video_consultation_icon"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/ten"
+                android:textStyle="bold"
+                android:text="@string/book_video_consultation_now"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

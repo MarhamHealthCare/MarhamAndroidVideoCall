@@ -48,7 +48,7 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
     private void setDoctor(BaseDoctorViewHolder holder, DoctorInfo doctorInfo) {
         setDoctorPicture(holder, doctorInfo);
         holder.doctorNameTextView.setText(doctorInfo.getDocName());
-        holder.doctorDegreesTextView.setText(doctorInfo.getSpeciality());
+        holder.doctorSpecialityTextView.setText(doctorInfo.getSpeciality());
         holder.doctorExperienceTextView.setText("Exp." + doctorInfo.getDocExp() + " Year(s)");
 
 
@@ -71,8 +71,6 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
             }
 
         }
-
-
     }
 
     private void setDoctorPicture(BaseDoctorViewHolder holder, DoctorInfo doctorInfo) {

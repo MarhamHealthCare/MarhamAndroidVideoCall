@@ -6,6 +6,7 @@ import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorListingFiltersServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
+import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 
 import java.util.HashMap;
@@ -45,5 +46,9 @@ public interface MarhamVideoCallEndPoints {
     @FormUrlEncoded
     @POST("index.php?action=doctorDetail")
     Call<NewDoctorProfileServerResponse> getDoctorDetail(@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("index.php?action=get-doctor-hospital-available-days-and-slots")
+    Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("variation") String variation, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
 
 }

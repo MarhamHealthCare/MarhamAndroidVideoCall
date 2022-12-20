@@ -28,4 +28,8 @@
     <string name="positive_reviews">Positive\nreviews</string>
     <string name="years_of_nsaving_lives">Years of\nsaving lives</string>
     <string name="about">About</string>
+    <string name="book_video_consultation_now">Book Video Consultation Now</string>
+    <string name="book_a_video_consultation">Book a Video Consultation</string>
+    <string name="degree">Degree</string>
+    <string name="preferred_day">Preferred Day</string>
 </resources>
