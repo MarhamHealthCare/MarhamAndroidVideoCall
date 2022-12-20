@@ -13,9 +13,7 @@
         android:endColor="@color/doctor_profile_header_gradeint_end_color"
         android:startColor="@color/doctor_profile_header_gradeint_start_color"
         android:type="linear" />
-    <stroke
-        android:width="0.5dp"
-        android:color="@color/light_grey" />
+
 
 
 

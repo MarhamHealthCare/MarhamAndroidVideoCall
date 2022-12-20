@@ -10,7 +10,7 @@
         android:layout_width="@dimen/five"
         android:layout_height="@dimen/five"
         android:layout_marginStart="@dimen/ten"
-        android:layout_marginTop="@dimen/five"
+        android:layout_marginTop="@dimen/six"
         android:background="@drawable/dot_icon_vector"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/doctor_experience_text_view" />
@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/five"
         android:layout_marginEnd="@dimen/fifteen"
+        android:textSize="@dimen/thirteen_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dot_view"

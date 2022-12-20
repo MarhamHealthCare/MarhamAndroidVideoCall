@@ -39,5 +39,7 @@
     <dimen name="twelve">12dp</dimen>
     <dimen name="eighteen_text_size">18sp</dimen>
     <dimen name="twenty_text_size">20sp</dimen>
+    <dimen name="twenty_two_text_size">22sp</dimen>
+    <dimen name="twenty_five_text_size">25sp</dimen>
 
 </resources>
