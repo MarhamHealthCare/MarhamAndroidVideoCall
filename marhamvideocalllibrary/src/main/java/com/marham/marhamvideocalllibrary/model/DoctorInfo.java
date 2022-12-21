@@ -68,7 +68,6 @@ public class DoctorInfo implements Parcelable{
     private String aboutMe;
     private String catID;
     private String docExp;
-    //
     private String hospitalType;
     ///
     private String discount;

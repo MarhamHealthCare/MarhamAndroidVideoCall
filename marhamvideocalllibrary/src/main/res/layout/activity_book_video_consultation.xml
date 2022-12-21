@@ -11,6 +11,14 @@
         android:id="@+id/top_bar"
         layout="@layout/layout_top_bar" />
 
+    <include
+        android:id="@+id/progress_bar_container"
+        layout="@layout/layout_progress_bar" />
+
+    <include
+        android:id="@+id/retry_button_container"
+        layout="@layout/layout_retry_button" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_layout"
         android:layout_width="@dimen/zero"
@@ -185,21 +193,100 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/days_recycler_view_container"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/hundred"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/_doctor_info_card_view">
 
 
             <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/preferred_day_text_view"
                 android:layout_width="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/preferred_day"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_height="wrap_content">
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hospital_day_and_date_recycler_view"
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/hundred_ten"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginTop="@dimen/ten"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preferred_day_text_view" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.marham.marhamvideocalllibrary.customviews.BodyText>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/time_slots_recycler_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/days_recycler_view_container">
+
+
+            <com.marham.marhamvideocalllibrary.customviews.MyButton
+                android:id="@+id/time_slots_retry_button"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
+                android:backgroundTint="@color/colorPrimary"
+                android:background="@drawable/try_again_icon_grey_vector"
+                app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintStart_toStartOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintTop_toTopOf="@id/time_slots_recycler_view_recycler_view" />
+
+            <ProgressBar
+                android:id="@+id/time_slots_progress_bar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintStart_toStartOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintTop_toTopOf="@id/time_slots_recycler_view_recycler_view" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/time_slots_no_record_found_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:textColor="@color/colorPrimary"
+                android:visibility="gone"
+                android:text="@string/no_record_found"
+                app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintStart_toStartOf="@id/time_slots_recycler_view_recycler_view"
+                app:layout_constraintTop_toTopOf="@id/time_slots_recycler_view_recycler_view" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/preferred_time_slot_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fifteen"
+                android:visibility="visible"
+                android:text="@string/preferred_time_slot"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/time_slots_recycler_view_recycler_view"
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/hundred_fifty"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginTop="@dimen/ten"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/preferred_time_slot_text_view" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

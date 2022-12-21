@@ -8,6 +8,7 @@
         android:id="@+id/retry_button"
         android:layout_width="@dimen/forty"
         android:layout_height="@dimen/forty"
+        android:backgroundTint="@color/colorPrimary"
         android:background="@drawable/try_again_icon_grey_vector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

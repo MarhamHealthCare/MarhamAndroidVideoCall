@@ -32,4 +32,8 @@
     <string name="book_a_video_consultation">Book a Video Consultation</string>
     <string name="degree">Degree</string>
     <string name="preferred_day">Preferred Day</string>
+    <string name="saturday">Saturday</string>
+    <string name="_14_january">14 January</string>
+    <string name="_12">12</string>
+    <string name="preferred_time_slot">Preferred time slot</string>
 </resources>

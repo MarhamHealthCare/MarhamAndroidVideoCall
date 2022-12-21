@@ -47,8 +47,13 @@ public interface MarhamVideoCallEndPoints {
     @POST("index.php?action=doctorDetail")
     Call<NewDoctorProfileServerResponse> getDoctorDetail(@FieldMap HashMap<String, String> hashMap);
 
+//    @FormUrlEncoded
+//    @POST("index.php?action=get-doctor-hospital-available-days-and-slots")
+//    Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("variation") String variation, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
+
+
     @FormUrlEncoded
     @POST("index.php?action=get-doctor-hospital-available-days-and-slots")
-    Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("variation") String variation, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
+    Call<HospitalAvailableDaysAndDateServerResponse> appointmentDateAndTime(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("language") String language, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
 
 }

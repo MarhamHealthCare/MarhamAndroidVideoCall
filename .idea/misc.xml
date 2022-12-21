@@ -9,6 +9,8 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/forward_arrow_grey_vector.xml" value="0.175" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient.xml" value="0.1915" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue.xml" value="0.142" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue_with_blue_stroke.xml" value="0.142" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/try_again_icon_grey_vector.xml" value="0.1225" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_book_video_consultation.xml" value="0.17074275362318841" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_listing.xml" value="0.335" />
@@ -27,8 +29,10 @@
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_doctor_listing_filter.xml" value="0.15081521739130435" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_doctor_review.xml" value="0.15715579710144928" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_dr_listing.xml" value="0.335" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_hospital_day_and_date.xml" value="0.335" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_recent_diseases.xml" value="0.17300724637681159" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_recent_speciality.xml" value="0.10054347826086957" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_time_slot.xml" value="0.13179347826086957" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_diseases.xml" value="0.151268115942029" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_doctor.xml" value="0.375" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_speciality.xml" value="0.25" />

@@ -18,70 +18,66 @@ public class Days {
 
     private String day;
 
-    public String getDate ()
-    {
+    private boolean isSelected = false;
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate (String date)
-    {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getMonth ()
-    {
+    public String getMonth() {
         return month;
     }
 
-    public void setMonth (String month)
-    {
+    public void setMonth(String month) {
         this.month = month;
     }
 
-    public String getDayOfMonth ()
-    {
+    public String getDayOfMonth() {
         return dayOfMonth;
     }
 
-    public void setDayOfMonth (String dayOfMonth)
-    {
+    public void setDayOfMonth(String dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
     }
 
-    public String getFormattedDate ()
-    {
+    public String getFormattedDate() {
         return formattedDate;
     }
 
-    public void setFormattedDate (String formattedDate)
-    {
+    public void setFormattedDate(String formattedDate) {
         this.formattedDate = formattedDate;
     }
 
-    public TimeSlotsOfHospitalContainer getTimeSlots ()
-    {
+    public TimeSlotsOfHospitalContainer getTimeSlots() {
         return timeSlots;
     }
 
-    public void setTimeSlots (TimeSlotsOfHospitalContainer timeSlots)
-    {
+    public void setTimeSlots(TimeSlotsOfHospitalContainer timeSlots) {
         this.timeSlots = timeSlots;
     }
 
-    public String getDay ()
-    {
+    public String getDay() {
         return day;
     }
 
-    public void setDay (String day)
-    {
+    public void setDay(String day) {
         this.day = day;
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [date = "+date+", month = "+month+", dayOfMonth = "+dayOfMonth+", formattedDate = "+formattedDate+", timeSlots = "+timeSlots+", day = "+day+"]";
+    public String toString() {
+        return "ClassPojo [date = " + date + ", month = " + month + ", dayOfMonth = " + dayOfMonth + ", formattedDate = " + formattedDate + ", timeSlots = " + timeSlots + ", day = " + day + "]";
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 }
