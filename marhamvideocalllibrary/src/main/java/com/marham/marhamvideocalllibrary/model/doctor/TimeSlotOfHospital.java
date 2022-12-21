@@ -13,6 +13,8 @@ public class TimeSlotOfHospital {
 
     private String timming;
 
+    private boolean isSelected=false;
+
     public String getBooked ()
     {
         return booked;
@@ -59,4 +61,11 @@ public class TimeSlotOfHospital {
         return "ClassPojo [booked = "+booked+", doctorHospitalId = "+doctorHospitalId+", slot = "+slot+", timming = "+timming+"]";
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 }

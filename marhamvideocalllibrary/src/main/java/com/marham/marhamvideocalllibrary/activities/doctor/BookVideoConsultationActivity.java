@@ -14,6 +14,7 @@ import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.hospital.HospitalDayAndDateAdapter;
+import com.marham.marhamvideocalllibrary.adapters.hospital.HospitalTimeSlotsAdapter;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.customviews.MyImageView;
@@ -58,11 +59,16 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     private ProgressBar timeSlotsProgressBar;
     private BodyText timeSlotsNoRecordFoundTextView;
 
+    private BodyText dateTimeDayTextView;
+
+    private MyButton confirmBookingButton;
+
     private DoctorInfo doctorInfo;
     private Hospital hospital;
     private TimeSlotsOfHospitalContainer timeSlotsOfHospitalContainer;
-    private String selectedDate;
-    private String selectedTime;
+    private String selectedDate="";
+    private String selectedDay="";
+    private String selectedTime="";
 
     private List<Days> daysList = new ArrayList<>();
     boolean isHospitalDaysAndTimeSlotsRequest = true;
@@ -83,7 +89,17 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         setContentView(R.layout.activity_book_video_consultation);
         initVariables();
         initializeViews();
+        setListeners();
         fetchData();
+    }
+
+    @Override
+    public void onClick(View view) {
+        super.onClick(view);
+        int viewId = view.getId();
+        if (R.id.confirm_booking_button == viewId) {
+            hasUserEnteredRequiredInformation();
+        }
     }
 
     private void initVariables() {
@@ -109,6 +125,14 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         timeSlotsRetryButton = findViewById(R.id.time_slots_retry_button);
         timeSlotsNoRecordFoundTextView = findViewById(R.id.time_slots_no_record_found_text_view);
 
+        dateTimeDayTextView = findViewById(R.id.date_time_day_text_view);
+
+        confirmBookingButton = findViewById(R.id.confirm_booking_button);
+
+    }
+
+    private void setListeners(){
+        confirmBookingButton.setOnClickListener(this);
     }
 
     private void receiveIntent() {
@@ -188,12 +212,12 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         hospitalDayAndDateRecyclerView.setAdapter(hospitalDayAndDateAdapter);
     }
 
-    public void setMorningListRecyclerView(List<TimeSlotOfHospital> morningList, int selectedRecyclerView) {
-//        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
-//        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        holder.getMorningTimingSlotsRecyclerView().setLayoutManager(gridLayoutManager);
-//        morningAdapter = new TimeSlotsAdapter(1, this, morningList, timeSlotListener, 0, selectedRecyclerView, null);
-//        holder.getMorningTimingSlotsRecyclerView().setAdapter(morningAdapter);
+    public void setHospitalTimeSlotsRecyclerView(List<TimeSlotOfHospital> morningList) {
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        timeSlotsRecyclerViewRecyclerView.setLayoutManager(layoutManager);
+        HospitalTimeSlotsAdapter hospitalTimeSlotsAdapter = new HospitalTimeSlotsAdapter(this, allSlots, adapterViewItemClickedListener);
+        timeSlotsRecyclerViewRecyclerView.setAdapter(hospitalTimeSlotsAdapter);
     }
 
     public void setViewsBeforeCallingAPI() {
@@ -248,7 +272,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         timeSlotsNoRecordFoundTextView.setVisibility(View.GONE);
     }
 
-    private AdapterViewItemClickedListener adapterViewItemClickedListener = new AdapterViewItemClickedListener() {
+    private final AdapterViewItemClickedListener adapterViewItemClickedListener = new AdapterViewItemClickedListener() {
         @Override
         public void onAdatviewItemClicked(int position) {
 
@@ -261,6 +285,12 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                     updateSelectedHospital(position);
                     hospitalDayAndDateRecyclerView.getAdapter().notifyDataSetChanged();
                     getHospitalAvailableDaysAndDates(hospital.getHospitalID(), selectedDate);
+                    break;
+
+                case BookVideoConsultationActivity.HOSPITAL_TIME:
+                    updateSelectedTimeSlot(position);
+                    timeSlotsRecyclerViewRecyclerView.getAdapter().notifyDataSetChanged();
+                    setDateTimeAndDayTextView();
                     break;
             }
 
@@ -330,32 +360,61 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         allSlots.addAll(firstSlots);
         allSlots.addAll(secondSlots);
         allSlots.addAll(thirdSlots);
-
-        if(allSlots.isEmpty()){
-            setViewsIncaseNoRecordFoundWhileGettingTimeSlots();
-        }
     }
 
     private void checkIfListContainsItemsOrNotAndRespondAccordingly() {
         if (allSlots.isEmpty()) {
+            setViewsIncaseNoRecordFoundWhileGettingTimeSlots();
         } else {
-            selectedTime = allSlots.get(0).getSlot();
+            updateSelectedTimeSlot(0);
+            setHospitalTimeSlotsRecyclerView(allSlots);
         }
     }
 
     private void updateSelectedHospital(int selectedPosition) {
         selectedDate = daysList.get(selectedPosition).getFormattedDate();
+        selectedDay = daysList.get(selectedPosition).getDay();
+        selectedTime = "";
         for (int i = 0; i < daysList.size(); i++) {
             daysList.get(i).setSelected(i == selectedPosition);
         }
     }
 
+    private void updateSelectedTimeSlot(int selectedPosition) {
+        selectedTime = allSlots.get(selectedPosition).getSlot();
+        for (int i = 0; i < allSlots.size(); i++) {
+            allSlots.get(i).setSelected(i == selectedPosition);
+        }
+    }
+
+    private void setDateTimeAndDayTextView(){
+        dateTimeDayTextView.setText(String.format("%s %s (%s)", selectedDate, selectedTime, selectedDay));
+    }
+
+    private boolean hasUserEnteredRequiredInformation(){
+        boolean areFieldsValid;
+        if (selectedDate.equals("") && selectedTime.equals("")){
+            MarhamUtils.getInstance().showMessage(this,"Plese select Date and Time",Toast.LENGTH_LONG);
+            areFieldsValid = false;
+        }else if(selectedDate.equals("")){
+            MarhamUtils.getInstance().showMessage(this,"Plese select Date",Toast.LENGTH_LONG);
+            areFieldsValid = false;
+        }else if(selectedTime.equals("")){
+            MarhamUtils.getInstance().showMessage(this,"Plese select Time",Toast.LENGTH_LONG);
+            areFieldsValid = false;
+        }else {
+            MarhamUtils.getInstance().showMessage(this,"Booking Appointment",Toast.LENGTH_LONG);
+            areFieldsValid = true;
+        }
+        return areFieldsValid;
+    }
+
     public void getHospitalAvailableDaysAndDates(String hospitalID, String date) {
         isHospitalDaysAndTimeSlotsRequest = date.equals("");
 
-        if(isHospitalDaysAndTimeSlotsRequest) {
+        if (isHospitalDaysAndTimeSlotsRequest) {
             setViewsBeforeCallingAPI();
-        }else{
+        } else {
             setViewsBeforeGettingTimeSlots();
         }
         APIClient apiClient = new APIClient();
@@ -375,9 +434,9 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
-                    if(isHospitalDaysAndTimeSlotsRequest) {
+                    if (isHospitalDaysAndTimeSlotsRequest) {
                         setViewsAfterCallingAPI();
-                    }else{
+                    } else {
                         setViewsAfterGettingTimeSlots();
                     }
                     HospitalAvailableDaysAndDateServerResponse hospitalAvailableDaysAndDateServerResponse = (HospitalAvailableDaysAndDateServerResponse) response;
@@ -385,10 +444,11 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
 
                     setDoctorAndHospitalInformation(timeSlotsOfHospitalContainer);
                     setDaysAndTimeSlotsViewsAndVariables(timeSlotsOfHospitalContainer);
+                    setDateTimeAndDayTextView();
                 } else {
-                    if(isHospitalDaysAndTimeSlotsRequest) {
+                    if (isHospitalDaysAndTimeSlotsRequest) {
                         setViewsIncaseNoRecordFoundWhileCallingAPI();
-                    }else{
+                    } else {
                         setViewsIncaseNoRecordFoundWhileGettingTimeSlots();
                     }
                     MarhamUtils.getInstance().showAPIResponseMessage(this, doctorInfo.getDocName() + " is not available now please choose another doctor.\nThank you");
@@ -403,10 +463,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
                 MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
-                if(isHospitalDaysAndTimeSlotsRequest) {
+                if (isHospitalDaysAndTimeSlotsRequest) {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileCallingAPI();
                     finish();
-                }else{
+                } else {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTimeSlots();
                 }
 
@@ -420,10 +480,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
                 MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
-                if(isHospitalDaysAndTimeSlotsRequest) {
+                if (isHospitalDaysAndTimeSlotsRequest) {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileCallingAPI();
                     finish();
-                }else{
+                } else {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTimeSlots();
                 }
                 break;

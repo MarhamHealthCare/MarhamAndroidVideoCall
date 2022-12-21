@@ -34,6 +34,10 @@ public class MarhamUtils {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
+    public void showMessage(Context context, String message, int length) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
     public void startActivity(Activity activity, Class c, Boolean killCurrentActivity) {
         Intent intent = new Intent(activity, c);
         activity.startActivity(intent);

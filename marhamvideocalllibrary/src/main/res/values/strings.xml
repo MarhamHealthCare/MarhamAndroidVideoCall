@@ -36,4 +36,5 @@
     <string name="_14_january">14 January</string>
     <string name="_12">12</string>
     <string name="preferred_time_slot">Preferred time slot</string>
+    <string name="confirm_booking">Confirm Booking</string>
 </resources>

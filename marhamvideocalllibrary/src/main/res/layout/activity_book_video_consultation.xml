@@ -141,7 +141,7 @@
                 <com.marham.marhamvideocalllibrary.customviews.BodyText
                     android:id="@+id/doctor_fee_text_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/thirty"
+                    android:layout_height="@dimen/twenty_five"
                     android:layout_marginTop="@dimen/fifteen"
                     android:layout_marginEnd="@dimen/fifteen"
                     android:layout_marginBottom="@dimen/ten"
@@ -204,6 +204,7 @@
                 android:layout_marginStart="@dimen/fifteen"
                 android:layout_marginTop="@dimen/fifteen"
                 android:text="@string/preferred_day"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -214,8 +215,8 @@
                 android:layout_height="@dimen/hundred_ten"
                 android:layout_marginStart="@dimen/fifteen"
                 android:layout_marginTop="@dimen/ten"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/preferred_day_text_view" />
@@ -234,8 +235,9 @@
                 android:id="@+id/time_slots_retry_button"
                 android:layout_width="@dimen/forty"
                 android:layout_height="@dimen/forty"
-                android:backgroundTint="@color/colorPrimary"
+                android:visibility="gone"
                 android:background="@drawable/try_again_icon_grey_vector"
+                android:backgroundTint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
                 app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
                 app:layout_constraintStart_toStartOf="@id/time_slots_recycler_view_recycler_view"
@@ -246,6 +248,7 @@
                 style="?android:attr/progressBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:backgroundTint="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
                 app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
@@ -256,9 +259,9 @@
                 android:id="@+id/time_slots_no_record_found_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:textColor="@color/colorPrimary"
-                android:visibility="gone"
                 android:text="@string/no_record_found"
+                android:textColor="@color/colorPrimary"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@id/time_slots_recycler_view_recycler_view"
                 app:layout_constraintEnd_toEndOf="@id/time_slots_recycler_view_recycler_view"
                 app:layout_constraintStart_toStartOf="@id/time_slots_recycler_view_recycler_view"
@@ -269,20 +272,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/fifteen"
-                android:visibility="visible"
                 android:text="@string/preferred_time_slot"
                 android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/time_slots_recycler_view_recycler_view"
                 android:layout_width="@dimen/zero"
-                android:layout_height="@dimen/hundred_fifty"
+                android:layout_height="@dimen/hundred"
                 android:layout_marginStart="@dimen/fifteen"
                 android:layout_marginTop="@dimen/ten"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="@dimen/fifteen"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/preferred_time_slot_text_view" />
@@ -290,6 +294,33 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <com.marham.marhamvideocalllibrary.customviews.BodyText
+            android:id="@+id/date_time_day_text_view"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/twenty"
+            app:layout_constraintTop_toBottomOf="@+id/time_slots_recycler_view_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/dash"
+            android:layout_height="wrap_content" />
+
+
+        <com.marham.marhamvideocalllibrary.customviews.MyButton
+            android:id="@+id/confirm_booking_button"
+            android:layout_width="@dimen/two_hundred_fifty"
+            android:layout_height="@dimen/forty_five"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:text="@string/confirm_booking"
+            android:layout_marginBottom="@dimen/ten"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corners_color_primary_5_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_time_day_text_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
