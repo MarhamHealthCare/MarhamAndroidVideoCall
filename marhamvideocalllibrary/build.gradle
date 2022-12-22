@@ -32,6 +32,7 @@ android {
 
             buildConfigField('String', 'BASE_URL', BASE_URL_LIVE)
             buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_LIVE)
+            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_LIVE)
 
         }
 
@@ -44,32 +45,36 @@ android {
 //
 //            buildConfigField('String', 'BASE_URL', BASE_URL_STAGING)
 //            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_STAGING)
+//            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_STAGING)
 //        }
 
-
-//        debug {
-//            minifyEnabled true
-////            useProguard true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            ext.enableCrashlytics = false
-//            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
-//
-//            buildConfigField('String', 'BASE_URL', BASE_URL_STAGING)
-//            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_STAGING)
-//        }
 
         debug {
 //            minifyEnabled true
 //            useProguard true
-
-            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             ext.enableCrashlytics = false
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
 
-            buildConfigField('String', 'BASE_URL', BASE_URL_LIVE)
-            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_LIVE)
+            buildConfigField('String', 'BASE_URL', BASE_URL_STAGING)
+            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_STAGING)
+            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_STAGING)
 
         }
+
+//        debug {
+////            minifyEnabled true
+////            useProguard true
+//
+//            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            ext.enableCrashlytics = false
+//
+//            buildConfigField('String', 'BASE_URL', BASE_URL_LIVE)
+//            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_LIVE)
+//            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_LIVE)
+//
+//        }
     }
 
 

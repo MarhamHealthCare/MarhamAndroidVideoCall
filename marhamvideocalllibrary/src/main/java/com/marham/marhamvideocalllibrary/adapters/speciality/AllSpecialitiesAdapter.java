@@ -16,7 +16,7 @@ import com.marham.marhamvideocalllibrary.viewHolders.speciality.RecentlySearched
 
 import java.util.List;
 
-public class AllSpecialitiesAdapter  extends  BaseSpecialitiesAdapter{
+public class AllSpecialitiesAdapter  extends BaseSpecialitiesAdapter{
 
     public AllSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         super(context, specialityList, listener);

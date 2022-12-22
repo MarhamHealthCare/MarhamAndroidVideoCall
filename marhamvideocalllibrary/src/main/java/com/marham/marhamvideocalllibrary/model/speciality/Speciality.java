@@ -5,11 +5,10 @@ import android.os.Parcelable;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Keep
 public class Speciality implements Parcelable{

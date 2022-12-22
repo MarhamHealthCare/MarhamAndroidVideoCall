@@ -1,6 +1,6 @@
 package com.marham.marhamvideocalllibrary.network;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 
 public interface ServerConnectListener {
     /**
@@ -9,19 +9,19 @@ public interface ServerConnectListener {
      * @param response
      */
 
-    void onSuccess(ServerResponse response);
+    void onSuccess(ServerResponseOld response);
 
     /**
      * Called if server call was failed.
      *
      * @param response
      */
-    void onFailure(ServerResponse response);
+    void onFailure(ServerResponseOld response);
 
     /**
      * Called if current user session expires.
      *
      * @param response
      */
-    void onSessionExpiry(ServerResponse response);
+    void onSessionExpiry(ServerResponseOld response);
 }

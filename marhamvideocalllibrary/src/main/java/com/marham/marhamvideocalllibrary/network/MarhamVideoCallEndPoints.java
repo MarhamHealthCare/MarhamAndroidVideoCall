@@ -1,13 +1,13 @@
 package com.marham.marhamvideocalllibrary.network;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
-import com.marham.marhamvideocalllibrary.model.doctor.DoctorListingFiltersServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 
@@ -25,18 +25,16 @@ import retrofit2.http.QueryMap;
 public interface MarhamVideoCallEndPoints {
     @FormUrlEncoded
     @POST("index.php?action=login")
-    Call<ServerResponse> login(@FieldMap HashMap<String, String> info);
+    Call<ServerResponseOld> login(@FieldMap HashMap<String, String> info);
 
-    @GET("doctor/get-top-doctors")
+    @GET("dashboard-gps")
     Call<DashboardDoctorServerResponse> getDashboardDoctors(@QueryMap HashMap<String, String> info);
 
-    @FormUrlEncoded
-    @POST("index.php?action=get-dashboard-diseases")
-    Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(@FieldMap HashMap<String, String> hashMap);
+    @GET("get-diseases")
+    Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(@QueryMap HashMap<String, String> hashMap);
 
-    @FormUrlEncoded
-    @POST("index.php?action=getallspecialities")
-    Call<NewAllSpecialitiesServerResponse> getAllSpecialities(@FieldMap HashMap<String, String> info);
+    @GET("get-specialities")
+    Call<NewAllSpecialitiesServerResponse> getAllSpecialities(@QueryMap HashMap<String, String> info);
 
     @FormUrlEncoded
     @POST("index.php?action=getallspecialities")
@@ -56,5 +54,9 @@ public interface MarhamVideoCallEndPoints {
 
     @POST("index.php?action=book-online-consultation")
     Call<BookConsultationServerResponse> bookOnlineConsultation(@Body VideoConsultanceModel videoConsultanceModel);
+
+    @FormUrlEncoded
+    @POST("user")
+    Call<MarhamUserServerResponse> getUserDetails(@FieldMap HashMap<String, String> hashMap);
 
 }

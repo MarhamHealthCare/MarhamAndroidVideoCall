@@ -10,13 +10,16 @@ public class AppConstants {
     public static class API {
 
         public static class API_CALL_STATUS{
-            public static final String SUCCESS = "Success!";
-            public static final String FAILED = "Failed";
+            public static final String SUCCESS_OLD = "Success!";
+            public static final String FAILED_OLD = "Failed";
+
+            public static final String SUCCESS = "true";
+            public static final String FAILED = "false";
         }
 
         public static class API_KEYS {
             public static final String CITY = "city";
-            public static final String TOP_ONLY = "top_only";
+            public static final String TOP_ONLY = "topOnly";
             public static final String NEW_ID = "new";
             public static final String DOCTOR_ID_KEY = "dID";
             public static final String PAGE_KEY = "page";
@@ -24,6 +27,8 @@ public class AppConstants {
             public static final String DEVICE_TOKEN_KEY = "devicetoken";
             public static final String DEVICE_TYPE_KEY = "deviceType";
             public static final String LANGUAGE_KEY = "language";
+            public static final String USER_NAME = "user_name";
+            public static final String USER_PHONE = "user_phone";
         }
 
         public static class API_END_POINT_NUMBER {
@@ -36,6 +41,7 @@ public class AppConstants {
             public static final int GET_DOCTORS_DETAILS = 7;
             public static final int GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES = 8;
             public static final int BOOK_ONLINE_CONSULTATION = 9;
+            public static final int GET_USER_DETAILS = 10;
         }
 
         public static class API_ERROR_MESSAGE {

@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.model;
+package com.marham.marhamvideocalllibrary.model.general;
 
 import androidx.annotation.Keep;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import okhttp3.internal.http2.Header;
 
 @Keep
-public class ServerResponse {
+public class ServerResponseOld {
 
     private List<Header> headerList;
     private int requestCode;

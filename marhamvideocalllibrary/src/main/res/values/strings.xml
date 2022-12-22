@@ -38,4 +38,6 @@
     <string name="preferred_time_slot">Preferred time slot</string>
     <string name="confirm_booking">Confirm Booking</string>
     <string name="find_a_doctor">Find a doctor</string>
+    <string name="search_by_speciality">Search by Speciality</string>
+    <string name="search_by_disease">Search by Disease</string>
 </resources>

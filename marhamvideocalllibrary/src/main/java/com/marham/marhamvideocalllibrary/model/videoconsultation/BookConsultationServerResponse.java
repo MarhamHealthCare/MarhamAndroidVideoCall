@@ -2,11 +2,11 @@ package com.marham.marhamvideocalllibrary.model.videoconsultation;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.appointment.Appointment;
 
 @Keep
-public class BookConsultationServerResponse extends ServerResponse {
+public class BookConsultationServerResponse extends ServerResponseOld {
 
     private String show_limit_popup;
     private Appointment data;

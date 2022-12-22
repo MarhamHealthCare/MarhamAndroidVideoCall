@@ -10,8 +10,10 @@ import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerRespo
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
+import com.marham.marhamvideocalllibrary.utils.AppConstants;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,6 +33,7 @@ public class APIClient {
     private static APIClient apiClient;
     private static final String BASE_URL = BuildConfig.BASE_URL;
     private static final String NEW_BASE_URL = BuildConfig.NEW_BASE_URL;
+    private static final String SDK_BASE_URL = BuildConfig.SDK_BASE_URL;
 
     private MarhamVideoCallEndPoints apiService;
 
@@ -128,9 +131,69 @@ public class APIClient {
         apiService = retrofit.create(MarhamVideoCallEndPoints.class);
     }
 
-    private void setAuthHeader(Request.Builder builder, String token) {
-        if (token != null) //Add Auth token to each request if authorized
-            builder.header("Authorization", String.format("Bearer %s", token));
+    public APIClient(String sdk) {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.readTimeout(6000, TimeUnit.SECONDS);
+        httpClient.connectTimeout(6000, TimeUnit.SECONDS);
+//        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        httpClient.addInterceptor(logging); // <-- this is the important line!
+        httpClient.addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request = chain.request();
+
+                        //Build new request
+                        Request.Builder builder = request.newBuilder();
+                        builder.header("Accept", "application/json"); //if necessary, say to consume JSON
+
+                        String client = MarhamVideoCallHelper.getInstance().getClient();
+                        String API_KEY = MarhamVideoCallHelper.getInstance().getAPI_KEY();
+                        String authToken = MarhamVideoCallHelper.getInstance().getAuthToken();
+
+                        setAuthHeader(builder, client, API_KEY,authToken); //write current token to request
+
+                        request = builder.build(); //overwrite old request
+                        Response response = chain.proceed(request); //perform request, here original request will be executed
+                        if (response.code() == 401) { //if unauthorized
+                            synchronized (httpClient) { //perform all 401 in sync blocks, to avoid multiply token updates
+                                //get currently stored token
+
+                                setAuthHeader(builder, client, API_KEY,authToken);; //set auth token to updated
+                                request = builder.build();
+                                return chain.proceed(request); //repeat request with new token
+
+                            }
+                        }
+
+                        setAuthHeader(builder, client, API_KEY,authToken);
+                        return response;
+                    }
+                })
+                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(SDK_BASE_URL).addConverterFactory(GsonConverterFactory.create()).client(httpClient.build()).build();
+        apiService = retrofit.create(MarhamVideoCallEndPoints.class);
+    }
+
+    private void setAuthHeader(Request.Builder builder,String authToken) {
+        if (authToken != null) {//Add Auth token to each request if authorized
+            builder.header("Authorization", String.format("Bearer %s", authToken));
+        }
+    }
+
+    private void setAuthHeader(Request.Builder builder, String client, String API_KEY,String authToken) {
+
+        if(client !=null ){
+            builder.header("sdkclient", client);
+        }
+
+        if(API_KEY!=null){
+            builder.header("sdkclientkey", API_KEY);
+        }
+
+        if (authToken != null) {//Add Auth token to each request if authorized
+            builder.header("Authorization", String.format("Bearer %s", authToken));
+        }
     }
 
     public Call<DashboardDoctorServerResponse> getDashboardDoctos(HashMap<String, String> info) {
@@ -162,6 +225,10 @@ public class APIClient {
 
     public Call<BookConsultationServerResponse> bookOnlineConsultation(VideoConsultanceModel videoConsultanceModel) {
         return apiService.bookOnlineConsultation(videoConsultanceModel);
+    }
+
+    public Call<MarhamUserServerResponse> getUserDetails(HashMap<String, String> hashMap) {
+        return apiService.getUserDetails(hashMap);
     }
 
 }

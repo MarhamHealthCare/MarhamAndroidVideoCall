@@ -19,6 +19,7 @@ public class Diseases implements Parcelable {
 
     private String urduName;
 
+
     protected Diseases(Parcel in) {
         disease = in.readString();
         id = in.readString();

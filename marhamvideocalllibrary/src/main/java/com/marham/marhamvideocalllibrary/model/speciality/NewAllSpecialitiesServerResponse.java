@@ -2,7 +2,8 @@ package com.marham.marhamvideocalllibrary.model.speciality;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 
 @Keep
 public class NewAllSpecialitiesServerResponse extends ServerResponse {

@@ -15,9 +15,9 @@ import com.marham.marhamvideocalllibrary.activities.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorExperienceAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorReviewsAdapter;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.Hospital;
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorExperience;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorProfileGenericData;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
@@ -291,13 +291,15 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     }
 
     public void getDoctorDetails(String dlID) {
-        // TODO: ADD FCM Token and Logged In User Id.
+
 
         setViewsBeforeGettingDoctorsDetails();
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY, dlID);
         hashMap.put(AppConstants.API.API_KEYS.PAGE_KEY, "0");
+        // TODO: ADD Logged In User Id.
 //        hashMap.put(AppConstants.API.API_KEYS.LOGGED_IN_USER_ID_KEY, FileHelper.getInstance().getCurrentLoggedInUserId(context));
+        // TODO: ADD FCM Token.
 //        hashMap.put(AppConstants.API.API_KEYS.DEVICE_TOKEN_KEY, FileHelper.getInstance().getFCMtoken(context));
         hashMap.put(AppConstants.API.API_KEYS.DEVICE_TYPE_KEY, AppConstants.API.DEVICE_TYPE.ANDROID);
         hashMap.put(AppConstants.API.API_KEYS.LANGUAGE_KEY, AppConstants.API.LANGUAGE.ENGLISH);
@@ -311,10 +313,10 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSuccess(ServerResponse response) {
+    public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     setViewsAfterGettingDoctorsDetails();
                     extractDoctorsData((NewDoctorProfileServerResponse) response);
                 } else {
@@ -327,7 +329,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onFailure(ServerResponse response) {
+    public void onFailure(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS:
@@ -337,7 +339,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSessionExpiry(ServerResponse response) {
+    public void onSessionExpiry(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS:

@@ -19,9 +19,9 @@ import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.customviews.MyImageView;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.Hospital;
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotOfHospital;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotsOfHospitalContainer;
 import com.marham.marhamvideocalllibrary.model.hospital.Days;
@@ -82,7 +82,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
 
     private VideoConsultanceModel videoConsultanceModel;
 
-    private RetroFit2Callback<ServerResponse> retroFit2Callback;
+    private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 
     public static final int HOSPITAL_DAY_AND_DATE_ADAPTER = 0;
     public static final int HOSPITAL_TIME = 1;
@@ -440,8 +440,8 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         videoConsultanceModel = new VideoConsultanceModel();
         videoConsultanceModel.setLoggedInUserId(MarhamVideoCallHelper.getInstance().getUserId());
 
-        videoConsultanceModel.setPatientName(MarhamVideoCallHelper.getInstance().getName());
-        videoConsultanceModel.setPhone(MarhamVideoCallHelper.getInstance().getPhoneNumber());
+        videoConsultanceModel.setPatientName(MarhamVideoCallHelper.getInstance().getUserName());
+        videoConsultanceModel.setPhone(MarhamVideoCallHelper.getInstance().getUserPhoneNumber());
         videoConsultanceModel.setDate(date);
         videoConsultanceModel.setTime(selectedTime);
         videoConsultanceModel.setdId(doctorInfo.getDlID());
@@ -462,10 +462,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     }
 
     @Override
-    public void onSuccess(ServerResponse response) {
+    public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     if (isHospitalDaysAndTimeSlotsRequest) {
                         setViewsAfterCallingAPI();
                     } else {
@@ -487,7 +487,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 }
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     setViewsAfterCallingAPI();
                     MarhamUtils.getInstance().showAPIResponseMessage(this, "Appointment Booked");
                 } else {
@@ -500,7 +500,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     }
 
     @Override
-    public void onFailure(ServerResponse response) {
+    public void onFailure(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
                 MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
@@ -520,7 +520,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     }
 
     @Override
-    public void onSessionExpiry(ServerResponse response) {
+    public void onSessionExpiry(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
                 MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());

@@ -5,7 +5,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.AllDiseaseAdapter;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
@@ -24,7 +22,7 @@ import com.marham.marhamvideocalllibrary.customviews.BodyEditText;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.network.APIClient;
@@ -58,7 +56,7 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     private List<Diseases> allDiseasesArrayList = new ArrayList<>();
     private AllDiseaseAdapter allDiseaseAdapter;
 
-    private RetroFit2Callback<ServerResponse> retroFit2Callback;
+    private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,9 +197,8 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
 
     private void getTopDiseases() {
         setViewsBeforeGettingDiseasesData();
-        APIClient apiClient = new APIClient();
+        APIClient apiClient = new APIClient("sdk");
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
         Call<DashboardDiseasesServerResponse> call;
         call = apiClient.getDashboardSpecialitiesWithDiseases(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES);
@@ -210,14 +207,13 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSuccess(ServerResponse response) {
+    public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
+                if (dashboardDiseasesServerResponse.getSuccess().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingTopDiseasesData();
-                    DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
                     setDiseasesList(dashboardDiseasesServerResponse);
-
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingDiseasesData();
                 }
@@ -226,7 +222,7 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onFailure(ServerResponse response) {
+    public void onFailure(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
@@ -236,7 +232,7 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSessionExpiry(ServerResponse response) {
+    public void onSessionExpiry(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:

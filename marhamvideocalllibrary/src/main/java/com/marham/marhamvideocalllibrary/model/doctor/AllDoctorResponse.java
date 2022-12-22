@@ -2,10 +2,10 @@ package com.marham.marhamvideocalllibrary.model.doctor;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 
 @Keep
-public class AllDoctorResponse extends ServerResponse {
+public class AllDoctorResponse extends ServerResponseOld {
 
     private DoctorObjectWithCMD data;
 

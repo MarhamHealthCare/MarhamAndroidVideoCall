@@ -9,10 +9,8 @@ import androidx.annotation.NonNull;
 
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.viewHolders.doctor.BaseDoctorViewHolder;
-import com.marham.marhamvideocalllibrary.viewHolders.doctor.DoctorDashboardViewHolder;
-import com.marham.marhamvideocalllibrary.viewHolders.doctor.DoctorListingFilterViewHolder;
 import com.marham.marhamvideocalllibrary.viewHolders.doctor.DoctorListingViewHolder;
 
 import java.text.MessageFormat;

@@ -1,7 +1,6 @@
 package com.marham.marhamvideocalllibrary.adapters.doctor;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.utils.CircleTransform;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.viewHolders.doctor.BaseDoctorViewHolder;

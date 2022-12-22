@@ -2,8 +2,7 @@ package com.marham.marhamvideocalllibrary.model.doctor;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.Hospital;
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
 import com.marham.marhamvideocalllibrary.model.hospital.Days;
 
 import java.util.List;

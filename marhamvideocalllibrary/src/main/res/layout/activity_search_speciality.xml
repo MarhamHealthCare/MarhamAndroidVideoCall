@@ -164,7 +164,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.marham.marhamvideocalllibrary.customviews.BodyText
-        android:id="@+id/no_record_found_text_view"
+        android:id="@+id/specialities_no_record_found_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_record_found"

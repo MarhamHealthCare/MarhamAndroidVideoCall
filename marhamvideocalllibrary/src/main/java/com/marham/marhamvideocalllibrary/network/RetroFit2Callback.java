@@ -2,7 +2,7 @@ package com.marham.marhamvideocalllibrary.network;
 
 import android.content.Context;
 
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.utils.AppConstants;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +46,7 @@ public class RetroFit2Callback<T> implements Callback {
 
     private void returnErrorObject(Throwable throwable) {
 
-        ServerResponse errorResponse = new ServerResponse();
+        ServerResponseOld errorResponse = new ServerResponseOld();
         errorResponse.setRequestCode(requestCode);
 
         if (throwable instanceof IOException) {
@@ -69,7 +69,7 @@ public class RetroFit2Callback<T> implements Callback {
         }
 
         if (response.isSuccessful() && response.body() != null) {
-            ServerResponse callResponse = (ServerResponse) response.body();
+            ServerResponseOld callResponse = (ServerResponseOld) response.body();
             callResponse.setRequestCode(requestCode);
             listener.onSuccess(callResponse);
 

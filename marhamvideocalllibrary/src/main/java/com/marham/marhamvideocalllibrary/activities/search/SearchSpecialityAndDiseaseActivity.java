@@ -25,7 +25,7 @@ import com.marham.marhamvideocalllibrary.customviews.BodyEditText;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
@@ -70,7 +70,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     private List<Diseases> allDiseasesArrayList = new ArrayList<>();
     private AllDiseaseAdapter allDiseaseAdapter;
 
-    private RetroFit2Callback<ServerResponse> retroFit2Callback;
+    private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +78,17 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
         setContentView(R.layout.activity_search_speciality_and_disease);
         initializeViews();
         setListeners();
+        fetchData();
+    }
+
+    private void fetchData() {
         getTopSpecialities();
         getTopDiseases();
     }
 
     @Override
     public void onClick(View view) {
+        super.onClick(view);
         int viewId = view.getId();
         if (R.id.specialities_retry_button == viewId) {
             getTopSpecialities();
@@ -269,10 +274,9 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
 
     private void getTopSpecialities() {
         setViewsBeforeGettingSpecialitiesData();
-        APIClient apiClient = new APIClient();
+        APIClient apiClient = new APIClient("sdk");
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
-        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
+        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "0");
         Call<NewAllSpecialitiesServerResponse> call = apiClient.getSpecialities(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES);
         call.enqueue(retroFit2Callback);
@@ -280,9 +284,9 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
 
     private void getTopDiseases() {
         setViewsBeforeGettingDiseasesData();
-        APIClient apiClient = new APIClient();
+        APIClient apiClient = new APIClient("sdk");
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
+        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "0");
         Call<DashboardDiseasesServerResponse> call;
         call = apiClient.getDashboardSpecialitiesWithDiseases(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES);
@@ -291,12 +295,12 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     }
 
     @Override
-    public void onSuccess(ServerResponse response) {
+    public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
+                if (newAllSpecialitiesServerResponse.getSuccess().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingSpecialitiesData();
-                    NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
                     setSpecialitiesList(newAllSpecialitiesServerResponse);
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingSpecialitiesData();
@@ -304,9 +308,9 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
                 break;
 
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_DISEASES:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
+                if (dashboardDiseasesServerResponse.getSuccess().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingTopDiseasesData();
-                    DashboardDiseasesServerResponse dashboardDiseasesServerResponse = (DashboardDiseasesServerResponse) response;
                     setDiseasesList(dashboardDiseasesServerResponse);
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingDiseasesData();
@@ -317,7 +321,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     }
 
     @Override
-    public void onFailure(ServerResponse response) {
+    public void onFailure(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
@@ -332,7 +336,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     }
 
     @Override
-    public void onSessionExpiry(ServerResponse response) {
+    public void onSessionExpiry(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:

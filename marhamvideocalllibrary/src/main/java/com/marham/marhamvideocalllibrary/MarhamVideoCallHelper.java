@@ -6,21 +6,28 @@ import android.content.Intent;
 import androidx.annotation.Keep;
 
 import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
+import com.marham.marhamvideocalllibrary.model.user.MarhamUser;
 
 @Keep
 public class MarhamVideoCallHelper {
 
+    private String client;
     private String API_KEY;
-    private String fireBaseToken = "fRHe-d--TkqGplJG_tgPJP:APA91bE9v2J6hop0mcaVx7wLYzT7n1iQRtTlNBaw-wxoEk9Wo4VvAlsnx0FJYYPEM8-q8CibWuo7Lpz4CczqalmSOKUsxS-mqQ4yDc4u-ZT5zg9fCuev56SYfRcq53Tt1tH94VHvHrhe";
-    private String phoneNumber;
-    private String name;
-    private String userId = "140060";
+    private String fireBaseToken;
+    private String userPhoneNumber;
+    private String userName;
+    private MarhamUser marhamUser;
 
     private static MarhamVideoCallHelper utils;
 
     public static MarhamVideoCallHelper getInstance() {
         if (utils == null) return utils = new MarhamVideoCallHelper();
         else return utils;
+    }
+
+    public MarhamVideoCallHelper setClient(String client) {
+        this.client = client;
+        return this;
     }
 
     public MarhamVideoCallHelper setAPIKEY(String API_KEY) {
@@ -33,19 +40,14 @@ public class MarhamVideoCallHelper {
         return this;
     }
 
-    public MarhamVideoCallHelper setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public MarhamVideoCallHelper setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
         return this;
     }
 
-    public MarhamVideoCallHelper setName(String name) {
-        this.name = name;
+    public MarhamVideoCallHelper setUserName(String userName) {
+        this.userName = userName;
         return this;
-    }
-
-    public void launchBookingFlow(Context context) {
-        Intent intent = new Intent(context, MarhamDashboardActivity.class);
-        context.startActivity(intent);
     }
 
     public String getAPI_KEY() {
@@ -56,15 +58,41 @@ public class MarhamVideoCallHelper {
         return fireBaseToken;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+
+    public String getAuthToken() {
+        if (marhamUser != null) {
+            return marhamUser.getToken();
+        }else{
+            return "";
+        }
+    }
+
+    public MarhamUser getMarhamUser() {
+        return marhamUser;
+    }
+
+    public void setMarhamUser(MarhamUser marhamUser) {
+        this.marhamUser = marhamUser;
+    }
+
+    public void launchBookingFlow(Context context) {
+        Intent intent = new Intent(context, MarhamDashboardActivity.class);
+        context.startActivity(intent);
     }
 
     public String getUserId() {
-        return userId;
+        return marhamUser.getId();
     }
 }

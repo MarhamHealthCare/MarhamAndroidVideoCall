@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 
 import java.io.Serializable;
 import java.util.ArrayList;

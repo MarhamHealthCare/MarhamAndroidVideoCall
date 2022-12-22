@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.BaseActivity;
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.BaseDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorFiltersAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorListingAdapter;
@@ -21,8 +20,8 @@ import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.listeners.EndlessRecyclerOnScrollListener;
-import com.marham.marhamvideocalllibrary.model.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.ServerResponse;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.filter.DoctorListingFilter;
@@ -36,7 +35,6 @@ import com.marham.marhamvideocalllibrary.utils.AppConstants;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.SortedMap;
 
 import retrofit2.Call;
 
@@ -55,7 +53,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     private ProgressBar doctorsProgressBar;
     private BodyText doctorsNoRecordFoundTextView;
 
-    private RetroFit2Callback<ServerResponse> retroFit2Callback;
+    private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 
     private Speciality speciality;
     private Diseases diseases;
@@ -342,11 +340,11 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSuccess(ServerResponse response) {
+    public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
                 // TODO: replace with new filters API
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     setViewsAfterGettingDoctorListingFilters();
                     NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
 //                    doctorInfoList.clear();
@@ -359,7 +357,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
                 isCallInProgress = false;
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     AllDoctorResponse allDoctorResponse = (AllDoctorResponse) response;
                     doctorInfoList.addAll(allDoctorResponse.getData().getDoctors());
                     if(doctorInfoList.size()>0) {
@@ -389,7 +387,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onFailure(ServerResponse response) {
+    public void onFailure(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
@@ -404,7 +402,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     }
 
     @Override
-    public void onSessionExpiry(ServerResponse response) {
+    public void onSessionExpiry(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:

@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.model;
+package com.marham.marhamvideocalllibrary.model.hospital;
 
 import android.os.Parcel;
 import android.os.Parcelable;

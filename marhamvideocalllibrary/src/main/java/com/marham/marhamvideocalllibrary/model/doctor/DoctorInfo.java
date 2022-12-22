@@ -1,9 +1,11 @@
-package com.marham.marhamvideocalllibrary.model;
+package com.marham.marhamvideocalllibrary.model.doctor;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.Keep;
+
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
 
 import java.util.List;
 @Keep

@@ -11,7 +11,17 @@
         android:id="@+id/top_bar"
         layout="@layout/layout_top_bar" />
 
+    <include
+        android:id="@+id/retry_button_container"
+        layout="@layout/layout_retry_button" />
+
+    <include
+        android:id="@+id/progress_bar_container"
+        layout="@layout/layout_progress_bar" />
+
+
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
 
@@ -164,6 +174,7 @@
                     android:id="@+id/dashboard_doctors_retry_button"
                     android:layout_width="@dimen/forty"
                     android:layout_height="@dimen/forty"
+                    android:backgroundTint="@color/colorPrimary"
                     android:background="@drawable/try_again_icon_grey_vector"
                     app:layout_constraintBottom_toBottomOf="@id/dashboard_doctor_views_container"
                     app:layout_constraintEnd_toEndOf="@id/dashboard_doctor_views_container"
@@ -209,6 +220,7 @@
                     android:id="@+id/top_diseases_retry_button"
                     android:layout_width="@dimen/forty"
                     android:layout_height="@dimen/forty"
+                    android:backgroundTint="@color/colorPrimary"
                     android:background="@drawable/try_again_icon_grey_vector"
                     app:layout_constraintBottom_toBottomOf="@id/top_diseases_recycler_view"
                     app:layout_constraintEnd_toEndOf="@id/top_diseases_recycler_view"
@@ -298,6 +310,7 @@
                     android:id="@+id/top_specialities_retry_button"
                     android:layout_width="@dimen/forty"
                     android:layout_height="@dimen/forty"
+                    android:backgroundTint="@color/colorPrimary"
                     android:background="@drawable/try_again_icon_grey_vector"
                     app:layout_constraintBottom_toBottomOf="@id/top_specialities_recycler_view"
                     app:layout_constraintEnd_toEndOf="@id/top_specialities_recycler_view"
