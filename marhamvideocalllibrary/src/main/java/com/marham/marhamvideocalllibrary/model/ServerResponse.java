@@ -9,7 +9,6 @@ import okhttp3.internal.http2.Header;
 @Keep
 public class ServerResponse {
 
-
     private List<Header> headerList;
     private int requestCode;
     private String return_status;

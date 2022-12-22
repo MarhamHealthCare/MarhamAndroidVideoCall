@@ -44,5 +44,6 @@
     <dimen name="point_five_dp">0.5dp</dimen>
     <dimen name="forty_eight">48dp</dimen>
     <dimen name="eight">8dp</dimen>
+    <dimen name="three_hundred">300dp</dimen>
 
 </resources>

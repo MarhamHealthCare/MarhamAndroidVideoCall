@@ -4,6 +4,9 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".activities.search.SearchSpecialityAndDiseaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.doctor.BookVideoConsultationActivity"
             android:exported="false" />
         <activity

@@ -10,6 +10,8 @@ import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerRespo
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -154,13 +156,12 @@ public class APIClient {
         return apiService.getDoctorDetail(hashMap);
     }
 
-//    public Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(String hospitalID, String date, String loggedInUserId, String token, String deviceType, String hospitalType, String dID, String isVariation, String inHouseDoctorRequest) {
-//        return apiService.getHospitalAvailableDaysAndDates(hospitalID, date, loggedInUserId, token, deviceType, hospitalType, dID, isVariation, inHouseDoctorRequest);
-//    }
-
     public Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(String hospitalID, String date, String loggedInUserId, String token, String deviceType, String hospitalType, String dID, String language, String inHouseDoctorRequest) {
         return apiService.appointmentDateAndTime(hospitalID, date, loggedInUserId, token, deviceType, hospitalType, dID, language, inHouseDoctorRequest);
     }
 
+    public Call<BookConsultationServerResponse> bookOnlineConsultation(VideoConsultanceModel videoConsultanceModel) {
+        return apiService.bookOnlineConsultation(videoConsultanceModel);
+    }
 
 }

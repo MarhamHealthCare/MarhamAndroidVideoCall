@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.open_marham_app_button) {
-            MarhamVideoCallHelper.getInstance().setAPIKEY("").setFirebaseToken("").setPhoneNumber("+923334794867").setName("Wazzah");
+            MarhamVideoCallHelper.getInstance().setAPIKEY("").setFirebaseToken("").setPhoneNumber("+92317414123").setName("Fatima Fayyaz");
             MarhamVideoCallHelper.getInstance().launchBookingFlow(this);
         }
     }

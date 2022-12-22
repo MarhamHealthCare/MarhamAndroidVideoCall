@@ -35,6 +35,7 @@ public class AppConstants {
             public static final int GET_VC_DOCTORS_LISTING = 6;
             public static final int GET_DOCTORS_DETAILS = 7;
             public static final int GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES = 8;
+            public static final int BOOK_ONLINE_CONSULTATION = 9;
         }
 
         public static class API_ERROR_MESSAGE {
@@ -49,5 +50,9 @@ public class AppConstants {
         public static class LANGUAGE{
             public static final String ENGLISH = "en";
         }
+    }
+
+    public static class PROGRAM_ID{
+        public static final String ONLINE_CONSULTATION = "4";
     }
 }

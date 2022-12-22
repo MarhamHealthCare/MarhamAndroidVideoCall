@@ -197,7 +197,7 @@ public class SearchDiseaseActivity extends BaseActivity implements ServerConnect
     };
 
 
-    public void getTopDiseases() {
+    private void getTopDiseases() {
         setViewsBeforeGettingDiseasesData();
         APIClient apiClient = new APIClient();
         HashMap<String, String> hashMap = new HashMap<>();

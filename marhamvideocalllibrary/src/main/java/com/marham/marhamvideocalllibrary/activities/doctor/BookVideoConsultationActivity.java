@@ -26,6 +26,8 @@ import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotOfHospital;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotsOfHospitalContainer;
 import com.marham.marhamvideocalllibrary.model.hospital.Days;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
 import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
@@ -66,9 +68,9 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     private DoctorInfo doctorInfo;
     private Hospital hospital;
     private TimeSlotsOfHospitalContainer timeSlotsOfHospitalContainer;
-    private String selectedDate="";
-    private String selectedDay="";
-    private String selectedTime="";
+    private String selectedDate = "";
+    private String selectedDay = "";
+    private String selectedTime = "";
 
     private List<Days> daysList = new ArrayList<>();
     boolean isHospitalDaysAndTimeSlotsRequest = true;
@@ -77,6 +79,8 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     private List<TimeSlotOfHospital> firstSlots = new ArrayList<>();
     private List<TimeSlotOfHospital> secondSlots = new ArrayList<>();
     private List<TimeSlotOfHospital> thirdSlots = new ArrayList<>();
+
+    private VideoConsultanceModel videoConsultanceModel;
 
     private RetroFit2Callback<ServerResponse> retroFit2Callback;
 
@@ -98,7 +102,9 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         super.onClick(view);
         int viewId = view.getId();
         if (R.id.confirm_booking_button == viewId) {
-            hasUserEnteredRequiredInformation();
+            if(hasUserEnteredRequiredInformation()){
+                bookOnlineConsultation(selectedDate);
+            }
         }
     }
 
@@ -131,7 +137,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
 
     }
 
-    private void setListeners(){
+    private void setListeners() {
         confirmBookingButton.setOnClickListener(this);
     }
 
@@ -387,23 +393,23 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         }
     }
 
-    private void setDateTimeAndDayTextView(){
+    private void setDateTimeAndDayTextView() {
         dateTimeDayTextView.setText(String.format("%s %s (%s)", selectedDate, selectedTime, selectedDay));
     }
 
-    private boolean hasUserEnteredRequiredInformation(){
+    private boolean hasUserEnteredRequiredInformation() {
         boolean areFieldsValid;
-        if (selectedDate.equals("") && selectedTime.equals("")){
-            MarhamUtils.getInstance().showMessage(this,"Plese select Date and Time",Toast.LENGTH_LONG);
+        if (selectedDate.equals("") && selectedTime.equals("")) {
+            MarhamUtils.getInstance().showMessage(this, "Plese select Date and Time", Toast.LENGTH_LONG);
             areFieldsValid = false;
-        }else if(selectedDate.equals("")){
-            MarhamUtils.getInstance().showMessage(this,"Plese select Date",Toast.LENGTH_LONG);
+        } else if (selectedDate.equals("")) {
+            MarhamUtils.getInstance().showMessage(this, "Plese select Date", Toast.LENGTH_LONG);
             areFieldsValid = false;
-        }else if(selectedTime.equals("")){
-            MarhamUtils.getInstance().showMessage(this,"Plese select Time",Toast.LENGTH_LONG);
+        } else if (selectedTime.equals("")) {
+            MarhamUtils.getInstance().showMessage(this, "Plese select Time", Toast.LENGTH_LONG);
             areFieldsValid = false;
-        }else {
-            MarhamUtils.getInstance().showMessage(this,"Booking Appointment",Toast.LENGTH_LONG);
+        } else {
+            MarhamUtils.getInstance().showMessage(this, "Booking Appointment", Toast.LENGTH_LONG);
             areFieldsValid = true;
         }
         return areFieldsValid;
@@ -426,6 +432,32 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         call = apiClient.getHospitalAvailableDaysAndDates(hospitalID, date, loggedInUserId, fireBaseToken, deviceType, AppConstants.HOSPITAL_TYPE.IN_CLINIC, doctorInfo.getDlID(), "en", "0");
 
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES);
+        call.enqueue(retroFit2Callback);
+    }
+
+    public void bookOnlineConsultation( String date) {
+        setViewsBeforeCallingAPI();
+        videoConsultanceModel = new VideoConsultanceModel();
+        videoConsultanceModel.setLoggedInUserId(MarhamVideoCallHelper.getInstance().getUserId());
+
+        videoConsultanceModel.setPatientName(MarhamVideoCallHelper.getInstance().getName());
+        videoConsultanceModel.setPhone(MarhamVideoCallHelper.getInstance().getPhoneNumber());
+        videoConsultanceModel.setDate(date);
+        videoConsultanceModel.setTime(selectedTime);
+        videoConsultanceModel.setdId(doctorInfo.getDlID());
+        videoConsultanceModel.setSpId(doctorInfo.getSubspID());
+        videoConsultanceModel.setDocFee(doctorInfo.getDocFee());
+        videoConsultanceModel.setAgreedForBooking("1");
+        videoConsultanceModel.setUserId(MarhamVideoCallHelper.getInstance().getUserId());
+
+        videoConsultanceModel.setIsCallMyDoctor("");
+
+        videoConsultanceModel.setPromoCode("");
+        videoConsultanceModel.setProgramId(AppConstants.PROGRAM_ID.ONLINE_CONSULTATION);
+
+        APIClient apiClient = new APIClient();
+        Call<BookConsultationServerResponse> call = apiClient.bookOnlineConsultation(videoConsultanceModel);
+        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION);
         call.enqueue(retroFit2Callback);
     }
 
@@ -454,6 +486,15 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                     MarhamUtils.getInstance().showAPIResponseMessage(this, doctorInfo.getDocName() + " is not available now please choose another doctor.\nThank you");
                 }
                 break;
+            case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                    setViewsAfterCallingAPI();
+                    MarhamUtils.getInstance().showAPIResponseMessage(this, "Appointment Booked");
+                } else {
+                    setViewsIncaseNoRecordFoundWhileCallingAPI();
+                    MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
+                }
+                break;
         }
 
     }
@@ -469,7 +510,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 } else {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTimeSlots();
                 }
-
+                break;
+            case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
+                MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileCallingAPI();
                 break;
         }
 
@@ -486,6 +530,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 } else {
                     setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingTimeSlots();
                 }
+                break;
+            case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
+                MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
+                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileCallingAPI();
                 break;
         }
 

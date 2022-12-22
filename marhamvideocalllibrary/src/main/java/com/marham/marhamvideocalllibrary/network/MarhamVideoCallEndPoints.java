@@ -8,10 +8,13 @@ import com.marham.marhamvideocalllibrary.model.doctor.DoctorListingFiltersServer
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 
 import java.util.HashMap;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -47,13 +50,11 @@ public interface MarhamVideoCallEndPoints {
     @POST("index.php?action=doctorDetail")
     Call<NewDoctorProfileServerResponse> getDoctorDetail(@FieldMap HashMap<String, String> hashMap);
 
-//    @FormUrlEncoded
-//    @POST("index.php?action=get-doctor-hospital-available-days-and-slots")
-//    Call<HospitalAvailableDaysAndDateServerResponse> getHospitalAvailableDaysAndDates(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("variation") String variation, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
-
-
     @FormUrlEncoded
     @POST("index.php?action=get-doctor-hospital-available-days-and-slots")
     Call<HospitalAvailableDaysAndDateServerResponse> appointmentDateAndTime(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("language") String language, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
+
+    @POST("index.php?action=book-online-consultation")
+    Call<BookConsultationServerResponse> bookOnlineConsultation(@Body VideoConsultanceModel videoConsultanceModel);
 
 }
