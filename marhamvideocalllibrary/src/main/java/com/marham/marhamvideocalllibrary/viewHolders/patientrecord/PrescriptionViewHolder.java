@@ -3,25 +3,25 @@ package com.marham.marhamvideocalllibrary.viewHolders.patientrecord;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.R;
+import com.marham.marhamvideocalllibrary.activities.patientrecord.PrescriptionActivity;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.listeners.AdpaterViewItemClickedListenerForPrescription;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public ConstraintLayout parentLayout;
     public ImageButton backButton;
     public BodyText headingTextview;
-    public RelativeLayout noRecordLayout;
-    public RelativeLayout layoutProgressBar;
+    //    public RelativeLayout noRecordLayout;
+//    public RelativeLayout layoutProgressBar;
     public BodyText doctorNameField;
     public BodyText followUpTime;
     public BodyText doctorSpeciality;
@@ -71,8 +71,8 @@ public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements V
     private void initViews(View itemView) {
         doctorImageView = itemView.findViewById(R.id.doctor_image_view);
         parentLayout = itemView.findViewById(R.id.parent_layout);
-        noRecordLayout = itemView.findViewById(R.id.no_record_layout);
-        layoutProgressBar = itemView.findViewById(R.id.progress_bar_layout);
+//        noRecordLayout = itemView.findViewById(R.id.no_record_layout);
+//        layoutProgressBar = itemView.findViewById(R.id.progress_bar_layout);
         backButton = itemView.findViewById(R.id.back_button);
         headingTextview = itemView.findViewById(R.id.heading_textview);
         followUpTextView = itemView.findViewById(R.id.follow_up_text_view);
@@ -117,15 +117,15 @@ public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements V
         return headingTextview;
     }
 
-    public RelativeLayout getNoRecordLayout() {
-        return noRecordLayout;
-    }
+//    public RelativeLayout getNoRecordLayout() {
+//        return noRecordLayout;
+//    }
+//
+//    public RelativeLayout getLayoutProgressBar() {
+//        return layoutProgressBar;
+//    }
 
-    public RelativeLayout getLayoutProgressBar() {
-        return layoutProgressBar;
-    }
-
-    public BodyTextBold getDoctorNameField() {
+    public BodyText getDoctorNameField() {
         return doctorNameField;
     }
 
@@ -141,7 +141,7 @@ public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements V
         return doctorDegree;
     }
 
-    public BodyTextBold getPatientName() {
+    public BodyText getPatientName() {
         return patientName;
     }
 
@@ -194,22 +194,18 @@ public class PrescriptionViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.parent_layout:
-                adpaterViewItemClickedListenerForPrescription.onItemClicked(getAdapterPosition(), AppConstants.PRESCRIPTION_CARD, "0");
-                break;
+    public void onClick(View view) {
+        int viewId = view.getId();
 
-            case R.id.share_prescription_views_container:
-                adpaterViewItemClickedListenerForPrescription.onItemClicked(parentLayout, getAdapterPosition(), AppConstants.SHARE_PRESCRIPTION);
-                break;
-
-
-            case R.id.save_prescription_views_container:
-                adpaterViewItemClickedListenerForPrescription.onItemClicked(parentLayout, getAdapterPosition(), AppConstants.SAVE_PRESCRIPTION);
-                break;
+        if (viewId == R.id.parent_layout) {
+            adpaterViewItemClickedListenerForPrescription.onItemClicked(getAdapterPosition(), PrescriptionActivity.PRESCRIPTION_CARD, "0");
+        } else if (viewId == R.id.share_prescription_views_container) {
+            adpaterViewItemClickedListenerForPrescription.onItemClicked(parentLayout, getAdapterPosition(), PrescriptionActivity.SHARE_PRESCRIPTION);
+        } else if (viewId == R.id.save_prescription_views_container) {
+            adpaterViewItemClickedListenerForPrescription.onItemClicked(parentLayout, getAdapterPosition(), PrescriptionActivity.SAVE_PRESCRIPTION);
         }
     }
-
-
 }
+
+
+

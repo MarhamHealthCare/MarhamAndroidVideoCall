@@ -29,6 +29,10 @@ public class AppConstants {
             public static final String LANGUAGE_KEY = "language";
             public static final String USER_NAME = "user_name";
             public static final String USER_PHONE = "user_phone";
+            public static final String PATIENT_ID_KEY = "patientId";
+            public static final String DOCTOR_ID_KEY_2 = "doctorId";
+            public static final String APPOINTMENT_ID_KEY= "appointmentId";
+
         }
 
         public static class API_END_POINT_NUMBER {
@@ -42,6 +46,7 @@ public class AppConstants {
             public static final int GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES = 8;
             public static final int BOOK_ONLINE_CONSULTATION = 9;
             public static final int GET_USER_DETAILS = 10;
+            public static final int GET_PATIENT_PRESCRIPTIONS = 11;
         }
 
         public static class API_ERROR_MESSAGE {
@@ -64,5 +69,7 @@ public class AppConstants {
 
     public static class PERMISSIONS{
         public static final String CAMERA_REQUEST = "1";
+        public static final String PERMISSION_ALLOWED = "1";
+        public static final String PERMISSION_NOT_ALLOWED = "0";
     }
 }

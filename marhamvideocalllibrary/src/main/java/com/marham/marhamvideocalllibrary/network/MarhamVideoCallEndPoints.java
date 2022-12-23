@@ -6,6 +6,7 @@ import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
+import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistoryResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
@@ -58,5 +59,9 @@ public interface MarhamVideoCallEndPoints {
     @FormUrlEncoded
     @POST("user")
     Call<MarhamUserServerResponse> getUserDetails(@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("index.php?action=get-patient-new-record-history")
+    Call<PatientHistoryResponse> getPastPrescription(@FieldMap HashMap<String, String> hashMap);
 
 }

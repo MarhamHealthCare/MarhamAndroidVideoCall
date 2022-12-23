@@ -18,6 +18,7 @@ import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorProfileActivity;
+import com.marham.marhamvideocalllibrary.activities.patientrecord.PrescriptionActivity;
 import com.marham.marhamvideocalllibrary.activities.search.SearchSpecialityAndDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
@@ -106,6 +107,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
             MarhamUtils.getInstance().startActivity(this, SearchSpecialityAndDiseaseActivity.class, false);
         } else if (R.id.my_appointments_views_container == viewId) {
             Toast.makeText(this, "My Appointments", Toast.LENGTH_SHORT).show();
+            MarhamUtils.getInstance().startActivity(this, PrescriptionActivity.class, false);
         } else if(R.id.retry_button== viewId){
             getUserDetails();
         }else if (R.id.dashboard_doctors_retry_button == viewId) {

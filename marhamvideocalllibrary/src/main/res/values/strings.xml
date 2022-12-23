@@ -48,4 +48,9 @@
     <string name="date">Date</string>
     <string name="share">Share</string>
     <string name="save">Save</string>
+    <string name="msg_on_camera_permission_denied">You have denied to permission to access camera, to provide permission click on Settings button.</string>
+    <string name="microphone">Microphone</string>
+    <string name="camera">Camera</string>
+    <string name="notification">Notification</string>
+    <string name="msg_on_storage_permission_denied">You have denied to permission to access gallery, to provide permission click on Settings button.</string>
 </resources>

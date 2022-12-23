@@ -32,6 +32,8 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     public static final int RECENTLY_SEARCHED_SPECIALITIES = 201;
     public static final int ALL_SPECIALITIES = 202;
 
+    private boolean showAll = true;
+
     public BaseSpecialitiesAdapter(Context context, List<Speciality> specialityList, AdapterViewItemClickedListener listener) {
         this.context = context;
         this.specialityList = specialityList;
@@ -66,7 +68,15 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
 
     @Override
     public int getItemCount() {
-        return filteredSpecialityList.size();
+        if(showAll) {
+            return filteredSpecialityList.size();
+        }else {
+            if(filteredSpecialityList.size()>=8){
+                return 8;
+            }else{
+                return filteredSpecialityList.size();
+            }
+        }
     }
 
     @Override
@@ -105,4 +115,11 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     }
 
 
+    public boolean isShowAll() {
+        return showAll;
+    }
+
+    public void setShowAll(boolean showAll) {
+        this.showAll = showAll;
+    }
 }

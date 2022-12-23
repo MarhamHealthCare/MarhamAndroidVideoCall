@@ -51,6 +51,8 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     private ConstraintLayout allSpecialitiesViewsContainer;
     private RecyclerView allSpecialitiesRecyclerView;
 
+    private ConstraintLayout viewAllSpecialitiesViewsContainer;
+
     private MyButton specialitiesRetryButton;
     private ProgressBar specialitiesProgressBar;
     private BodyText specialitiesNoRecordFoundTextView;
@@ -94,6 +96,10 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
             getTopSpecialities();
         }else if(R.id.diseases_retry_button == viewId){
             getTopDiseases();
+        }else if(R.id.view_all_specialities_views_container == viewId){
+            viewAllSpecialitiesViewsContainer.setVisibility(View.GONE);
+            allSpecialitiesAdapter.setShowAll(true);
+            allSpecialitiesAdapter.notifyDataSetChanged();
         }
     }
 
@@ -107,6 +113,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
 
         allSpecialitiesViewsContainer = findViewById(R.id.all_specialities_views_container);
         allSpecialitiesRecyclerView = findViewById(R.id.all_specialities_recycler_view);
+        viewAllSpecialitiesViewsContainer = findViewById(R.id.view_all_specialities_views_container);
 
         specialitiesRetryButton = findViewById(R.id.specialities_retry_button);
         specialitiesProgressBar = findViewById(R.id.specialities_progress_bar);
@@ -125,6 +132,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
     private void setListeners() {
         specialitiesRetryButton.setOnClickListener(this);
         diseasesRetryButton.setOnClickListener(this);
+        viewAllSpecialitiesViewsContainer.setOnClickListener(this);
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -158,6 +166,7 @@ public class SearchSpecialityAndDiseaseActivity extends BaseActivity implements 
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         allSpecialitiesRecyclerView.setLayoutManager(gridLayoutManager);
         allSpecialitiesAdapter = new AllSpecialitiesAdapter(this, specialityList, adpaterViewItemClickedListener);
+        allSpecialitiesAdapter.setShowAll(false);
         allSpecialitiesRecyclerView.setAdapter(allSpecialitiesAdapter);
     }
 

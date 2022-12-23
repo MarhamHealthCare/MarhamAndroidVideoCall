@@ -9,6 +9,7 @@ import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
+import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistoryResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
@@ -229,6 +230,10 @@ public class APIClient {
 
     public Call<MarhamUserServerResponse> getUserDetails(HashMap<String, String> hashMap) {
         return apiService.getUserDetails(hashMap);
+    }
+
+    public Call<PatientHistoryResponse> getPastPrescription(HashMap<String, String> hashMap) {
+        return apiService.getPastPrescription(hashMap);
     }
 
 }
