@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/fifteen"
+    android:layout_marginEnd="@dimen/fifteen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="@dimen/fifteen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent_layout"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dr_info_views_container"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/zero"
+                android:visibility="visible"
+
+                app:cardCornerRadius="@dimen/five"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/round_corner_light_blue_and_white_gradient_vertical"
+                    android:layout_height="match_parent">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/doctor_image_view"
+                        android:layout_width="@dimen/fifty"
+                        android:layout_height="@dimen/fifty"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/thirty"
+                        android:layout_marginBottom="@dimen/thirty"
+                        android:src="@drawable/m_doctor_placholder"
+                        app:layout_constraintBottom_toBottomOf="parent"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/doctor_name_field"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/ten"
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:gravity="start"
+
+                        android:text="@string/doctor_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/forteen_text_size"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/doctor_speciality"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/doctor_image_view" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/doctor_speciality"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:text="@string/speciality"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintBottom_toBottomOf="@id/doctor_image_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/doctor_image_view"
+                        app:layout_constraintTop_toBottomOf="@+id/doctor_name_field"
+                        app:layout_constraintTop_toTopOf="@+id/doctor_image_view" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/doctor_degree"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:text="degree"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/doctor_image_view"
+                        app:layout_constraintTop_toBottomOf="@+id/doctor_speciality" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/patient_detail_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginTop="@dimen/fifteen"
+                android:text="@string/patient_details"
+                android:textColor="@color/marham_blue"
+                android:textSize="@dimen/forteen_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dr_info_views_container" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/patient_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/five"
+                android:layout_marginTop="@dimen/three"
+                android:text="@string/patient_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patient_detail_textview" />
+
+            <View
+                android:id="@+id/line_view_1"
+                android:layout_width="@dimen/one"
+                android:layout_height="@dimen/ten"
+                android:layout_marginStart="@dimen/five"
+                android:background="@color/black"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/patient_name"
+                app:layout_constraintStart_toEndOf="@+id/patient_name"
+                app:layout_constraintTop_toTopOf="@+id/patient_name" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/gender_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/three"
+                android:layout_marginTop="@dimen/three"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen_text_size"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/line_view_1"
+
+                app:layout_constraintTop_toBottomOf="@+id/patient_detail_textview" />
+
+            <View
+                android:id="@+id/line_view_2"
+                android:layout_width="@dimen/one"
+                android:layout_height="@dimen/ten"
+                android:layout_marginStart="@dimen/five"
+                android:background="@color/black"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/patient_name"
+                app:layout_constraintStart_toEndOf="@+id/gender_text_view"
+                app:layout_constraintTop_toTopOf="@+id/patient_name" />
+
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/age_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/three"
+                android:layout_marginTop="@dimen/three"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/thirteen_text_size"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/line_view_2"
+
+                app:layout_constraintTop_toBottomOf="@+id/patient_detail_textview" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/prescription_sub_views_container"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty"
+                app:cardCornerRadius="@dimen/ten"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@+id/patient_name">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/twenty">
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/prescription_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:text="@string/prescription"
+                        android:textColor="@color/black"
+
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                        android:id="@+id/marham_logo"
+                        android:layout_width="@dimen/hundred_ten"
+                        android:layout_height="@dimen/twenty_five"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:layout_marginEnd="@dimen/fifteen"
+                      android:visibility="invisible"
+                        android:text="@string/prescription"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/tests_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/thirty"
+                        android:text="Tests"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prescription_text_view" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/tests_field"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tests_text_view" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/medicines_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="Medicines"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tests_field" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/medicines_field"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/medicines_text_view" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/instructions_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="Instructions"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/medicines_field" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/instructions_field"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/three"
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/instructions_text_view" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/prescriptions_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/twelve"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="@string/prescriptions"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/instructions_field" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/written_prescription_recyclerview"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/ten"
+                        android:layout_marginTop="@dimen/five"
+                        android:layout_marginEnd="@dimen/ten"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prescriptions_text_view" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/follow_up_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="Follow-up"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/written_prescription_recyclerview" />
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/follow_up_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+                        android:layout_marginTop="@dimen/three"
+                        android:text="@string/dash"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/follow_up_text_view" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.BodyText
+                        android:id="@+id/follow_up_field"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fifteen"
+
+                        android:layout_marginEnd="@dimen/fifteen"
+                        android:layout_marginBottom="@dimen/ten"
+                        android:text="@string/dash"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/thirteen_text_size"
+                        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/follow_up_time" />
+
+
+                    <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                        android:layout_width="@dimen/two_hundred"
+                        android:layout_height="@dimen/two_hundred"
+                        android:alpha="0.1"
+                        android:id="@+id/client_logo"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/bottom_layout"
+                        android:layout_width="@dimen/zero"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five"
+                        app:layout_constraintTop_toBottomOf="@+id/follow_up_field"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.marham.marhamvideocalllibrary.customviews.BodyText
+                            android:id="@+id/doctor_name_text_view_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/fifteen"
+                            android:text="@string/doctor_name"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/thirteen_text_size"
+                            android:textStyle="bold"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.marham.marhamvideocalllibrary.customviews.BodyText
+                            android:id="@+id/consultation_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_text_size"
+                            app:layout_constraintEnd_toEndOf="@+id/doctor_name_text_view_2"
+                            app:layout_constraintTop_toBottomOf="@+id/doctor_name_text_view_2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/share_prescription_views_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginEnd="@dimen/ten"
+            android:layout_marginBottom="@dimen/forty"
+            android:padding="@dimen/ten"
+
+            app:layout_constraintRight_toLeftOf="@+id/line_view_3"
+            app:layout_constraintTop_toBottomOf="@+id/parent_layout">
+
+            <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                android:id="@+id/share_icon"
+                android:layout_width="@dimen/fifteen"
+                android:layout_height="@dimen/fifteen"
+                android:background="@drawable/share_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/share_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ten"
+                android:text="@string/share"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/forteen_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/share_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/line_view_3"
+            android:layout_width="@dimen/one"
+            android:layout_height="@dimen/ten"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parent_layout" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/save_prescription_views_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:layout_marginEnd="@dimen/ten"
+            android:layout_marginBottom="@dimen/forty"
+            android:padding="@dimen/ten"
+            app:layout_constraintLeft_toRightOf="@+id/line_view_3"
+            app:layout_constraintTop_toBottomOf="@+id/parent_layout">
+
+            <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                android:id="@+id/save_icon"
+                android:layout_width="@dimen/twelve"
+                android:layout_height="@dimen/fifteen"
+                android:background="@drawable/download_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/save_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/ten"
+                android:text="@string/save"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/forteen_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/save_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

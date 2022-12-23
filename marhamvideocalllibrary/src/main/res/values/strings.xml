@@ -40,4 +40,12 @@
     <string name="find_a_doctor">Find a doctor</string>
     <string name="search_by_speciality">Search by Speciality</string>
     <string name="search_by_disease">Search by Disease</string>
+    <string name="doctor_name">Doctor Name</string>
+    <string name="patient_details">Patient Details</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="prescription">Prescription</string>
+    <string name="prescriptions">Prescriptions</string>
+    <string name="date">Date</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
 </resources>

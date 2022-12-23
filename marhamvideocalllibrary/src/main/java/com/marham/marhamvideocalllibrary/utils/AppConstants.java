@@ -61,4 +61,8 @@ public class AppConstants {
     public static class PROGRAM_ID{
         public static final String ONLINE_CONSULTATION = "4";
     }
+
+    public static class PERMISSIONS{
+        public static final String CAMERA_REQUEST = "1";
+    }
 }

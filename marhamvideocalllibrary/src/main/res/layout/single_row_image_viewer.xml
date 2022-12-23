@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.marham.marhamvideocalllibrary.customviews.TouchImageView
+        android:id="@+id/imgDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/ten"
+        android:background="@color/light_grey" />
+
+    <com.marham.marhamvideocalllibrary.customviews.MyImageView
+        android:id="@+id/btnClose"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/twenty"
+        android:layout_marginEnd="@dimen/fifteen"
+        android:padding="@dimen/five"
+        android:src="@drawable/ic_baseline_cancel_24"
+        android:textSize="@dimen/sixteen_text_size" />
+
+    <include layout="@layout/layout_progress_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

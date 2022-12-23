@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.marham.marhamvideocalllibrary.R;
+import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -15,6 +16,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected ImageView backButton;
     protected ProgressBar progressBar;
     protected MyButton retryButton;
+    protected BodyText noRecordFoundTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         initializeTopBar();
         progressBar = findViewById(R.id.progress_bar);
         retryButton = findViewById(R.id.retry_button);
+        noRecordFoundTextView = findViewById(R.id.no_record_found_text_view);
         setListeners();
     }
 

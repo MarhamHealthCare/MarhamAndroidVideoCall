@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent_layout"
+    android:layout_marginStart="@dimen/five"
+    android:layout_marginTop="@dimen/five"
+    android:background="@drawable/rounded_corners_grey_5_dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.marham.marhamvideocalllibrary.customviews.MyImageView
+        android:id="@+id/written_prescription"
+        android:layout_width="@dimen/ninty"
+        android:layout_height="@dimen/eighty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
