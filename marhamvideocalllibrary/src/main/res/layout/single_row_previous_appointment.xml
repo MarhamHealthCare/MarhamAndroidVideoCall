@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/doctor_profile_header_gradient">
+        android:background="@drawable/round_corner_light_blue_and_white_gradient_vertical"
+        >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor_picture_image_view"
@@ -37,11 +38,11 @@
             app:layout_constraintTop_toBottomOf="@+id/doctor_picture_image_view">
 
             <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/appointment_status_heading_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dash"
-                android:textColor="@color/white"
+                android:id="@+id/appointment_status_dot"
+                android:layout_width="@dimen/five"
+                android:layout_height="@dimen/five"
+                android:background="@drawable/dot_icon_vector"
+                android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,12 +55,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/five"
                 android:text="@string/dash"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/appointment_status_heading_text_view"
+                app:layout_constraintStart_toEndOf="@+id/appointment_status_dot"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,7 +72,7 @@
             android:layout_marginStart="@dimen/twenty"
             android:layout_marginTop="@dimen/five"
             android:text="@string/doctor_name"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/doctor_picture_image_view"
             app:layout_constraintTop_toTopOf="@id/doctor_picture_image_view" />
@@ -81,47 +82,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/speciality"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/twelve_text_size"
             app:layout_constraintStart_toStartOf="@+id/doctor_name_text_view"
             app:layout_constraintTop_toBottomOf="@+id/doctor_name_text_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_degree_text_view"
+            android:id="@+id/patient_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/degree"
-            android:textColor="@color/white"
+            android:text="@string/patient_name"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/five"
             android:textSize="@dimen/twelve_text_size"
             app:layout_constraintStart_toStartOf="@+id/doctor_name_text_view"
             app:layout_constraintTop_toBottomOf="@+id/doctor_speciality_text_view" />
 
 
-        <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/patient_name_text_view"
-            android:layout_width="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/patient_name"
-            android:textSize="@dimen/twelve_text_size"
-            android:layout_marginEnd="@dimen/twenty"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/date_and_time_views_container"
-            android:layout_height="wrap_content"/>
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/date_and_time_views_container"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/thirty"
+            android:layout_marginStart="@dimen/twenty"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty"
+            app:layout_constraintTop_toBottomOf="@+id/patient_name_text_view"
             android:layout_marginBottom="@dimen/ten"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintStart_toEndOf="@id/doctor_picture_image_view"
+            >
 
             <com.marham.marhamvideocalllibrary.customviews.MyImageView
                 android:id="@+id/calender_image_view"
                 android:layout_width="@dimen/fifteen"
                 android:layout_height="@dimen/fifteen"
-                android:background="@drawable/calender_icon_white_vector"
+                android:background="@drawable/calender_icon_black_vector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -132,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/five"
                 android:text="@string/date"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/calender_image_view"
@@ -143,7 +135,7 @@
                 android:layout_width="@dimen/one"
                 android:layout_height="@dimen/fifteen"
                 android:layout_marginStart="@dimen/five"
-                android:background="@color/white"
+                android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/date_text_view"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -154,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/five"
                 android:text="@string/time"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +155,23 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <com.marham.marhamvideocalllibrary.customviews.MyButton
+            android:id="@+id/view_prescription_button"
+            android:layout_width="@dimen/hundred_fifty"
+            android:layout_height="@dimen/thirty"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:text="@string/view_prescription"
+            android:layout_marginBottom="@dimen/twenty"
+            android:textAllCaps="false"
+
+            app:layout_constraintBottom_toBottomOf="@+id/appointment_status_views_container"
+            android:layout_marginTop="@dimen/fifteen"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corners_color_primary_5_dp"
+            app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="@+id/appointment_status_views_container"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
