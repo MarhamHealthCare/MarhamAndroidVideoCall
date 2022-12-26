@@ -53,4 +53,7 @@
     <string name="camera">Camera</string>
     <string name="notification">Notification</string>
     <string name="msg_on_storage_permission_denied">You have denied to permission to access gallery, to provide permission click on Settings button.</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="previous">Previous</string>
+    <string name="time">Time</string>
 </resources>

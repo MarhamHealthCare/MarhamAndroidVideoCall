@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14356884057971014" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/calender_icon_white_vector.xml" value="0.115" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/doctor_profile_header_gradient.xml" value="0.1535" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/download_icon.xml" value="0.1035" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/dummy_placeholder.xml" value="0.1035" />
@@ -16,6 +17,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue_with_blue_stroke.xml" value="0.142" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/share_icon.xml" value="0.1035" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/try_again_icon_grey_vector.xml" value="0.1225" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/activity_all_video_consultations_screen_main.xml" value="0.335" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_book_video_consultation.xml" value="0.17074275362318841" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_listing.xml" value="0.335" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_doctor_profile.xml" value="0.375" />
@@ -47,6 +49,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_diseases.xml" value="0.151268115942029" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_doctor.xml" value="0.375" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_top_speciality.xml" value="0.25" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_upcoming_appointment.xml" value="0.20378232766653742" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_written_prescription.xml" value="0.13269927536231885" />
       </map>
     </option>

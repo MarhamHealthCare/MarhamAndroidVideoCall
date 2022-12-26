@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
+import com.marham.marhamvideocalllibrary.activities.appointments.AllVideoConsultationsScreenMainActivity;
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorProfileActivity;
-import com.marham.marhamvideocalllibrary.activities.patientrecord.PrescriptionActivity;
 import com.marham.marhamvideocalllibrary.activities.search.SearchSpecialityAndDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;
@@ -33,7 +32,6 @@ import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerRe
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
@@ -106,11 +104,10 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
         if (R.id.search_card_view == viewId) {
             MarhamUtils.getInstance().startActivity(this, SearchSpecialityAndDiseaseActivity.class, false);
         } else if (R.id.my_appointments_views_container == viewId) {
-            Toast.makeText(this, "My Appointments", Toast.LENGTH_SHORT).show();
-            MarhamUtils.getInstance().startActivity(this, PrescriptionActivity.class, false);
-        } else if(R.id.retry_button== viewId){
+            MarhamUtils.getInstance().startActivity(this, AllVideoConsultationsScreenMainActivity.class, false);
+        } else if (R.id.retry_button == viewId) {
             getUserDetails();
-        }else if (R.id.dashboard_doctors_retry_button == viewId) {
+        } else if (R.id.dashboard_doctors_retry_button == viewId) {
             getDashboardDoctors();
         } else if (R.id.top_diseases_retry_button == viewId) {
             getTopDiseases();
