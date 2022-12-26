@@ -12,8 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/round_corner_light_blue_and_white_gradient_vertical"
-        >
+        android:background="@drawable/round_corner_light_blue_and_white_gradient_vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctor_picture_image_view"
@@ -91,9 +90,9 @@
             android:id="@+id/patient_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
             android:text="@string/patient_name"
             android:textColor="@color/black"
-            android:layout_marginTop="@dimen/five"
             android:textSize="@dimen/twelve_text_size"
             app:layout_constraintStart_toStartOf="@+id/doctor_name_text_view"
             app:layout_constraintTop_toBottomOf="@+id/doctor_speciality_text_view" />
@@ -101,13 +100,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_marginStart="@dimen/twenty"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twenty"
             android:layout_marginEnd="@dimen/twenty"
-            app:layout_constraintTop_toBottomOf="@+id/patient_name_text_view"
             android:layout_marginBottom="@dimen/ten"
             app:layout_constraintStart_toEndOf="@id/doctor_picture_image_view"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/patient_name_text_view">
 
             <com.marham.marhamvideocalllibrary.customviews.MyImageView
                 android:id="@+id/calender_image_view"
@@ -160,18 +158,18 @@
             android:id="@+id/view_prescription_button"
             android:layout_width="@dimen/hundred_fifty"
             android:layout_height="@dimen/thirty"
-            android:layout_marginEnd="@dimen/fifteen"
-            android:text="@string/view_prescription"
-            android:layout_marginBottom="@dimen/twenty"
-            android:textAllCaps="false"
-
-            app:layout_constraintBottom_toBottomOf="@+id/appointment_status_views_container"
             android:layout_marginTop="@dimen/fifteen"
-            android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:layout_marginBottom="@dimen/twenty"
             android:background="@drawable/rounded_corners_color_primary_5_dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="@string/view_prescription"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/appointment_status_views_container"
             app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintTop_toTopOf="@+id/appointment_status_views_container"
-            />
+            app:layout_constraintTop_toTopOf="@+id/appointment_status_views_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
