@@ -18,6 +18,7 @@ import com.marham.marhamvideocalllibrary.activities.appointments.AllVideoConsult
 import com.marham.marhamvideocalllibrary.activities.disease.SearchDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorProfileActivity;
+import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
 import com.marham.marhamvideocalllibrary.activities.search.SearchSpecialityAndDiseaseActivity;
 import com.marham.marhamvideocalllibrary.activities.speciality.SearchSpecialityActivity;
 import com.marham.marhamvideocalllibrary.adapters.disease.BaseDiseaseAdapter;

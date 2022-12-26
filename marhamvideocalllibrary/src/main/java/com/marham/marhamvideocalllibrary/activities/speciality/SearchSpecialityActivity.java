@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
-import com.marham.marhamvideocalllibrary.activities.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
 import com.marham.marhamvideocalllibrary.activities.doctor.DoctorListingActivity;
 import com.marham.marhamvideocalllibrary.adapters.speciality.AllSpecialitiesAdapter;
 import com.marham.marhamvideocalllibrary.adapters.speciality.BaseSpecialitiesAdapter;

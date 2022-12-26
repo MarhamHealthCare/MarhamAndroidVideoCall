@@ -1,12 +1,10 @@
 package com.marham.marhamvideocalllibrary.activities.general;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
 import com.marham.marhamvideocalllibrary.R;
-import com.marham.marhamvideocalllibrary.activities.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.general.ImageViewerPagerAdapter;
 
 import java.util.List;

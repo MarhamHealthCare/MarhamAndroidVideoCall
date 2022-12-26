@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
-import com.marham.marhamvideocalllibrary.activities.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.patientrecord.PrescriptionAdapter;
 import com.marham.marhamvideocalllibrary.listeners.AdpaterViewItemClickedListenerForPrescription;
 import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;

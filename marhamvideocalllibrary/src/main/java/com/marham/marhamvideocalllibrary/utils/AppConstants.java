@@ -2,14 +2,14 @@ package com.marham.marhamvideocalllibrary.utils;
 
 public class AppConstants {
 
-    public static class HOSPITAL_TYPE{
+    public static class HOSPITAL_TYPE {
         public static final String IN_CLINIC = "1";
         public static final String VIDEO_CONSULTATION = "2";
     }
 
     public static class API {
 
-        public static class API_CALL_STATUS{
+        public static class API_CALL_STATUS {
             public static final String SUCCESS_OLD = "Success!";
             public static final String FAILED_OLD = "Failed";
 
@@ -31,7 +31,10 @@ public class AppConstants {
             public static final String USER_PHONE = "user_phone";
             public static final String PATIENT_ID_KEY = "patientId";
             public static final String DOCTOR_ID_KEY_2 = "doctorId";
-            public static final String APPOINTMENT_ID_KEY= "appointmentId";
+            public static final String APPOINTMENT_ID_KEY = "appointmentId";
+            public static final String USER_ID_KEY = "userId";
+            public static final String REPORTS_KEY = "reports";
+            public static final String PROGRAM_ID_KEY = "programId";
 
         }
 
@@ -47,6 +50,7 @@ public class AppConstants {
             public static final int BOOK_ONLINE_CONSULTATION = 9;
             public static final int GET_USER_DETAILS = 10;
             public static final int GET_PATIENT_PRESCRIPTIONS = 11;
+            public static final int GET_USER_APPOINTMENT = 12;
         }
 
         public static class API_ERROR_MESSAGE {
@@ -54,20 +58,20 @@ public class AppConstants {
             public static final String JSON_PARSING_MESSAGE = "Unable to comprehend response from server";
         }
 
-        public static class DEVICE_TYPE{
+        public static class DEVICE_TYPE {
             public static final String ANDROID = "1";
         }
 
-        public static class LANGUAGE{
+        public static class LANGUAGE {
             public static final String ENGLISH = "en";
         }
     }
 
-    public static class PROGRAM_ID{
+    public static class PROGRAM_ID {
         public static final String ONLINE_CONSULTATION = "4";
     }
 
-    public static class PERMISSIONS{
+    public static class PERMISSIONS {
         public static final String CAMERA_REQUEST = "1";
         public static final String PERMISSION_ALLOWED = "1";
         public static final String PERMISSION_NOT_ALLOWED = "0";

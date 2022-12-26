@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.marham.marhamvideocalllibrary.BuildConfig;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
+import com.marham.marhamvideocalllibrary.model.appointment.videoconsultationlisting.AllAppointmentListingServerResponse;
 import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
@@ -234,6 +235,10 @@ public class APIClient {
 
     public Call<PatientHistoryResponse> getPastPrescription(HashMap<String, String> hashMap) {
         return apiService.getPastPrescription(hashMap);
+    }
+
+    public Call<AllAppointmentListingServerResponse> getPatientOrderAndAppointmentList(HashMap<String, String> info) {
+        return apiService.getPatientOrderAndAppointmentList(info);
     }
 
 }

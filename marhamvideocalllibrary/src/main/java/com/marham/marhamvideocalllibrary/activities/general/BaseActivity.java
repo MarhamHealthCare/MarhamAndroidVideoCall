@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.activities;
+package com.marham.marhamvideocalllibrary.activities.general;
 
 import android.os.Bundle;
 import android.view.View;
