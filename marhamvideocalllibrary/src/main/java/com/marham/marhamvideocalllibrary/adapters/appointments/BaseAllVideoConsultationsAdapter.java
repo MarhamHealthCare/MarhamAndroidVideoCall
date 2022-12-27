@@ -14,6 +14,7 @@ import com.marham.marhamvideocalllibrary.utils.CircleTransform;
 import com.marham.marhamvideocalllibrary.viewHolders.appointments.BaseAllVideoConsultationsViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseAllVideoConsultationsViewHolder> {
@@ -25,6 +26,7 @@ public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseA
     protected AdapterViewItemClickedListener adpaterViewItemClickedListener;
     protected List<Appointment> appointmentList;
     protected int adapterType;
+    protected Appointment appointment;
 
     public BaseAllVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList, int adapterType) {
         this.context = context;
@@ -41,15 +43,15 @@ public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseA
 
     @Override
     public void onBindViewHolder(@NonNull BaseAllVideoConsultationsViewHolder holder, int position) {
-        Appointment appointment = appointmentList.get(position);
+        appointment = appointmentList.get(position);
 
         setDoctorPicture(holder, appointmentList.get(position));
         holder.doctorNameTextView.setText(appointment.getDocName());
         holder.doctorSpecialityTextView.setText(appointment.getSpeciality());
-        holder.patientNameTextView.setText(appointment.getPatientName());
+        holder.patientNameTextView.setText(MessageFormat.format("Patient: {0}", appointment.getPatientName()));
         holder.dateTextView.setText(appointment.getFormattedDate());
         holder.timeTextView.setText(appointment.getFormattedTime());
-        holder.appointmentStatusTextView.setText(appointment.getAppointmentSubStatusText());
+        holder.appointmentStatusTextView.setText(appointment.getAppointmentSubStatusTitle());
 
     }
 
@@ -60,7 +62,7 @@ public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseA
 
     private void setDoctorPicture(BaseAllVideoConsultationsViewHolder baseAllVideoConsultationsViewHolder, Appointment appointment) {
         int doctorPicturePlaceHolder;
-        if (appointment.getGender().equals("0")) {
+        if (appointment.getGender() != null && appointment.getGender().equals("0")) {
             doctorPicturePlaceHolder = R.drawable.f_doctor_placeholder;
         } else {
             doctorPicturePlaceHolder = R.drawable.m_doctor_placholder;

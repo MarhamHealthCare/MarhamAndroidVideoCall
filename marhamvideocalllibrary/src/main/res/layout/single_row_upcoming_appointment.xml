@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/five"
     android:elevation="@dimen/five"
-    app:cardCornerRadius="@dimen/five"
+    app:cardCornerRadius="@dimen/ten"
     app:cardUseCompatPadding="true">
 
 
@@ -40,7 +40,7 @@
                 android:id="@+id/appointment_status_heading_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dash"
+                android:text="@string/status"
                 android:textColor="@color/white"
                 android:textSize="@dimen/twelve_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -87,10 +87,14 @@
             app:layout_constraintTop_toBottomOf="@+id/doctor_name_text_view" />
 
         <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/doctor_degree_text_view"
-            android:layout_width="wrap_content"
+            android:id="@+id/doctor_degrees_text_view"
+            android:layout_width="@dimen/zero"
             android:layout_height="wrap_content"
             android:text="@string/degree"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/fifteen"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/white"
             android:textSize="@dimen/twelve_text_size"
             app:layout_constraintStart_toStartOf="@+id/doctor_name_text_view"
@@ -111,7 +115,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/date_and_time_views_container"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/thirty"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty"
             android:layout_marginBottom="@dimen/ten"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -119,8 +123,8 @@
 
             <com.marham.marhamvideocalllibrary.customviews.MyImageView
                 android:id="@+id/calender_image_view"
-                android:layout_width="@dimen/fifteen"
-                android:layout_height="@dimen/fifteen"
+                android:layout_width="@dimen/twelve"
+                android:layout_height="@dimen/twelve"
                 android:background="@drawable/calender_icon_white_vector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +145,7 @@
             <View
                 android:id="@+id/line1"
                 android:layout_width="@dimen/one"
-                android:layout_height="@dimen/fifteen"
+                android:layout_height="@dimen/ten"
                 android:layout_marginStart="@dimen/five"
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

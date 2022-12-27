@@ -2,6 +2,7 @@ package com.marham.marhamvideocalllibrary.viewHolders.appointments;
 
 import android.view.View;
 
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +14,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseAllVideoConsultationsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public ConstraintLayout parentLayout;
+    public CardView parentLayout;
     public CircleImageView doctorPictureImageView;
     public BodyText doctorNameTextView;
     public BodyText doctorSpecialityTextView;
@@ -42,7 +43,7 @@ public class BaseAllVideoConsultationsViewHolder extends RecyclerView.ViewHolder
 
     }
 
-    private void setListener(ConstraintLayout parentLayout) {
+    private void setListener(CardView parentLayout) {
         parentLayout.setOnClickListener(this);
     }
 

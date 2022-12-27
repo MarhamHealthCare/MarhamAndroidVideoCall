@@ -11,92 +11,115 @@
         android:id="@+id/top_bar"
         layout="@layout/layout_top_bar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        android:id="@+id/retry_button_container"
+        layout="@layout/layout_retry_button" />
+
+    <include
+        android:id="@+id/progress_bar_container"
+        layout="@layout/layout_progress_bar" />
+
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/parent_layout"
-        android:layout_width="@dimen/zero"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar">
 
-
-        <com.marham.marhamvideocalllibrary.customviews.BodyText
-            android:id="@+id/my_appointments_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginTop="@dimen/fifteen"
-            android:text="@string/my_appointments"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/upcoming_appointments_views_container"
-            android:layout_width="@dimen/zero"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginTop="@dimen/fifteen"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_appointments_text_view">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
             <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/upcoming_appointment_text_view"
+                android:id="@+id/my_appointments_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/upcoming"
-                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/fifteen"
+                android:layout_marginTop="@dimen/twenty_five"
+                android:text="@string/my_appointments"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sixteen_text_size"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/upcoming_appointment_recycler_view"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/upcoming_appointments_views_container"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ten"
-                android:nestedScrollingEnabled="true"
-
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/upcoming_appointment_text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/my_appointments_text_view">
+
+                <com.marham.marhamvideocalllibrary.customviews.BodyText
+                    android:id="@+id/upcoming_appointment_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/five"
+                    android:text="@string/upcoming"
+                    android:textColor="@color/black"
+
+                    android:textSize="@dimen/sixteen_text_size"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/previous_appointments_views_container"
-            android:layout_width="@dimen/zero"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten"
-            android:layout_marginTop="@dimen/fifteen"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/upcoming_appointments_views_container">
-
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/previous_appointment_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/previous"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcoming_appointment_recycler_view"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:nestedScrollingEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/upcoming_appointment_text_view" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/previous_appointment_recycler_view"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/previous_appointments_views_container"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ten"
-                android:nestedScrollingEnabled="true"
-
+                android:layout_marginStart="@dimen/ten"
+                android:layout_marginTop="@dimen/fifteen"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/previous_appointment_text_view" />
+                app:layout_constraintTop_toBottomOf="@+id/upcoming_appointments_views_container">
 
+                <com.marham.marhamvideocalllibrary.customviews.BodyText
+                    android:id="@+id/previous_appointment_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/five"
+                    android:text="@string/previous"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sixteen_text_size"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/previous_appointment_recycler_view"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:nestedScrollingEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/previous_appointment_text_view" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

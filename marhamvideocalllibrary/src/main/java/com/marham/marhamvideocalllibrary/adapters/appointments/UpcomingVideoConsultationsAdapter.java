@@ -33,7 +33,7 @@ public class UpcomingVideoConsultationsAdapter extends BaseAllVideoConsultations
         super.onBindViewHolder(holder, position);
         Appointment appointment = appointmentList.get(position);
         UpcomingVideoConsultationsViewHolder upcomingVideoConsultationsViewHolder = (UpcomingVideoConsultationsViewHolder) holder;
-        upcomingVideoConsultationsViewHolder.doctorDegreeTextView.setText(appointment.getDocDegree());
+        upcomingVideoConsultationsViewHolder.doctorDegreesTextView.setText(appointment.getDocDegree());
 
     }
 

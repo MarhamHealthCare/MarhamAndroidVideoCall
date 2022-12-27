@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +34,7 @@ import retrofit2.Call;
 
 public class AllVideoConsultationsScreenMainActivity extends BaseActivity implements ServerConnectListener {
 
-    private ConstraintLayout parentLayout;
+    private NestedScrollView parentLayout;
 
     private ConstraintLayout upcomingAppointmentsViewsContainer;
     private RecyclerView upcomingAppointmentsRecyclerView;
@@ -41,16 +42,25 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     private ConstraintLayout previousAppointmentsViewsContainer;
     private RecyclerView previousAppointmentsRecyclerView;
 
-    private List<Appointment> pastAppointmentsList;
-    private List<Appointment> upcomingAppointmentsList;
+    private List<Appointment> pastAppointmentsList = new ArrayList<>();
+    private List<Appointment> upcomingAppointmentsList  = new ArrayList<>();
 
     //TODO: Replace with new ServerResponse
     private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
+
+    // TODO: Replace token when new API is available
+    private String originalToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_video_consultations_screen_main);
+
+
+        // TODO: Replace token when new API is available
+        originalToken = MarhamVideoCallHelper.getInstance().getAPI_KEY();
+        MarhamVideoCallHelper.getInstance().setAPIKEY("eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODIxMjgwODZ9.UGI9tNgwADt8BpRxOBnfzIbKcXmZOlW8WLRpND-KC9c");
+
         initializeViews();
         getUserAppointments();
     }
@@ -89,8 +99,9 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     }
 
     private void setUpcomingAppointmentsViews(AllAppointmentListingData allAppointmentListingData) {
-        if (allAppointmentListingData.getUpcoming() != null && allAppointmentListingData.getUpcoming().size() > 0) {
-            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getUpcoming()));
+        //TODO : Replace with upcoming appointment
+        if (allAppointmentListingData.getPast() != null && allAppointmentListingData.getPast().size() > 0) {
+            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getPast()));
             setUpcomingAppointmentsRecyclerView(upcomingAppointmentsList);
         } else {
             upcomingAppointmentsViewsContainer.setVisibility(View.GONE);
@@ -180,8 +191,10 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     @Override
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
+
             case AppConstants.API.API_END_POINT_NUMBER.GET_USER_APPOINTMENT:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                    MarhamVideoCallHelper.getInstance().setAPIKEY(originalToken);
                     setViewsAfterGettingDoctorsDetails();
                     AllAppointmentListingServerResponse allAppointmentsServerResponse = (AllAppointmentListingServerResponse) response;
                     setUpcomingAppointmentsViews(allAppointmentsServerResponse.getData());

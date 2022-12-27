@@ -89,7 +89,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         super.onClick(view);
         int viewId = view.getId();
         if (R.id.filters_retry_button == viewId) {
-            getDoctorListingFilters();
+//            getDoctorListingFilters();
         }else if(R.id.doctors_retry_button == viewId){
             resetVariablesAndGetDoctorInfoAgain();
         }
@@ -180,7 +180,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     }
 
     private void fetchData(){
-        getDoctorListingFilters();
         getVCDoctors(currentPage);
     }
 
@@ -313,16 +312,16 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         filterRecyclerView.smoothScrollToPosition(position);
     }
 
-    public void getDoctorListingFilters() {
-        setViewsBeforeGettingDoctorListingFilters();
-        APIClient apiClient = new APIClient();
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
-        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
-        Call<NewAllSpecialitiesServerResponse> call = apiClient.getDoctorListingFilters(hashMap);
-        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS);
-        call.enqueue(retroFit2Callback);
-    }
+//    public void getDoctorListingFilters() {
+//        setViewsBeforeGettingDoctorListingFilters();
+//        APIClient apiClient = new APIClient();
+//        HashMap<String, String> hashMap = new HashMap<>();
+//        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
+//        hashMap.put(AppConstants.API.API_KEYS.HOSPITAL_TYPE, AppConstants.HOSPITAL_TYPE.VIDEO_CONSULTATION);
+//        Call<NewAllSpecialitiesServerResponse> call = apiClient.getDoctorListingFilters(hashMap);
+//        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS);
+//        call.enqueue(retroFit2Callback);
+//    }
 
     public void getVCDoctors(int current_page) {
         if (isCallInProgress||isEndReachSearch) {

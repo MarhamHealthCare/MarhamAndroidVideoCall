@@ -54,8 +54,8 @@ public class BaseSpecialitiesAdapter extends RecyclerView.Adapter<BaseSpeciality
     }
 
     private void setSpeciality(BaseSpecialityViewHolder holder, int position) {
-        if (filteredSpecialityList.get(position).getNewIcon() != null && filteredSpecialityList.get(position).getNewIcon().length() > 0) {
-            Picasso.get().load(filteredSpecialityList.get(position).getNewIcon())
+        if (filteredSpecialityList.get(position).getSdk_icon() != null && filteredSpecialityList.get(position).getSdk_icon().length() > 0) {
+            Picasso.get().load(filteredSpecialityList.get(position).getSdk_icon())
                     .transform(new CircleTransform())
                     .fit()
                     .centerCrop()

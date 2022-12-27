@@ -203,7 +203,7 @@ public class SearchSpecialityActivity extends BaseActivity implements ServerConn
         APIClient apiClient = new APIClient("sdk");
 
         HashMap<String, String> hashMap = new HashMap<>();
-//        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "1");
+        hashMap.put(AppConstants.API.API_KEYS.TOP_ONLY, "0");
 //        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
 
         Call<NewAllSpecialitiesServerResponse> call = apiClient.getSpecialities(hashMap);

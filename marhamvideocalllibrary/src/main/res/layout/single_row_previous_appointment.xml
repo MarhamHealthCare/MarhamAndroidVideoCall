@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/five"
     android:elevation="@dimen/five"
-    app:cardCornerRadius="@dimen/five"
+    app:cardCornerRadius="@dimen/ten"
     app:cardUseCompatPadding="true">
 
 
@@ -111,6 +111,7 @@
                 android:id="@+id/calender_image_view"
                 android:layout_width="@dimen/fifteen"
                 android:layout_height="@dimen/fifteen"
+                android:visibility="gone"
                 android:background="@drawable/calender_icon_black_vector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +121,7 @@
                 android:id="@+id/date_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/five"
+                android:layout_marginStart="@dimen/zero"
                 android:text="@string/date"
                 android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
@@ -131,8 +132,8 @@
             <View
                 android:id="@+id/line1"
                 android:layout_width="@dimen/one"
-                android:layout_height="@dimen/fifteen"
-                android:layout_marginStart="@dimen/five"
+                android:layout_height="@dimen/ten"
+                android:layout_marginStart="@dimen/two"
                 android:background="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/date_text_view"
@@ -142,7 +143,7 @@
                 android:id="@+id/time_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/five"
+                android:layout_marginStart="@dimen/two"
                 android:text="@string/time"
                 android:textColor="@color/black"
                 android:textSize="@dimen/twelve_text_size"
@@ -156,7 +157,7 @@
 
         <com.marham.marhamvideocalllibrary.customviews.MyButton
             android:id="@+id/view_prescription_button"
-            android:layout_width="@dimen/hundred_fifty"
+            android:layout_width="@dimen/hundred_forty"
             android:layout_height="@dimen/thirty"
             android:layout_marginTop="@dimen/fifteen"
             android:layout_marginEnd="@dimen/fifteen"

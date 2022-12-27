@@ -35,6 +35,7 @@ public class AppConstants {
             public static final String USER_ID_KEY = "userId";
             public static final String REPORTS_KEY = "reports";
             public static final String PROGRAM_ID_KEY = "programId";
+            public static final String HOSPITAL_TYPE = "hospitalType";
 
         }
 

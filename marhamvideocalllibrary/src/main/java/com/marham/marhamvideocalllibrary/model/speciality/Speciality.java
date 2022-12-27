@@ -25,6 +25,7 @@ public class Speciality implements Parcelable{
     private List<Speciality> specialityList;
     private List<DoctorInfo> recentViewedDoctors = new ArrayList<>();
     private String doctorsCount;
+    private  String sdk_icon;
 
     public Speciality() {
     }
@@ -155,5 +156,9 @@ public class Speciality implements Parcelable{
 
     public static Parcelable.Creator<Speciality> getCREATOR() {
         return CREATOR;
+    }
+
+    public String getSdk_icon() {
+        return sdk_icon;
     }
 }

@@ -8,11 +8,11 @@ import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListene
 
 public class UpcomingVideoConsultationsViewHolder extends BaseAllVideoConsultationsViewHolder {
 
-    public BodyText doctorDegreeTextView;
+    public BodyText doctorDegreesTextView;
 
     public UpcomingVideoConsultationsViewHolder(View view, AdapterViewItemClickedListener adapterViewItemClickedListener) {
         super(view, adapterViewItemClickedListener);
-        doctorDegreeTextView = view.findViewById(R.id.doctor_degrees_text_view);
+        doctorDegreesTextView = view.findViewById(R.id.doctor_degrees_text_view);
     }
 
 }

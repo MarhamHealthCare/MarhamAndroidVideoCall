@@ -426,23 +426,10 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
                 break;
 
             case AppConstants.API.API_END_POINT_NUMBER.GET_ALL_SPECIALITIES:
-//                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
-//                    setViewsAfterGettingTopSpecialitiesData();
-//                    NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
-//                    specialityList.addAll(newAllSpecialitiesServerResponse.getData().getTopSpecialities());
-//                    specialityList.add(new Speciality());
-//                    setTopSpecialitiesRecyclerView(specialityList);
-//
-//                } else {
-//                    setViewsIncaseNoRecordFoundWhileGettingTopSpecialitiesData();
-//                }
-//
-
                 NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
                 if (newAllSpecialitiesServerResponse.getSuccess().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingTopSpecialitiesData();
                     specialityList.addAll(newAllSpecialitiesServerResponse.getData().getTopSpecialities());
-                    specialityList.add(new Speciality());
                     setTopSpecialitiesRecyclerView(specialityList);
                 } else {
                     setViewsIncaseNoRecordFoundWhileGettingTopSpecialitiesData();

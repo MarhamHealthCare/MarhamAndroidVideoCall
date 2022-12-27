@@ -31,6 +31,13 @@ public class PreviousVideoConsultationsAdapter extends BaseAllVideoConsultations
     @Override
     public void onBindViewHolder(@NonNull BaseAllVideoConsultationsViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
+        PreviousVideoConsultationsViewHolder previousVideoConsultationsViewHolder = (PreviousVideoConsultationsViewHolder) holder;
+        if (appointment.getAppointmentSubStatusID().equals(Appointment.VIEW_PRESCRIPTION)) {
+            previousVideoConsultationsViewHolder.prescriptionButton.setVisibility(View.VISIBLE);
+        } else {
+            previousVideoConsultationsViewHolder.prescriptionButton.setVisibility(View.INVISIBLE);
+        }
+
 
     }
 

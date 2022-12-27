@@ -209,9 +209,9 @@ public class APIClient {
         return apiService.getAllSpecialities(info);
     }
 
-    public Call<NewAllSpecialitiesServerResponse> getDoctorListingFilters(HashMap<String, String> info) {
-        return apiService.getDoctorListingFilters(info);
-    }
+//    public Call<NewAllSpecialitiesServerResponse> getDoctorListingFilters(HashMap<String, String> info) {
+//        return apiService.getDoctorListingFilters(info);
+//    }
 
     public Call<AllDoctorResponse> getAllDoctors(String area, String latitude, String longitude, String city, String doctorName, String specialityId, int pageNumber, String fee, String gender, String loggedInUserId, String token, String deviceType, String s, String isCmd, String discount, String availability, String hospitalType, String neww, String language, String corporateListing) {
         return apiService.getAllDoctors(area, latitude, longitude, city, doctorName, specialityId, pageNumber, fee, gender, loggedInUserId, token, deviceType, s, isCmd, discount, availability, hospitalType, neww, language, corporateListing);
