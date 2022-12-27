@@ -23,7 +23,7 @@ public class BaseAllVideoConsultationsViewHolder extends RecyclerView.ViewHolder
     public BodyText timeTextView;
     public BodyText appointmentStatusTextView;
 
-    private AdapterViewItemClickedListener adapterViewItemClickedListener;
+    protected AdapterViewItemClickedListener adapterViewItemClickedListener;
 
     public BaseAllVideoConsultationsViewHolder(View view, AdapterViewItemClickedListener adapterViewItemClickedListener) {
         super(view);
@@ -48,11 +48,9 @@ public class BaseAllVideoConsultationsViewHolder extends RecyclerView.ViewHolder
     }
 
     @Override
-    public void onClick(View view) {
-        int viewId = view.getId();
-        if (viewId == R.id.parent_layout) {
-            adapterViewItemClickedListener.onAdatviewItemClicked(getAdapterPosition());
-        }
+    public void onClick(View view){
+
     }
+
 
 }
