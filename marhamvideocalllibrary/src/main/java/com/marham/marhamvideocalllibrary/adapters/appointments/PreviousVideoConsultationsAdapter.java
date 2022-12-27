@@ -17,8 +17,8 @@ import java.util.List;
 
 public class PreviousVideoConsultationsAdapter extends BaseAllVideoConsultationsAdapter {
 
-    public PreviousVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList) {
-        super(context, adapterViewItemClickedListener, appointmentList);
+    public PreviousVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList, int adapterType) {
+        super(context, adapterViewItemClickedListener, appointmentList, adapterType);
     }
 
     @NonNull

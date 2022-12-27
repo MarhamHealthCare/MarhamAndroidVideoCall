@@ -1,8 +1,6 @@
 package com.marham.marhamvideocalllibrary.adapters.appointments;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -20,14 +18,19 @@ import java.util.List;
 
 public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseAllVideoConsultationsViewHolder> {
 
+    public static final int PREVIOUS_APPOINTMENTS = 300;
+    public static final int UPCOMING_APPOINTMENTS = 301;
+
     protected Context context;
     protected AdapterViewItemClickedListener adpaterViewItemClickedListener;
     protected List<Appointment> appointmentList;
+    protected int adapterType;
 
-    public BaseAllVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList) {
+    public BaseAllVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList, int adapterType) {
         this.context = context;
         this.adpaterViewItemClickedListener = adpaterViewItemClickedListener;
         this.appointmentList = appointmentList;
+        this.adapterType = adapterType;
     }
 
     @NonNull
@@ -43,7 +46,6 @@ public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseA
         setDoctorPicture(holder, appointmentList.get(position));
         holder.doctorNameTextView.setText(appointment.getDocName());
         holder.doctorSpecialityTextView.setText(appointment.getSpeciality());
-        holder.doctorDegreeTextView.setText(appointment.getDocDegree());
         holder.patientNameTextView.setText(appointment.getPatientName());
         holder.dateTextView.setText(appointment.getFormattedDate());
         holder.timeTextView.setText(appointment.getFormattedTime());
