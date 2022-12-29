@@ -68,6 +68,11 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     @Override
     public void onClick(View view) {
         super.onClick(view);
+        int viewId = view.getId();
+        if(viewId == R.id.retry_button){
+            getUserAppointments();
+        }
+
     }
 
     protected void initializeViews() {

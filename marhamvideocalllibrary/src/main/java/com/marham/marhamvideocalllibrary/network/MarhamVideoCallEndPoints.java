@@ -34,10 +34,6 @@ public interface MarhamVideoCallEndPoints {
     @GET("get-specialities")
     Call<NewAllSpecialitiesServerResponse> getAllSpecialities(@QueryMap HashMap<String, String> info);
 
-//    @FormUrlEncoded
-//    @POST("index.php?action=getallspecialities")//TODO: Replace with new get All Specialities API
-//    Call<NewAllSpecialitiesServerResponse> getDoctorListingFilters(@FieldMap HashMap<String, String> info);
-
     @FormUrlEncoded
     @POST("index.php?action=drlisting")//TODO: Replace with new Doctor Listing API
     Call<AllDoctorResponse> getAllDoctors(@Field("area") String area, @Field("lat") String latitude, @Field("lng") String longitude, @Field("city") String city, @Field("name") String name, @Field("id") String i, @Field("page") int pageNumber, @Field("feeRange") String fee, @Field("gender") String gender, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("search_filter") String searchFilter, @Field("isCmd") String isCmd, @Field("discount") String discount, @Field("availability") String availability, @Field("hospitalType") String hospitalType, @Field("new") String neww, @Field("language") String language, @Field("corporateListing") String corporateListing);

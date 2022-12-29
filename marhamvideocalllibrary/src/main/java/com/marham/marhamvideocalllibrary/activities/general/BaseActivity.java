@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
     }
 
-    protected void initializeViews(){
+    protected void initializeViews() {
         initializeTopBar();
         progressBar = findViewById(R.id.progress_bar);
         retryButton = findViewById(R.id.retry_button);
@@ -31,8 +31,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         setListeners();
     }
 
-    private void setListeners(){
-        if(retryButton!=null) {
+    private void setListeners() {
+        if (retryButton != null) {
             retryButton.setOnClickListener(this);
         }
     }
