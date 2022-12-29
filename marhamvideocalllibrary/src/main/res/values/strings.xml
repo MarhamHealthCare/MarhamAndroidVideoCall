@@ -58,4 +58,11 @@
     <string name="time">Time</string>
     <string name="view_prescription">View Prescription</string>
     <string name="status">Status: </string>
+    <string name="consultation_time">Consultation Time</string>
+    <string name="call_doctor">Call Doctor</string>
+    <string name="for_a_better_experience">For a better experience:</string>
+    <string name="keep_your_medical_nrecords_with_you">Keep your medical\nrecords with you.</string>
+    <string name="have_a_calm_nbackground">Have a calm\nbackground</string>
+    <string name="enable_a_stable_ninternet_connection">Enable a stable\ninternet connection</string>
+    <string name="internet_strength">Internet Strength</string>
 </resources>

@@ -46,5 +46,6 @@
     <dimen name="eight">8dp</dimen>
     <dimen name="three_hundred">300dp</dimen>
     <dimen name="hundred_forty">140dp</dimen>
+    <dimen name="seven">7dp</dimen>
 
 </resources>

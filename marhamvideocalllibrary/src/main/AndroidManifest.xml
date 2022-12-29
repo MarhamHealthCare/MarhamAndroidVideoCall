@@ -4,6 +4,9 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".WaitingAreaActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.appointments.AllVideoConsultationsScreenMainActivity"
             android:exported="false" />
         <activity

@@ -14,6 +14,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient.xml" value="0.1915" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient_vertical.xml" value="0.115" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corners_color_primary_5_dp.xml" value="0.116" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue.xml" value="0.142" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue_with_blue_stroke.xml" value="0.142" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/share_icon.xml" value="0.1035" />
@@ -29,6 +30,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_disease.xml" value="0.16927083333333334" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_speciality.xml" value="0.17300724637681159" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/activity_search_speciality_and_disease.xml" value="0.1816123188405797" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/activity_waiting_area.xml" value="0.165" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_no_record_found.xml" value="0.13269927536231885" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_progress_bar.xml" value="0.12635869565217392" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_retry_button.xml" value="0.12635869565217392" />

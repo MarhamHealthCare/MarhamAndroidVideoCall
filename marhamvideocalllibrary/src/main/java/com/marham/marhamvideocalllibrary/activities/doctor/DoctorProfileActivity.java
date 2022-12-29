@@ -306,7 +306,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
 
 
         Call<NewDoctorProfileServerResponse> call;
-        APIClient apiClient = new APIClient();
+        APIClient apiClient = new APIClient("sdk");
         call = apiClient.getDoctorDetail(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS);
         call.enqueue(retroFit2Callback);
