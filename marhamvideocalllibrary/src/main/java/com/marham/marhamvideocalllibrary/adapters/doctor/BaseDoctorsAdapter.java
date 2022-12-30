@@ -51,7 +51,7 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
         holder.doctorExperienceTextView.setText("Exp." + doctorInfo.getDocExp() + " Year(s)");
 
 
-        if (doctorInfo.getRating().equals("0")) {
+        if (doctorInfo.getRating()!=null && doctorInfo.getRating().equals("0")) {
             holder.doctorRatingsStar.setVisibility(View.INVISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.INVISIBLE);
         } else {

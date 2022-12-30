@@ -391,7 +391,7 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
 
             case AppConstants.API.API_END_POINT_NUMBER.GET_DASHBOARD_DOCTORS:
                 DashboardDoctorServerResponse topDoctorServerResponse = (DashboardDoctorServerResponse) response;
-                if (topDoctorServerResponse.equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
+                if (topDoctorServerResponse.getSuccess().equals(AppConstants.API.API_CALL_STATUS.SUCCESS)) {
                     setViewsAfterGettingDasboardDoctorsData();
                     doctorInfoList.clear();
                     doctorInfoList.addAll(topDoctorServerResponse.getData());
