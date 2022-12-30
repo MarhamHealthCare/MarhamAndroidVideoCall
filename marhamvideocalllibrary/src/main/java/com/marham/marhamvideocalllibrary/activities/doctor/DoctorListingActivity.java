@@ -20,11 +20,11 @@ import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.listeners.EndlessRecyclerOnScrollListener;
-import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.disease.Diseases;
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.filter.DoctorListingFilter;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
@@ -33,7 +33,6 @@ import com.marham.marhamvideocalllibrary.network.ServerConnectListener;
 import com.marham.marhamvideocalllibrary.utils.AppConstants;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,8 +41,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
 
     private ConstraintLayout filtersViewsContainer;
     private RecyclerView filterRecyclerView;
-    private MyButton filtersTryAgainButton;
-    private ProgressBar filtersProgressBar;
     private List<DoctorListingFilter> doctorListingFilters;
 
     private ConstraintLayout doctorListingViewsContainer;
@@ -88,9 +85,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onClick(View view) {
         super.onClick(view);
         int viewId = view.getId();
-        if (R.id.filters_retry_button == viewId) {
-//            getDoctorListingFilters();
-        }else if(R.id.doctors_retry_button == viewId){
+        if (R.id.doctors_retry_button == viewId) {
             resetVariablesAndGetDoctorInfoAgain();
         }
     }
@@ -132,7 +127,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         getVCDoctors(currentPage);
     }
 
-    private void resetVariables(){
+    private void resetVariables() {
         isCallInProgress = false;
         currentPage = 1;
         doctorInfoList.clear();
@@ -142,8 +137,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         super.initializeViews();
         filtersViewsContainer = findViewById(R.id.filters_views_container);
         filterRecyclerView = findViewById(R.id.filters_recycler_view);
-        filtersTryAgainButton = findViewById(R.id.filters_retry_button);
-        filtersProgressBar = findViewById(R.id.filters_progress_bar);
 
         doctorListingViewsContainer = findViewById(R.id.dr_listing_views_container);
         drCountAndSpecialityTextView = findViewById(R.id.dr_count_and_speciality_text_view);
@@ -153,15 +146,15 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         doctorsNoRecordFoundTextView = findViewById(R.id.doctors_no_record_found_text_view);
 
         //TODO: Replace with speciality or disease name and count
-        drCountAndSpecialityTextView.setText("-121 Leading "+objectName);
+        drCountAndSpecialityTextView.setText("-121 Leading " + objectName);
         setDoctorsRecyclerView(doctorInfoList);
     }
 
-    private void receiveIntent(){
+    private void receiveIntent() {
         Bundle bundle = getIntent().getExtras();
         listingType = bundle.getInt(DoctorListingActivity.specialityListTypeString);
 
-        switch (listingType){
+        switch (listingType) {
             case DoctorListingActivity.DOCTOR_LISTING_TYPE_SPECIALITY:
                 speciality = bundle.getParcelable(Speciality.class.getCanonicalName());
                 objectId = speciality.getSpID();
@@ -179,12 +172,11 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
 
     }
 
-    private void fetchData(){
+    private void fetchData() {
         getVCDoctors(currentPage);
     }
 
     private void setListeners() {
-        filtersTryAgainButton.setOnClickListener(this);
         doctorsRetryButton.setOnClickListener(this);
     }
 
@@ -195,35 +187,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         DoctorFiltersAdapter doctorFiltersAdapter = new DoctorFiltersAdapter(this, doctorListingFilterList, adpaterViewItemClickedListener);
         filterRecyclerView.setAdapter(doctorFiltersAdapter);
     }
-
-    public void setViewsBeforeGettingDoctorListingFilters() {
-        filtersViewsContainer.setVisibility(View.VISIBLE);
-        filterRecyclerView.setVisibility(View.INVISIBLE);
-        filtersProgressBar.setVisibility(View.VISIBLE);
-        filtersTryAgainButton.setVisibility(View.GONE);
-    }
-
-    public void setViewsAfterGettingDoctorListingFilters() {
-        filtersViewsContainer.setVisibility(View.VISIBLE);
-        filterRecyclerView.setVisibility(View.VISIBLE);
-        filtersProgressBar.setVisibility(View.GONE);
-        filtersTryAgainButton.setVisibility(View.GONE);
-    }
-
-    public void setViewsIncaseNoRecordFoundWhileGettingDoctorListingFilters() {
-        filtersViewsContainer.setVisibility(View.GONE);
-        filterRecyclerView.setVisibility(View.INVISIBLE);
-        filtersProgressBar.setVisibility(View.GONE);
-        filtersTryAgainButton.setVisibility(View.GONE);
-    }
-
-    public void setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListingFilters() {
-        filtersViewsContainer.setVisibility(View.VISIBLE);
-        filterRecyclerView.setVisibility(View.INVISIBLE);
-        filtersProgressBar.setVisibility(View.GONE);
-        filtersTryAgainButton.setVisibility(View.VISIBLE);
-    }
-
 
     public void setDoctorsRecyclerView(List<DoctorInfo> doctorInfoList) {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -291,7 +254,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
                 case BaseDoctorsAdapter.DOCTOR_LISTING_RECYCLER_VIEW:
                     Bundle bundle = new Bundle();
                     bundle.putParcelable(DoctorInfo.class.getCanonicalName(), doctorInfoList.get(position));
-                    MarhamUtils.getInstance().startActivity(DoctorListingActivity.this, DoctorProfileActivity.class, false,bundle);
+                    MarhamUtils.getInstance().startActivity(DoctorListingActivity.this, DoctorProfileActivity.class, false, bundle);
 
                     break;
 
@@ -312,19 +275,8 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         filterRecyclerView.smoothScrollToPosition(position);
     }
 
-//    public void getDoctorListingFilters() {
-//        setViewsBeforeGettingDoctorListingFilters();
-//        APIClient apiClient = new APIClient();
-//        HashMap<String, String> hashMap = new HashMap<>();
-//        hashMap.put(AppConstants.API.API_KEYS.NEW_ID, "1");
-//        hashMap.put(AppConstants.API.API_KEYS.HOSPITAL_TYPE, AppConstants.HOSPITAL_TYPE.VIDEO_CONSULTATION);
-//        Call<NewAllSpecialitiesServerResponse> call = apiClient.getDoctorListingFilters(hashMap);
-//        retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS);
-//        call.enqueue(retroFit2Callback);
-//    }
-
     public void getVCDoctors(int current_page) {
-        if (isCallInProgress||isEndReachSearch) {
+        if (isCallInProgress || isEndReachSearch) {
             return;
         }
         isCallInProgress = true;
@@ -341,32 +293,19 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     @Override
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
-                // TODO: replace with new filters API
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
-                    setViewsAfterGettingDoctorListingFilters();
-                    NewAllSpecialitiesServerResponse newAllSpecialitiesServerResponse = (NewAllSpecialitiesServerResponse) response;
-//                    doctorInfoList.clear();
-//                    doctorInfoList.addAll(topDoctorServerResponse.getData());
-                    setFiltersRecyclerView(doctorListingFilters);
-
-                } else {
-                    setViewsIncaseNoRecordFoundWhileGettingDoctorListingFilters();
-                }
-                break;
             case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
                 isCallInProgress = false;
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
                     AllDoctorResponse allDoctorResponse = (AllDoctorResponse) response;
                     doctorInfoList.addAll(allDoctorResponse.getData().getDoctors());
-                    if(doctorInfoList.size()>0) {
+                    if (doctorInfoList.size() > 0) {
                         if (currentPage <= 1) {
                             setViewsAfterGettingDoctorListing();
                             setDoctorsRecyclerView(doctorInfoList);
                         } else {
                             doctorsRecyclerView.getAdapter().notifyDataSetChanged();
                         }
-                    }else{
+                    } else {
                         handleNoRecordFound();
                     }
                 } else {
@@ -389,10 +328,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onFailure(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
-                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListingFilters();
-                break;
-
             case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
                 isCallInProgress = false;
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListing();
@@ -404,10 +339,6 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
     public void onSessionExpiry(ServerResponseOld response) {
         MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTOR_LISTING_FILTERS:
-                setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListingFilters();
-                break;
-
             case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
                 isCallInProgress = false;
                 setViewsIncaseOfInternetFailureOrUnExpectedResultWhileGettingDoctorListing();

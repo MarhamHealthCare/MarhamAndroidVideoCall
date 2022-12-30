@@ -23,7 +23,7 @@
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -306,16 +306,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/twenty_five"
-                                android:layout_marginTop="@dimen/ten"
+                                android:layout_marginTop="@dimen/twenty"
                                 app:layout_constraintEnd_toStartOf="@+id/good_internet_check_box_views_container"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/checklist_heading_text_view">
 
                                 <com.marham.marhamvideocalllibrary.customviews.MyImageView
                                     android:id="@+id/check_box_icon_1"
-                                    android:layout_width="@dimen/twenty"
-                                    android:layout_height="@dimen/thirty"
-                                    android:background="@drawable/dot_icon_vector"
+                                    android:layout_width="@dimen/forty_five"
+                                    android:layout_height="@dimen/thirty_five"
+                                    android:background="@drawable/medical_record_icon_waiting_area"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
@@ -344,16 +344,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/forty"
-                                android:layout_marginTop="@dimen/ten"
+                                android:layout_marginTop="@dimen/twenty"
                                 app:layout_constraintEnd_toStartOf="@+id/calm_background_check_box_views_container"
                                 app:layout_constraintStart_toEndOf="@+id/medical_record_check_box_views_container"
                                 app:layout_constraintTop_toBottomOf="@+id/checklist_heading_text_view">
 
                                 <com.marham.marhamvideocalllibrary.customviews.MyImageView
                                     android:id="@+id/check_box_icon_3"
-                                    android:layout_width="@dimen/twenty"
-                                    android:layout_height="@dimen/thirty"
-                                    android:background="@drawable/dot_icon_vector"
+                                    android:layout_width="@dimen/thirty_five"
+                                    android:layout_height="@dimen/thirty_five"
+                                    android:background="@drawable/wifi_icon_waiting_area"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
@@ -381,7 +381,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/forty"
-                                android:layout_marginTop="@dimen/ten"
+                                android:layout_marginTop="@dimen/twenty"
                                 android:layout_marginEnd="@dimen/twenty_five"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/good_internet_check_box_views_container"
@@ -389,9 +389,9 @@
 
                                 <com.marham.marhamvideocalllibrary.customviews.MyImageView
                                     android:id="@+id/check_box_icon_2"
-                                    android:layout_width="@dimen/twenty"
-                                    android:layout_height="@dimen/thirty"
-                                    android:background="@drawable/dot_icon_vector"
+                                    android:layout_width="@dimen/thirty_five"
+                                    android:layout_height="@dimen/thirty_five"
+                                    android:background="@drawable/speaker_icon_waiting_area"
 
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -480,9 +480,8 @@
             android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
 
-
             android:background="@color/white"
-            android:visibility="visible"
+            android:visibility="gone"
             app:cardCornerRadius="@dimen/five"
             app:cardUseCompatPadding="true"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -519,15 +518,6 @@
                     android:layout_height="@dimen/twenty"
                     android:layout_marginTop="@dimen/fifteen"
                     android:background="@color/black"
-                    app:LoadingDots_auto_play="true"
-                    app:LoadingDots_dots_color="@color/white"
-                    app:LoadingDots_dots_count="8"
-                    app:LoadingDots_dots_size="@dimen/three"
-                    app:LoadingDots_dots_space="@dimen/two"
-                    app:LoadingDots_jump_duration="350"
-                    app:LoadingDots_jump_height="@dimen/seven"
-                    app:LoadingDots_loop_duration="800"
-                    app:LoadingDots_loop_start_delay="100"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/call_status_text_view" />

@@ -35,18 +35,18 @@ public interface MarhamVideoCallEndPoints {
     Call<NewAllSpecialitiesServerResponse> getAllSpecialities(@QueryMap HashMap<String, String> info);
 
     @FormUrlEncoded
-    @POST("index.php?action=drlisting")//TODO: Replace with new Doctor Listing API
+    @POST("drlisting")//TODO: Replace with new Doctor Listing API
     Call<AllDoctorResponse> getAllDoctors(@Field("area") String area, @Field("lat") String latitude, @Field("lng") String longitude, @Field("city") String city, @Field("name") String name, @Field("id") String i, @Field("page") int pageNumber, @Field("feeRange") String fee, @Field("gender") String gender, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("search_filter") String searchFilter, @Field("isCmd") String isCmd, @Field("discount") String discount, @Field("availability") String availability, @Field("hospitalType") String hospitalType, @Field("new") String neww, @Field("language") String language, @Field("corporateListing") String corporateListing);
 
     @FormUrlEncoded
-    @POST("index.php?action=doctorDetail")//TODO: Replace with new Doctor Details API
+    @POST("doctorDetail")//TODO: Replace with new Doctor Details API
     Call<NewDoctorProfileServerResponse> getDoctorDetail(@FieldMap HashMap<String, String> hashMap);
 
     @FormUrlEncoded
-    @POST("index.php?action=get-doctor-hospital-available-days-and-slots") //TODO: Replace with hospital slots API
+    @POST("get-doctor-hospital-available-days-and-slots") //TODO: Replace with hospital slots API
     Call<HospitalAvailableDaysAndDateServerResponse> appointmentDateAndTime(@Field("hospitalID") String hospitalID, @Field("date") String date, @Field("loggedInUserId") String loggedInUserId, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("hospitalType") String hospitalType, @Field("dID") String dID, @Field("language") String language, @Field("inHouseDoctorRequest") String inHouseDoctorRequest);
 
-    @POST("index.php?action=book-online-consultation") //TODO: Replace with new book consultation API
+    @POST("book-online-consultation") //TODO: Replace with new book consultation API
     Call<BookConsultationServerResponse> bookOnlineConsultation(@Body VideoConsultanceModel videoConsultanceModel);
 
     @FormUrlEncoded
@@ -54,11 +54,10 @@ public interface MarhamVideoCallEndPoints {
     Call<MarhamUserServerResponse> getUserDetails(@FieldMap HashMap<String, String> hashMap);
 
     @FormUrlEncoded
-    @POST("index.php?action=get-patient-new-record-history")//TODO: Replace with new patient history API
+    @POST("get-patient-new-record-history")//TODO: Replace with new patient history API
     Call<PatientHistoryResponse> getPastPrescription(@FieldMap HashMap<String, String> hashMap);
 
-    @FormUrlEncoded
-    @POST("index.php?action=get-user-order-listing")//TODO: Replace with new appointent listing API
-    Call<AllAppointmentListingServerResponse> getPatientOrderAndAppointmentList(@FieldMap HashMap<String, String> info);
+    @GET("get-user-order-listing")
+    Call<AllAppointmentListingServerResponse> getPatientOrderAndAppointmentList(@QueryMap HashMap<String, String> info);
 
 }

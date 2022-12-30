@@ -44,14 +44,13 @@ public class AppConstants {
             public static final int GET_DASHBOARD_TOP_DISEASES = 2;
             public static final int GET_ALL_SPECIALITIES = 3;
             public static final int GET_ALL_DISEASES = 4;
-            public static final int GET_DOCTOR_LISTING_FILTERS = 5;
-            public static final int GET_VC_DOCTORS_LISTING = 6;
-            public static final int GET_DOCTORS_DETAILS = 7;
-            public static final int GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES = 8;
-            public static final int BOOK_ONLINE_CONSULTATION = 9;
-            public static final int GET_USER_DETAILS = 10;
-            public static final int GET_PATIENT_PRESCRIPTIONS = 11;
-            public static final int GET_USER_APPOINTMENT = 12;
+            public static final int GET_VC_DOCTORS_LISTING = 5;
+            public static final int GET_DOCTORS_DETAILS = 6;
+            public static final int GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES = 7;
+            public static final int BOOK_ONLINE_CONSULTATION = 8;
+            public static final int GET_USER_DETAILS = 9;
+            public static final int GET_PATIENT_PRESCRIPTIONS = 10;
+            public static final int GET_USER_APPOINTMENT = 11;
         }
 
         public static class API_ERROR_MESSAGE {

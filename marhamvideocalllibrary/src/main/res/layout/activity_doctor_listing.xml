@@ -39,29 +39,6 @@
             android:layout_marginEnd="@dimen/ten"
             android:layout_height="@dimen/sixty"/>
 
-        <com.marham.marhamvideocalllibrary.customviews.MyButton
-            android:id="@+id/filters_retry_button"
-            android:layout_width="@dimen/forty"
-            android:layout_height="@dimen/forty"
-            android:backgroundTint="@color/colorPrimary"
-            android:background="@drawable/try_again_icon_grey_vector"
-            app:layout_constraintBottom_toBottomOf="@id/filters_recycler_view"
-            app:layout_constraintEnd_toEndOf="@id/filters_recycler_view"
-            app:layout_constraintStart_toStartOf="@id/filters_recycler_view"
-            app:layout_constraintTop_toTopOf="@id/filters_recycler_view" />
-
-        <ProgressBar
-            android:id="@+id/filters_progress_bar"
-            style="?android:attr/progressBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_record_found"
-            app:layout_constraintBottom_toBottomOf="@id/filters_recycler_view"
-            app:layout_constraintEnd_toEndOf="@id/filters_recycler_view"
-            app:layout_constraintStart_toStartOf="@id/filters_recycler_view"
-            app:layout_constraintTop_toTopOf="@id/filters_recycler_view" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
