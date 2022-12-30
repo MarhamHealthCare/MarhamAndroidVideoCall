@@ -23,7 +23,7 @@
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -160,7 +160,7 @@
                                 app:layout_constraintLeft_toLeftOf="@id/doctor_image_view_1"
                                 app:layout_constraintRight_toRightOf="@id/doctor_image_view_1"
                                 app:layout_constraintTop_toTopOf="@id/doctor_image_view_1"
-                                app:trackColor="@color/light_grey" />
+                                app:trackColor="@color/waiting_area_progress_bar_color" />
 
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -430,10 +430,10 @@
 
                             <com.marham.marhamvideocalllibrary.customviews.MyImageView
                                 android:id="@+id/internet_connection_status_image_view"
-                                android:layout_width="@dimen/hundred_fifty"
+                                android:layout_width="@dimen/hundred_thirty"
                                 android:layout_height="@dimen/ninty"
-                                android:layout_marginTop="@dimen/fifteen"
-                                android:background="@drawable/dot_icon_vector"
+                                android:layout_marginTop="@dimen/twenty"
+                                android:background="@drawable/wifi_strength_good_icon"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/internet_connection_heading_text_view" />
@@ -445,7 +445,7 @@
                                 android:layout_marginTop="@dimen/ten"
                                 android:layout_marginBottom="@dimen/thirty"
                                 android:text="Internet Status"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/good_wifi_text_view_color"
                                 android:textSize="@dimen/forteen_text_size"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -481,7 +481,7 @@
             android:layout_height="match_parent"
 
             android:background="@color/white"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cardCornerRadius="@dimen/five"
             app:cardUseCompatPadding="true"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -506,7 +506,7 @@
                     android:gravity="center"
                     android:text="@string/calling"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sixteen_text_size"
+                    android:textSize="@dimen/eighteen_text_size"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -543,7 +543,7 @@
                     app:layout_constraintLeft_toLeftOf="@id/doctor_image_view_2"
                     app:layout_constraintRight_toRightOf="@id/doctor_image_view_2"
                     app:layout_constraintTop_toTopOf="@id/doctor_image_view_2"
-                    app:trackColor="@color/light_grey" />
+                    app:trackColor="@color/waiting_area_progress_bar_color" />
 
                 <com.marham.marhamvideocalllibrary.customviews.BodyText
                     android:id="@+id/doctor_name_text_view_2"
@@ -553,7 +553,7 @@
                     android:layout_marginTop="@dimen/thirty"
                     android:layout_marginEnd="@dimen/twenty"
                     android:gravity="center"
-                    android:text="@string/dash"
+                    android:text="@string/doctor_name"
 
                     android:textColor="@color/white"
 
@@ -568,6 +568,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/twenty"
                     android:layout_marginEnd="@dimen/twenty"
+                    android:gravity="center"
+                    android:text="@string/speciality"
+                    android:layout_marginTop="@dimen/ten"
                     android:textColor="@color/white"
                     android:textSize="@dimen/twelve_text_size"
                     app:layout_constraintLeft_toLeftOf="parent"

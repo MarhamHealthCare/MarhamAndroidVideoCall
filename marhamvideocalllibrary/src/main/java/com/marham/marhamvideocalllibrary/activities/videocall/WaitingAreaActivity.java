@@ -1,7 +1,5 @@
 package com.marham.marhamvideocalllibrary.activities.videocall;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.marham.marhamvideocalllibrary.R;
