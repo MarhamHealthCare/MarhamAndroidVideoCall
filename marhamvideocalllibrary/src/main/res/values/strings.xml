@@ -65,4 +65,7 @@
     <string name="have_a_calm_nbackground">Have a calm\nbackground</string>
     <string name="enable_a_stable_ninternet_connection">Enable a stable\ninternet connection</string>
     <string name="internet_strength">Internet Strength</string>
+    <string name="official">Official</string>
+    <string name="ringing">Ringing</string>
+    <string name="cancel">Cancel</string>
 </resources>

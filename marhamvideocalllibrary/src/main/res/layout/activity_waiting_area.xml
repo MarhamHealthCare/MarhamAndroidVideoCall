@@ -433,7 +433,7 @@
                                 android:layout_width="@dimen/hundred_fifty"
                                 android:layout_height="@dimen/ninty"
                                 android:layout_marginTop="@dimen/fifteen"
-                                android:background="@drawable/waiting_icon_high_bandwidth"
+                                android:background="@drawable/dot_icon_vector"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/internet_connection_heading_text_view" />
@@ -444,7 +444,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/ten"
                                 android:layout_marginBottom="@dimen/thirty"
-                                android:text="@string/internet_speed_is_good_for_video_onsultation"
+                                android:text="Internet Status"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="@dimen/forteen_text_size"
                                 android:textStyle="bold"
@@ -514,7 +514,7 @@
                         android:layout_height="@dimen/ten"
                         android:layout_marginTop="@dimen/fifteen"
                         android:layout_marginEnd="@dimen/five"
-                        android:background="@drawable/offline_icon"
+                        android:background="@drawable/dot_icon_vector"
                         app:layout_constraintRight_toLeftOf="@+id/doctor_online_status_text_view_2"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -524,7 +524,7 @@
                         android:layout_height="wrap_content"
 
                         android:layout_marginEnd="@dimen/fifteen"
-                        android:text="@string/offline_init_capital"
+                        android:text="@string/official"
                         android:textColor="@color/white"
                         android:textSize="@dimen/ten_text_size"
                         app:layout_constraintBottom_toBottomOf="@id/doctor_online_status_image_view_2"
@@ -575,7 +575,7 @@
                     android:id="@+id/call_request_views_container_bottom_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_corner_white_five_dp"
+                    android:background="@drawable/dot_icon_vector"
                     app:layout_constraintTop_toBottomOf="@id/call_request_views_container_top_section">
 
                     <com.marham.marhamvideocalllibrary.customviews.BodyText
@@ -614,7 +614,7 @@
                         android:layout_marginEnd="@dimen/forty"
                         android:layout_marginBottom="@dimen/twenty"
 
-                        android:background="@drawable/draw_body_red_button_for_pop_ups"
+                        android:background="@drawable/dot_icon_vector"
                         android:text="@string/cancel"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
@@ -631,7 +631,7 @@
                     android:layout_width="@dimen/hundred_twenty"
                     android:layout_height="@dimen/hundred_twenty"
                     android:layout_marginTop="@dimen/hundred"
-                    android:background="@drawable/round_corner_white_5_dp"
+                    android:background="@drawable/dot_icon_vector"
                     android:padding="@dimen/five"
 
                     app:layout_constraintLeft_toLeftOf="parent"
