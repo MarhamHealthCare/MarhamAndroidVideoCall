@@ -35,6 +35,10 @@ dependencies {
     //Added for supporting Swipe Refresh Layout
 //    implementation 'androidx.support:support-compat:28.0.0'
     //    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //Loading Dots
+    implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
+
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -42,6 +46,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
 
 
 }
