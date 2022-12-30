@@ -567,10 +567,10 @@
                     android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/twenty"
+                    android:layout_marginTop="@dimen/ten"
                     android:layout_marginEnd="@dimen/twenty"
                     android:gravity="center"
                     android:text="@string/speciality"
-                    android:layout_marginTop="@dimen/ten"
                     android:textColor="@color/white"
                     android:textSize="@dimen/twelve_text_size"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -580,7 +580,7 @@
 
                 <com.marham.marhamvideocalllibrary.customviews.MyButton
                     android:id="@+id/end_call_request_button"
-                    android:layout_width="@dimen/zero"
+                    android:layout_width="@dimen/forty"
                     android:layout_height="@dimen/forty"
                     android:layout_marginStart="@dimen/forty"
 
@@ -588,8 +588,8 @@
                     android:layout_marginEnd="@dimen/forty"
                     android:layout_marginBottom="@dimen/twenty"
 
-                    android:background="@drawable/dot_icon_vector"
-                    android:text="@string/cancel"
+                    android:background="@drawable/end_call_red_icon"
+
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/thirteen_text_size"
