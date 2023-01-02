@@ -75,5 +75,14 @@ public class AppConstants {
         public static final String CAMERA_REQUEST = "1";
         public static final String PERMISSION_ALLOWED = "1";
         public static final String PERMISSION_NOT_ALLOWED = "0";
+
+        public static class PermissionTypes {
+            public static final int MICRO_PHONE = 3;
+            public static final int CAMERA_AND_GALLERY_PERMISSION = 7;
+        }
+
     }
+
+
+
 }

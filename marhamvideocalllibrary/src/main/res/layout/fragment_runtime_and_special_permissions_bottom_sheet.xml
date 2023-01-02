@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/ten"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/twenty">
+
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/heading_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/thirty"
+                android:layout_marginTop="@dimen/twenty"
+                android:layout_marginEnd="@dimen/thirty"
+                android:layout_marginBottom="@dimen/twenty_five"
+                android:gravity="center"
+                android:text="Allow"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/twenty_two_text_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/images_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/images_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/seventy"
+                android:layout_marginStart="@dimen/sixty"
+                android:layout_marginTop="@dimen/twenty_five"
+                android:layout_marginEnd="@dimen/sixty"
+                android:layout_marginBottom="@dimen/twenty_five"
+                app:layout_constraintBottom_toTopOf="@+id/permission_detail_text_view">
+
+                <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                    android:id="@+id/image_view_1"
+                    android:layout_width="@dimen/twenty_five"
+                    android:layout_height="@dimen/forty"
+                    android:background="@drawable/microphone_icon_permissions_svg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/image_view_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.marham.marhamvideocalllibrary.customviews.MyImageView
+                    android:id="@+id/image_view_2"
+                    android:layout_width="@dimen/fifty"
+                    android:layout_height="@dimen/forty"
+                    android:background="@drawable/camera_icon_permissions_svg"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/permission_detail_text_view"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/thirty"
+                android:layout_marginEnd="@dimen/thirty"
+                android:layout_marginBottom="@dimen/fifteen"
+                android:gravity="start"
+
+                app:layout_constraintBottom_toTopOf="@+id/permission_disable_guide_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <com.marham.marhamvideocalllibrary.customviews.BodyText
+                android:id="@+id/permission_disable_guide_text_view"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/thirty"
+                android:layout_marginEnd="@dimen/thirty"
+                android:layout_marginBottom="@dimen/fifteen"
+                android:textSize="@dimen/thirteen_text_size"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="You can disable this permission at anytime from Marham App settings"
+                app:layout_constraintBottom_toTopOf="@+id/allow_views_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/allow_views_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+
+                app:layout_constraintBottom_toTopOf="@+id/deny_views_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/line_view_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/one"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.marham.marhamvideocalllibrary.customviews.BodyText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/allow"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_view_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/deny_views_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/line_view_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/one"
+                    android:background="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.marham.marhamvideocalllibrary.customviews.BodyText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deny"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_view_2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

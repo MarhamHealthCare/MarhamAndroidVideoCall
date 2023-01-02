@@ -69,4 +69,6 @@
     <string name="ringing">Ringing</string>
     <string name="cancel">Cancel</string>
     <string name="calling">Calling</string>
+    <string name="deny">Deny</string>
+    <string name="allow">Allow</string>
 </resources>
