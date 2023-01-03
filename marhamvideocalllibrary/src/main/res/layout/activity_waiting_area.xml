@@ -155,7 +155,7 @@
                                 android:id="@+id/circular_progress_indicator"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:indicatorColor="@color/colorAccent"
+                                app:indicatorColor="@color/waiting_area_progress_bar_color"
                                 app:indicatorSize="110dp"
                                 app:layout_constraintBottom_toBottomOf="@id/doctor_image_view_1"
                                 app:layout_constraintLeft_toLeftOf="@id/doctor_image_view_1"
@@ -180,6 +180,7 @@
                                     android:id="@+id/timer_text_views_container"
                                     android:layout_width="@dimen/zero"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/five"
                                     android:background="@drawable/rounded_corners_color_primary_5_dp"
                                     android:visibility="gone"
                                     app:layout_constraintBottom_toBottomOf="parent"
@@ -192,15 +193,13 @@
                                         android:id="@+id/time_left_text_view"
                                         android:layout_width="@dimen/zero"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/two"
                                         android:gravity="center"
                                         android:text="@string/dash"
                                         android:textColor="@color/white"
-
                                         android:textSize="@dimen/twenty_five_text_size"
-
                                         android:textStyle="bold"
                                         app:layout_constraintEnd_toEndOf="parent"
-
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -209,6 +208,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="-5dp"
+                                        android:layout_marginBottom="@dimen/five"
                                         android:text="@string/dash"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/forteen_text_size"
@@ -227,7 +227,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/twelve"
                                     android:layout_marginBottom="@dimen/five"
-                                    android:background="@drawable/rounded_corners_color_primary_10_dp"
+                                    android:background="@drawable/rounded_corners_color_primary_5_dp"
                                     android:drawablePadding="9dp"
                                     android:enabled="false"
                                     android:focusable="false"
@@ -239,6 +239,7 @@
                                     android:textColor="@android:color/white"
                                     android:textSize="@dimen/sixteen_text_size"
                                     android:textStyle="bold"
+                                    android:visibility="gone"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -479,8 +480,6 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:visibility="gone"
-            app:cardCornerRadius="@dimen/five"
-            app:cardUseCompatPadding="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -488,7 +487,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_corner_aqua_blue_and_second_color_top_to_button"
+                android:background="@drawable/rounded_corner_aqua_blue_and_second_color_top_to_button_0_dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -503,7 +502,7 @@
                     android:gravity="center"
                     android:text="@string/calling"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/eighteen_text_size"
+                    android:textSize="@dimen/twenty_two_text_size"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -536,6 +535,7 @@
                     android:layout_height="wrap_content"
                     app:indicatorColor="@color/colorAccent"
                     app:indicatorSize="125dp"
+                    app:trackThickness="@dimen/eight"
                     app:layout_constraintBottom_toBottomOf="@id/doctor_image_view_2"
                     app:layout_constraintLeft_toLeftOf="@id/doctor_image_view_2"
                     app:layout_constraintRight_toRightOf="@id/doctor_image_view_2"
@@ -550,6 +550,7 @@
                     android:layout_marginTop="@dimen/thirty"
                     android:layout_marginEnd="@dimen/twenty"
                     android:gravity="center"
+                    android:textSize="@dimen/eighteen_text_size"
                     android:text="@string/doctor_name"
 
                     android:textColor="@color/white"
@@ -564,12 +565,12 @@
                     android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/twenty"
-                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginTop="@dimen/five"
                     android:layout_marginEnd="@dimen/twenty"
                     android:gravity="center"
                     android:text="@string/speciality"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/twelve_text_size"
+                    android:textSize="@dimen/fifteen_text_size"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/doctor_name_text_view_2" />
@@ -583,7 +584,7 @@
 
                     android:layout_marginTop="@dimen/fifteen"
                     android:layout_marginEnd="@dimen/forty"
-                    android:layout_marginBottom="@dimen/twenty"
+                    android:layout_marginBottom="@dimen/thirty"
 
                     android:background="@drawable/end_call_red_icon"
 

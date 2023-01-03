@@ -98,9 +98,8 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     }
 
     private void setUpcomingAppointmentsViews(AllAppointmentListingData allAppointmentListingData) {
-        //TODO : Replace with upcoming appointment
-        if (allAppointmentListingData.getPast() != null && allAppointmentListingData.getPast().size() > 0) {
-            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getPast()));
+        if (allAppointmentListingData.getUpcoming() != null && allAppointmentListingData.getUpcoming().size() > 0) {
+            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getUpcoming()));
             setUpcomingAppointmentsRecyclerView(upcomingAppointmentsList);
         } else {
             upcomingAppointmentsViewsContainer.setVisibility(View.GONE);

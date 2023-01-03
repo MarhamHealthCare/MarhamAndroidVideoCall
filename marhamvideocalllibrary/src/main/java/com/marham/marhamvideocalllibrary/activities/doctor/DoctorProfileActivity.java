@@ -10,17 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.MarhamUtils;
+import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorExperienceAdapter;
 import com.marham.marhamvideocalllibrary.adapters.doctor.DoctorReviewsAdapter;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
-import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
-import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorExperience;
+import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorProfileGenericData;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
 import com.marham.marhamvideocalllibrary.model.review.Reviews;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
@@ -82,7 +83,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     public void onClick(View view) {
         super.onClick(view);
         int viewId = view.getId();
-        if(viewId == R.id.retry_button){
+        if (viewId == R.id.retry_button) {
             getDoctorDetails(doctorInfo.getDlID());
         } else if (viewId == R.id.book_consultation_views_container) {
             openBookVideConsultationScreen();
@@ -283,30 +284,25 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         if (hospital != null) {
             Bundle bundle = new Bundle();
             bundle.putParcelable(Hospital.class.getCanonicalName(), hospital);
-            bundle.putParcelable(DoctorInfo.class.getCanonicalName(),doctorInfo);
-            MarhamUtils.getInstance().startActivity(this,BookVideoConsultationActivity.class,true,bundle);
-        }else {
+            bundle.putParcelable(DoctorInfo.class.getCanonicalName(), doctorInfo);
+            MarhamUtils.getInstance().startActivity(this, BookVideoConsultationActivity.class, true, bundle);
+        } else {
             Toast.makeText(this, "Could not Book Video Consultation", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void getDoctorDetails(String dlID) {
 
-
-        setViewsBeforeGettingDoctorsDetails();
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY, dlID);
         hashMap.put(AppConstants.API.API_KEYS.PAGE_KEY, "0");
-        // TODO: ADD Logged In User Id.
-//        hashMap.put(AppConstants.API.API_KEYS.LOGGED_IN_USER_ID_KEY, FileHelper.getInstance().getCurrentLoggedInUserId(context));
-        // TODO: ADD FCM Token.
-//        hashMap.put(AppConstants.API.API_KEYS.DEVICE_TOKEN_KEY, FileHelper.getInstance().getFCMtoken(context));
+        hashMap.put(AppConstants.API.API_KEYS.USER_ID_KEY, MarhamVideoCallHelper.getInstance().getUserId());
+        hashMap.put(AppConstants.API.API_KEYS.DEVICE_TOKEN_KEY, MarhamVideoCallHelper.getInstance().getFireBaseToken());
         hashMap.put(AppConstants.API.API_KEYS.DEVICE_TYPE_KEY, AppConstants.API.DEVICE_TYPE.ANDROID);
         hashMap.put(AppConstants.API.API_KEYS.LANGUAGE_KEY, AppConstants.API.LANGUAGE.ENGLISH);
 
-
         Call<NewDoctorProfileServerResponse> call;
-        APIClient apiClient = new APIClient("sdk");
+        APIClient apiClient = new APIClient();
         call = apiClient.getDoctorDetail(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS);
         call.enqueue(retroFit2Callback);

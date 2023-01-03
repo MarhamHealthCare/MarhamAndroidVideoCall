@@ -1,5 +1,7 @@
 package com.marham.marhamvideocalllibrary.activities.videocall;
 
+import static android.icu.lang.UProperty.INT_START;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -9,10 +11,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -84,7 +90,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     private CircleImageView doctorImageView2;
     private BodyText doctorNameTextView2;
-    private ConstraintLayout timerViewsContainer;
+    private ConstraintLayout timerTextViewsContainer;
 
     private CircularProgressIndicator circularProgressIndicator;
 
@@ -132,7 +138,8 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private long currentTime = 1527145082611L; //6 Seconds Behind
 
     private LocalParticipant localParticipant;
-    private long apptTime = currentTime + 86400000; //1 day added
+//    private long apptTime = currentTime + 86400000; //1 day added
+    private long apptTime = currentTime + 8640;// 8 Secs
 
     long patientWaitingTime = currentTime - apptTime;
     long maxWaitingTime = 600000L;//10 Minutes
@@ -479,7 +486,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
         doctorImageView2 = findViewById(R.id.doctor_image_view_2);
         doctorNameTextView2 = findViewById(R.id.doctor_name_text_view_2);
-        timerViewsContainer = findViewById(R.id.timer_views_container);
+        timerTextViewsContainer = findViewById(R.id.timer_text_views_container);
 
         newCallButton = findViewById(R.id.new_call_button);
 
@@ -520,7 +527,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private void initVariables() {
         receiveIntent();
         if (appointment != null && appointment.getApptTimeInMiliSeconds() != null) {
-            apptTime = Long.parseLong(appointment.getApptTimeInMiliSeconds());
+//            apptTime = Long.parseLong(appointment.getApptTimeInMiliSeconds());
         } else {
             WaitingAreaActivity.this.finish();
         }
@@ -546,7 +553,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     public void setRoomData(TokenAndRoom tokenAndRoom) {
         token = tokenAndRoom.getToken();
-        currentTime = Long.parseLong(tokenAndRoom.getCurrent_time_miliseconds());
+//        currentTime = Long.parseLong(tokenAndRoom.getCurrent_time_miliseconds());
         connectToRoom(tokenAndRoom.getRoom());
         swipeRefreshLayout.setRefreshing(false);
     }
@@ -576,7 +583,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     private void setViewsBeforeCalling() {
         circularProgressIndicator.setVisibility(View.VISIBLE);
-        timerViewsContainer.setVisibility(View.VISIBLE);
+        timerTextViewsContainer.setVisibility(View.VISIBLE);
         newCallButton.setVisibility(View.GONE);
 
     }
@@ -671,7 +678,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
         circularProgressIndicator.setVisibility(View.VISIBLE);
 
-        timerViewsContainer.setVisibility(View.VISIBLE);
+        timerTextViewsContainer.setVisibility(View.GONE);
         newCallButton.setVisibility(View.VISIBLE);
 
         drSpecialityTextView1.setText(appointment.getCatName());
@@ -720,9 +727,9 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         if (daysHoursSecsText != null) {
             daysHoursMinsTextView.setText(daysHoursSecsText);
         }
-        if (leftText != null) {
-            timeLeftTextView.setText(leftText);
-        }
+//        if (leftText != null) {
+//            timeLeftTextView.setText(leftText);
+//        }
     }
 
     private void playRingTone() {
@@ -1020,13 +1027,30 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     };
 
     private void setVisibilityStateOfPoorConnectionContainer(boolean state) {
+
+        Spannable word = new SpannableString("Internet Connection is ");
+        word.setSpan(new ForegroundColorSpan(Color.BLACK), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        internetConnnectionStatusTextView.setText(word);
+
         if (state) {
             internetConnectionStatusImageView.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.wifi_strength_bad_icon));
-            internetConnnectionStatusTextView.setText("Internet Speed is poor for video consultation");
+
+            Spannable wordTwo = new SpannableString("poor");
+            wordTwo.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, wordTwo.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            internetConnnectionStatusTextView.append(wordTwo);
+
         } else {
             internetConnectionStatusImageView.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.wifi_strength_good_icon));
-            internetConnnectionStatusTextView.setText("Internet Speed is good for video consultation");
+
+            Spannable wordTwo = new SpannableString("good");
+            wordTwo.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), 0, wordTwo.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            internetConnnectionStatusTextView.append(wordTwo);
         }
+
+        Spannable wordThree = new SpannableString(" for Video Consultation");
+        wordThree.setSpan(new ForegroundColorSpan(Color.BLACK), 0, wordThree.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        internetConnnectionStatusTextView.append(wordThree);
+
     }
 
     @Override

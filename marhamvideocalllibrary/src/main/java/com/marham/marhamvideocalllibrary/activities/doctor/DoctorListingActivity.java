@@ -144,6 +144,8 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         doctorsProgressBar = findViewById(R.id.doctors_progress_bar);
         doctorsNoRecordFoundTextView = findViewById(R.id.doctors_no_record_found_text_view);
 
+        setFiltersRecyclerView(doctorListingFilters);
+
         //TODO: Replace with speciality or disease name and count
         drCountAndSpecialityTextView.setText("-121 Leading " + objectName);
         setDoctorsRecyclerView(doctorInfoList);
