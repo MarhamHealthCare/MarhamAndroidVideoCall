@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/help_line_dummy.xml" value="0.13" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14356884057971014" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/calender_icon_white_vector.xml" value="0.115" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/camera_icon_permissions_svg.xml" value="0.1" />
@@ -17,6 +18,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient.xml" value="0.1915" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient_vertical.xml" value="0.115" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corners_color_primary_10_dp.xml" value="0.13" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corners_color_primary_5_dp.xml" value="0.116" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue.xml" value="0.142" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounder_corner_light_blue_with_blue_stroke.xml" value="0.142" />

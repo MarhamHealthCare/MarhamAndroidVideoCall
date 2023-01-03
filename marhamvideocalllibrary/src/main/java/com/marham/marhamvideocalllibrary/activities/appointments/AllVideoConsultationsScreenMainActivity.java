@@ -12,6 +12,8 @@ import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.patientrecord.PrescriptionActivity;
+import com.marham.marhamvideocalllibrary.activities.videocall.WaitingAreaActivity;
 import com.marham.marhamvideocalllibrary.adapters.appointments.BaseAllVideoConsultationsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.appointments.PreviousVideoConsultationsAdapter;
 import com.marham.marhamvideocalllibrary.adapters.appointments.UpcomingVideoConsultationsAdapter;
@@ -138,7 +140,14 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
 
         @Override
         public void onAdatviewItemClicked(int position, int requestID) {
-
+            switch (requestID) {
+                case BaseAllVideoConsultationsAdapter.UPCOMING_APPOINTMENTS:
+                    navigateOnAppointment(upcomingAppointmentsList.get(position));
+                    break;
+                case BaseAllVideoConsultationsAdapter.PREVIOUS_APPOINTMENTS:
+                    navigateOnAppointment(pastAppointmentsList.get(position));
+                    break;
+            }
         }
 
         @Override
@@ -146,6 +155,31 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
 
         }
     };
+
+    private void navigateOnAppointment(Appointment appointment) {
+        switch (appointment.getAppointmentSubStatusID()) {
+            case Appointment.SCHEDULE:
+                openWaitingArea(appointment);
+                break;
+
+            case Appointment.VIEW_PRESCRIPTION:
+                openViewPrescriptionScreen(appointment);
+                break;
+        }
+
+    }
+
+    private void openWaitingArea(Appointment appointment) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Appointment.class.getCanonicalName(), appointment);
+        MarhamUtils.getInstance().startActivity(this, WaitingAreaActivity.class, false, bundle);
+    }
+
+    private void openViewPrescriptionScreen(Appointment appointment) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Appointment.class.getCanonicalName(), appointment);
+        MarhamUtils.getInstance().startActivity(this, PrescriptionActivity.class, false, bundle);
+    }
 
     private void setViewsBeforeGettingDoctorsDetails() {
         parentLayout.setVisibility(View.GONE);

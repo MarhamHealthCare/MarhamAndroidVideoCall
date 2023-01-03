@@ -264,7 +264,7 @@ public class MarhamUtils {
         public void onTapAllow(int permissionType) {
             switch (permissionType) {
                 case AppConstants.PERMISSIONS.PermissionTypes.CALL_GSM:
-                    makeCall(this.activity, this.context, this.view);
+                    makeCall(MarhamUtils.this.activity, MarhamUtils.this.context, MarhamUtils.this.view);
                     resetCallRelatedVariables();
                     break;
             }

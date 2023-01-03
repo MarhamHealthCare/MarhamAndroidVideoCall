@@ -1,7 +1,5 @@
 package com.marham.marhamvideocalllibrary.network;
 
-import android.content.Context;
-
 import com.marham.marhamvideocalllibrary.BuildConfig;
 import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.model.appointment.videoconsultationlisting.AllAppointmentListingServerResponse;
@@ -18,7 +16,6 @@ import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.TokenAndRoomServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
-import com.marham.marhamvideocalllibrary.utils.AppConstants;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -64,26 +61,28 @@ public class APIClient {
                         //Build new request
                         Request.Builder builder = request.newBuilder();
                         builder.header("Accept", "application/json"); //if necessary, say to consume JSON
+                        ;
 
-                        token = MarhamVideoCallHelper.getInstance().getAPI_KEY();
+                        String client = MarhamVideoCallHelper.getInstance().getClient();
+                        String API_KEY = MarhamVideoCallHelper.getInstance().getAPI_KEY();
+                        String authToken = MarhamVideoCallHelper.getInstance().getAuthToken();
 
-                        setAuthHeader(builder, token); //write current token to request
+                        setAuthHeader(builder, client, API_KEY, authToken);
+
 
                         request = builder.build(); //overwrite old request
                         Response response = chain.proceed(request); //perform request, here original request will be executed
                         if (response.code() == 401) { //if unauthorized
                             synchronized (httpClient) { //perform all 401 in sync blocks, to avoid multiply token updates
-                                token = MarhamVideoCallHelper.getInstance().getAPI_KEY();
-                                //get currently stored token
 
-                                setAuthHeader(builder, token); //set auth token to updated
+                                setAuthHeader(builder, client, API_KEY, authToken);
                                 request = builder.build();
                                 return chain.proceed(request); //repeat request with new token
 
                             }
                         }
 
-                        setAuthHeader(builder, token);
+                        setAuthHeader(builder, client, API_KEY, authToken);
                         return response;
                     }
                 })
@@ -113,7 +112,7 @@ public class APIClient {
                         String API_KEY = MarhamVideoCallHelper.getInstance().getAPI_KEY();
                         String authToken = MarhamVideoCallHelper.getInstance().getAuthToken();
 
-                        setAuthHeader(builder, client, API_KEY,authToken); //write current token to request
+                        setAuthHeader(builder, client, API_KEY, authToken); //write current token to request
 
                         request = builder.build(); //overwrite old request
                         Response response = chain.proceed(request); //perform request, here original request will be executed
@@ -121,14 +120,15 @@ public class APIClient {
                             synchronized (httpClient) { //perform all 401 in sync blocks, to avoid multiply token updates
                                 //get currently stored token
 
-                                setAuthHeader(builder, client, API_KEY,authToken);; //set auth token to updated
+                                setAuthHeader(builder, client, API_KEY, authToken);
+                                ; //set auth token to updated
                                 request = builder.build();
                                 return chain.proceed(request); //repeat request with new token
 
                             }
                         }
 
-                        setAuthHeader(builder, client, API_KEY,authToken);
+                        setAuthHeader(builder, client, API_KEY, authToken);
                         return response;
                     }
                 })
@@ -137,19 +137,19 @@ public class APIClient {
         apiService = retrofit.create(MarhamVideoCallEndPoints.class);
     }
 
-    private void setAuthHeader(Request.Builder builder,String authToken) {
-        if (authToken != null) {//Add Auth token to each request if authorized
-            builder.header("Authorization", String.format("Bearer %s", authToken));
-        }
-    }
+//    private void setAuthHeader(Request.Builder builder, String authToken) {
+//        if (authToken != null) {//Add Auth token to each request if authorized
+//            builder.header("Authorization", String.format("Bearer %s", authToken));
+//        }
+//    }
 
-    private void setAuthHeader(Request.Builder builder, String client, String API_KEY,String authToken) {
+    private void setAuthHeader(Request.Builder builder, String client, String API_KEY, String authToken) {
 
-        if(client !=null ){
+        if (client != null) {
             builder.header("sdkclient", client);
         }
 
-        if(API_KEY!=null){
+        if (API_KEY != null) {
             builder.header("sdkclientkey", API_KEY);
         }
 
@@ -161,6 +161,7 @@ public class APIClient {
     public Call<DashboardDoctorServerResponse> getDashboardDoctos(HashMap<String, String> info) {
         return apiService.getDashboardDoctors(info);
     }
+
     public Call<DashboardDiseasesServerResponse> getDashboardSpecialitiesWithDiseases(HashMap<String, String> hashMap) {
         return apiService.getDashboardSpecialitiesWithDiseases(hashMap);
     }

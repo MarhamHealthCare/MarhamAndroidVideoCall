@@ -36,7 +36,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/thirty"
-                android:background="@drawable/helpline" />
+                android:src="@drawable/dummy_placeholder" />
 
             <ListView
                 android:id="@+id/listview_doctor_numbers"

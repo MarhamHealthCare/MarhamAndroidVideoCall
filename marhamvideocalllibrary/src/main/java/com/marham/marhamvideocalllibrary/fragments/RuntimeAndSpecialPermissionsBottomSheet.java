@@ -60,8 +60,6 @@ public class RuntimeAndSpecialPermissionsBottomSheet extends BottomSheetDialogFr
     }
 
     private void initializeViews(View view) {
-        setUpViewsAsPerPermissionType();
-
         headingTextView = view.findViewById(R.id.heading_text_view);
 
         imageView1 = view.findViewById(R.id.image_view_1);
@@ -71,6 +69,8 @@ public class RuntimeAndSpecialPermissionsBottomSheet extends BottomSheetDialogFr
 
         allowViewsContainer = view.findViewById(R.id.allow_views_container);
         denyViewsContainer = view.findViewById(R.id.deny_views_container);
+
+        setUpViewsAsPerPermissionType();
 
     }
 

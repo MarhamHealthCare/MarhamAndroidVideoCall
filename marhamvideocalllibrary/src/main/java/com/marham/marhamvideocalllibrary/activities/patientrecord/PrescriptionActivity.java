@@ -12,6 +12,7 @@ import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
 import com.marham.marhamvideocalllibrary.adapters.patientrecord.PrescriptionAdapter;
 import com.marham.marhamvideocalllibrary.listeners.AdpaterViewItemClickedListenerForPrescription;
+import com.marham.marhamvideocalllibrary.model.appointment.Appointment;
 import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistory;
 import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistoryResponse;
@@ -33,6 +34,7 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
     private ConstraintLayout patientrReportsLayout;
 
     private List<PatientHistory> prescriptionList = new ArrayList<>();
+    private Appointment appointment;
 
     private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 
@@ -45,6 +47,7 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescription);
         initializeViews();
+        initVariables();
         fetchData();
     }
 
@@ -52,7 +55,7 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
     public void onClick(View view) {
         super.onClick(view);
         int viewId = view.getId();
-        if(R.id.retry_button==viewId){
+        if (R.id.retry_button == viewId) {
             getPatientPastPrescriptions("");
         }
     }
@@ -67,6 +70,13 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
         patientrReportsLayout = findViewById(R.id.patient_reports_layout);
     }
 
+    private void initVariables(){
+        receiveIntent();
+    }
+
+    public void receiveIntent() {
+        appointment = (Appointment) getIntent().getSerializableExtra(Appointment.class.getCanonicalName());
+    }
 
     public void setUpPrescriptionRecyclerView(List<PatientHistory> prescriptionList) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -127,17 +137,20 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
     };
 
 
-    //TODO: Replace API Here
     public void getPatientPastPrescriptions(String patientId) {
         setViewsBeforeCallingAPI();
         HashMap<String, String> hashMap = new HashMap<>();
         APIClient apiClient = new APIClient();
 
+        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, appointment.getPatientID());
+        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, appointment.getDoctorUserId());
+        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, appointment.getId());
+
         //TODO: Replace After implementing Appointment Listing
-        //Dev
-        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, "511");
-        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, "6596");
-        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, "1022171913");
+//        //Dev
+//        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, "511");
+//        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, "6596");
+//        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, "1022171913");
 
         //Live
 //        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, "366024");

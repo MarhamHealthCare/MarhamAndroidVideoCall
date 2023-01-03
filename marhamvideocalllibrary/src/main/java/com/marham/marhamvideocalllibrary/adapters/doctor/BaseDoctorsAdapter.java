@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.utils.CircleTransform;
-import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.viewHolders.doctor.BaseDoctorViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -50,22 +50,21 @@ public class BaseDoctorsAdapter extends RecyclerView.Adapter<BaseDoctorViewHolde
         holder.doctorSpecialityTextView.setText(doctorInfo.getSpeciality());
         holder.doctorExperienceTextView.setText("Exp." + doctorInfo.getDocExp() + " Year(s)");
 
-
-        if (doctorInfo.getRating()!=null && doctorInfo.getRating().equals("0")) {
+        if (doctorInfo.getRating() != null && doctorInfo.getRating().equals("0")) {
             holder.doctorRatingsStar.setVisibility(View.INVISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.INVISIBLE);
         } else {
             holder.doctorRatingsStar.setVisibility(View.VISIBLE);
             holder.doctorReviewsTextView.setVisibility(View.VISIBLE);
 
-            if(doctorInfo.getTotalReviews()!=null) {
+            if (doctorInfo.getTotalReviews() != null) {
                 int reviewsCount = Integer.parseInt(doctorInfo.getTotalReviews());
                 if (reviewsCount >= 100) {
                     holder.doctorReviewsTextView.setText("100+ reviews");
                 } else {
                     holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
                 }
-            }else{
+            } else {
                 holder.doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
             }
 

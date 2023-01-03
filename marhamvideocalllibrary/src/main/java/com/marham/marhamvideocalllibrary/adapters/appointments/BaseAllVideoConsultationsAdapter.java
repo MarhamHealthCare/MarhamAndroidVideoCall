@@ -28,9 +28,9 @@ public class BaseAllVideoConsultationsAdapter extends RecyclerView.Adapter<BaseA
     protected int adapterType;
     protected Appointment appointment;
 
-    public BaseAllVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener, List<Appointment> appointmentList, int adapterType) {
+    public BaseAllVideoConsultationsAdapter(Context context, AdapterViewItemClickedListener adapterViewItemClickedListener2, List<Appointment> appointmentList, int adapterType) {
         this.context = context;
-        this.adpaterViewItemClickedListener = adpaterViewItemClickedListener;
+        this.adpaterViewItemClickedListener = adapterViewItemClickedListener2;
         this.appointmentList = appointmentList;
         this.adapterType = adapterType;
     }

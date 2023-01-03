@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.videocall.WaitingAreaActivity">
@@ -128,7 +129,7 @@
                                 android:id="@+id/doctor_speciality_text_view_1"
                                 android:layout_width="@dimen/zero"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/three"
+                                android:layout_marginTop="@dimen/one"
                                 android:gravity="center"
                                 android:text="@string/speciality"
                                 android:textColor="@color/black"
@@ -160,8 +161,8 @@
                                 app:layout_constraintLeft_toLeftOf="@id/doctor_image_view_1"
                                 app:layout_constraintRight_toRightOf="@id/doctor_image_view_1"
                                 app:layout_constraintTop_toTopOf="@id/doctor_image_view_1"
-                                app:trackColor="@color/waiting_area_progress_bar_color" />
-
+                                app:trackColor="@color/waiting_area_progress_bar_color"
+                                app:trackThickness="@dimen/seven" />
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/timer_views_container"
@@ -222,21 +223,21 @@
                                 <com.marham.marhamvideocalllibrary.customviews.MyButton
                                     android:id="@+id/new_call_button"
                                     android:layout_width="@dimen/two_hundred"
-                                    android:layout_height="@dimen/forty"
+                                    android:layout_height="@dimen/thirty_five"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/twelve"
                                     android:layout_marginBottom="@dimen/five"
                                     android:background="@drawable/rounded_corners_color_primary_10_dp"
                                     android:drawablePadding="9dp"
-                                    android:enabled="true"
-                                    android:focusable="true"
+                                    android:enabled="false"
+                                    android:focusable="false"
                                     android:gravity="center"
                                     android:minWidth="0dp"
                                     android:minHeight="0dp"
                                     android:text="@string/call_doctor"
                                     android:textAllCaps="false"
                                     android:textColor="@android:color/white"
-                                    android:textSize="@dimen/eighteen_text_size"
+                                    android:textSize="@dimen/sixteen_text_size"
                                     android:textStyle="bold"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -264,8 +265,7 @@
                         android:paddingBottom="@dimen/five"
                         android:text="@string/dash"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/eleven_text_size"
-                        android:textStyle="bold"
+                        android:textSize="@dimen/twelve_text_size"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/consultation_time_info_container_card_view" />
@@ -293,7 +293,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/twenty_five"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/twenty_five"
                                 android:text="@string/for_a_better_experience"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/sixteen_text_size"
@@ -306,7 +306,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/twenty_five"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/thirty"
                                 app:layout_constraintEnd_toStartOf="@+id/good_internet_check_box_views_container"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/checklist_heading_text_view">
@@ -344,7 +344,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/forty"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/thirty"
                                 app:layout_constraintEnd_toStartOf="@+id/calm_background_check_box_views_container"
                                 app:layout_constraintStart_toEndOf="@+id/medical_record_check_box_views_container"
                                 app:layout_constraintTop_toBottomOf="@+id/checklist_heading_text_view">
@@ -381,7 +381,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/forty"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/thirty"
                                 android:layout_marginEnd="@dimen/twenty_five"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/good_internet_check_box_views_container"
@@ -419,7 +419,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/twenty_five"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/twenty_five"
                                 android:text="@string/internet_strength"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/sixteen_text_size"
@@ -429,9 +429,9 @@
 
                             <com.marham.marhamvideocalllibrary.customviews.MyImageView
                                 android:id="@+id/internet_connection_status_image_view"
-                                android:layout_width="@dimen/hundred_thirty"
+                                android:layout_width="@dimen/hundred_twenty"
                                 android:layout_height="@dimen/ninty"
-                                android:layout_marginTop="@dimen/twenty"
+                                android:layout_marginTop="@dimen/thirty"
                                 android:background="@drawable/wifi_strength_good_icon"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
@@ -441,12 +441,11 @@
                                 android:id="@+id/internet_connnection_status_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/ten"
+                                android:layout_marginTop="@dimen/twenty"
                                 android:layout_marginBottom="@dimen/thirty"
                                 android:text="Internet Status"
                                 android:textColor="@color/good_wifi_text_view_color"
                                 android:textSize="@dimen/forteen_text_size"
-                                android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
@@ -603,4 +602,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

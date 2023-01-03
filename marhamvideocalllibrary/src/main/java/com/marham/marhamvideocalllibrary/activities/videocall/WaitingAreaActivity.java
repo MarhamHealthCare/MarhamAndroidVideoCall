@@ -26,6 +26,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
@@ -51,6 +52,12 @@ import com.marham.marhamvideocalllibrary.utils.NetworkHelper;
 import com.marham.marhamvideocalllibrary.utils.permission.RuntimePermissionManager;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.twilio.video.ConnectOptions;
+import com.twilio.video.LocalParticipant;
+import com.twilio.video.RemoteParticipant;
+import com.twilio.video.Room;
+import com.twilio.video.TwilioException;
+import com.twilio.video.Video;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,9 +68,8 @@ import java.util.TimerTask;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 
-public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpecialPermissionsBottomSheetListener, ServerConnectListener {
 
-    private BodyText headingTextView;
+public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpecialPermissionsBottomSheetListener, ServerConnectListener {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private ConstraintLayout disabledView;
@@ -115,6 +121,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private MyButton rejectCallButtonPopUp;
     private String remoteParticipantIdentity;
     private Room room;
+    private String roomString;
 
     private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
     private Timer missedCallTimer;
@@ -136,7 +143,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     private MyImageView backBtn;
     private AlertDialog.Builder builder;
-    private View view;
     private AlertDialog dialog;
     private String timerText;
     private String daysHoursMinsText;
@@ -462,40 +468,40 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private void initGui() {
         backBtn = findViewById(R.id.back_button);
 
-        disabledView = view.findViewById(R.id.disabled_view);
+        disabledView = findViewById(R.id.disabled_view);
 
-        parenLayout = view.findViewById(R.id.parent_layout);
-        doctorImageView1 = view.findViewById(R.id.doctor_image_view_1);
-        doctorNameTextView1 = view.findViewById(R.id.doctor_name_text_view_1);
-        drSpecialityTextView1 = view.findViewById(R.id.doctor_speciality_text_view_1);
+        parenLayout = findViewById(R.id.parent_layout);
+        doctorImageView1 = findViewById(R.id.doctor_image_view_1);
+        doctorNameTextView1 = findViewById(R.id.doctor_name_text_view_1);
+        drSpecialityTextView1 = findViewById(R.id.doctor_speciality_text_view_1);
 
-        drSpecialityTextView2 = view.findViewById(R.id.doctor_speciality_text_view_2);
+        drSpecialityTextView2 = findViewById(R.id.doctor_speciality_text_view_2);
 
-        doctorImageView2 = view.findViewById(R.id.doctor_image_view_2);
-        doctorNameTextView2 = view.findViewById(R.id.doctor_name_text_view_2);
-        timerViewsContainer = view.findViewById(R.id.timer_views_container);
+        doctorImageView2 = findViewById(R.id.doctor_image_view_2);
+        doctorNameTextView2 = findViewById(R.id.doctor_name_text_view_2);
+        timerViewsContainer = findViewById(R.id.timer_views_container);
 
-        newCallButton = view.findViewById(R.id.new_call_button);
+        newCallButton = findViewById(R.id.new_call_button);
 
-        instructionsTextView = view.findViewById(R.id.instructions_text_view);
+        instructionsTextView = findViewById(R.id.instructions_text_view);
 
-        callRequestViewsContainer = view.findViewById(R.id.call_request_views_container);
-        callStatusTextView = view.findViewById(R.id.call_status_text_view);
-        loadingDots = view.findViewById(R.id.loading_dots);
-        endCallRequestButton = view.findViewById(R.id.end_call_request_button);
+        callRequestViewsContainer = findViewById(R.id.call_request_views_container);
+        callStatusTextView = findViewById(R.id.call_status_text_view);
+        loadingDots = findViewById(R.id.loading_dots);
+        endCallRequestButton = findViewById(R.id.end_call_request_button);
 
-        timeLeftTextView = view.findViewById(R.id.time_left_text_view);
-        daysHoursMinsTextView = view.findViewById(R.id.days_hours_mins_text_view);
-        time = view.findViewById(R.id.time);
+        timeLeftTextView = findViewById(R.id.time_left_text_view);
+        daysHoursMinsTextView = findViewById(R.id.days_hours_mins_text_view);
+        time = findViewById(R.id.time);
 
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
-        circularProgressIndicator = view.findViewById(R.id.circular_progress_indicator);
+        circularProgressIndicator = findViewById(R.id.circular_progress_indicator);
 
-        callRequestViewsContainer = view.findViewById(R.id.call_request_views_container);
+        callRequestViewsContainer = findViewById(R.id.call_request_views_container);
 
-        internetConnectionStatusImageView = view.findViewById(R.id.internet_connection_status_image_view);
-        internetConnnectionStatusTextView = view.findViewById(R.id.internet_connnection_status_text_view);
+        internetConnectionStatusImageView = findViewById(R.id.internet_connection_status_image_view);
+        internetConnnectionStatusTextView = findViewById(R.id.internet_connnection_status_text_view);
 
 
         swipeRefreshLayout.setColorSchemeColors(MarhamUtils.getInstance().getColor(this, R.color.colorPrimary));
@@ -519,6 +525,11 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
             WaitingAreaActivity.this.finish();
         }
         denyButtonTapped = false;
+
+        instructionsListBeforeCall.add("You cannot call doctor before scheduled time.\nThis service is not for emergency use.");
+        instructionsListAfterCall.add("Don't worry! We're here to help.");
+        instructionsListAfterCall.add("You can call our helpline if anything goes wrong.");
+        instructionsListAfterCall.add("The doctor might be on another call. Please wait for 10-15 minutes.");
     }
 
     public void receiveIntent() {
@@ -535,7 +546,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     public void setRoomData(TokenAndRoom tokenAndRoom) {
         token = tokenAndRoom.getToken();
-        room = tokenAndRoom.getRoom();
         currentTime = Long.parseLong(tokenAndRoom.getCurrent_time_miliseconds());
         connectToRoom(tokenAndRoom.getRoom());
         swipeRefreshLayout.setRefreshing(false);
@@ -544,7 +554,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     public void setInstructionsTextViewTextColor(int color) {
         instructionsTextView.setTextColor(ContextCompat.getColor(this, color));
     }
-
 
     public void updateInstructionsTextViewText(String text, int typeface) {
         instructionsTextView.setTypeface(null, typeface);
@@ -605,10 +614,9 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     }
 
     private void showTimerBeforeCallTime() {
-        circularProgressIndicator.setProgress(0);
+        circularProgressIndicator.setProgress(100);
         circularProgressIndicator.setMax(100);
         long millisToGo = apptTime - currentTime;
-//        long millisToGo = 100000L;
 
         if (timerBeforeCall == null) {
             timerBeforeCall = new CountDownTimer(millisToGo, 1000) {
@@ -624,28 +632,19 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
                         timerText = String.format("%02d:%02d:%02d:%02d", days, hours, minutes, seconds);
                         daysHoursMinsText = "Days   Hrs  Min   Sec";
                         leftText = "Left";
-                        updateCircularProgressStatus(millis, millisToGo, false);
                     } else if (hours > 0) {
                         timerText = String.format("%02d:%02d:%02d", hours, minutes, seconds);
                         daysHoursMinsText = "Hrs  Min  Sec";
                         leftText = "Left";
-                        updateCircularProgressStatus(millis, millisToGo, false);
                     } else if (minutes > 0) {
                         timerText = String.format("%02d:%02d", minutes, seconds);
                         daysHoursMinsText = "Min Sec";
                         leftText = "Left";
-                        if (minutes < 30) {
-                            updateCircularProgressStatus(millis, millisToGo, true);
-                        } else {
-                            updateCircularProgressStatus(millis, millisToGo, false);
-                        }
                     } else {
                         timerText = String.format("%02d", seconds);
                         daysHoursMinsText = "Sec";
                         leftText = "Left";
-                        updateCircularProgressStatus(millis, millisToGo, true);
                     }
-
                     updateInfoViews(timerText, daysHoursMinsText, leftText);
                 }
 
@@ -661,22 +660,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         }
     }
 
-    private void updateCircularProgressStatus(long millis, long millisToGo,
-                                              boolean showProgressBar) {
-
-        if (showProgressBar) {
-            circularProgressIndicator.setVisibility(View.VISIBLE);
-            long totalSecondstoGo = millis / 1000;
-            long totalSeconds = millisToGo / 1000;
-            float circularProgress = ((float) (totalSecondstoGo) / (float) totalSeconds) * 100;
-            circularProgressIndicator.setProgressCompat((int) circularProgress, true);
-        } else {
-            circularProgressIndicator.setVisibility(View.VISIBLE);
-            circularProgressIndicator.setProgressCompat((int) 100, true);
-        }
-    }
-
-
     private void stopTimerBeforeCallTime() {
         if (timerBeforeCall != null) {
             timerBeforeCall.cancel();
@@ -685,11 +668,10 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     private void showTimerAfterCallTime() {
         patientWaitingTime = currentTime - apptTime;
-//        waitingForPatientTimer = new Timer();
 
-        circularProgressIndicator.setVisibility(View.GONE);
+        circularProgressIndicator.setVisibility(View.VISIBLE);
 
-        timerViewsContainer.setVisibility(View.GONE);
+        timerViewsContainer.setVisibility(View.VISIBLE);
         newCallButton.setVisibility(View.VISIBLE);
 
         drSpecialityTextView1.setText(appointment.getCatName());
@@ -774,7 +756,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         appointment.setToken(token);
         Bundle bundle = new Bundle();
         bundle.putSerializable(Appointment.class.getCanonicalName(), appointment);
-        bundle.putString("roomKey", room);
+        bundle.putString("roomKey", roomString);
         bundle.putString("token", token);
         MarhamUtils.getInstance().startActivity(this, VideoCallActivity.class, true, bundle);
 
@@ -790,17 +772,17 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         newCallButton.setEnabled(true);
     }
 
-    private void showCallRequestPopUp() {
-        initDialogBox();
-        builder.setView(view);
-        dialog = builder.create();
-        dialog.show();
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setOnKeyListener((dialogInterface, i, keyEvent) -> {
-            dialog.setCancelable(false);
-            return true;
-        });
-    }
+//    private void showCallRequestPopUp() {
+//        initDialogBox();
+//        builder.setView(view);
+//        dialog = builder.create();
+//        dialog.show();
+//        dialog.setCanceledOnTouchOutside(false);
+//        dialog.setOnKeyListener((dialogInterface, i, keyEvent) -> {
+//            dialog.setCancelable(false);
+//            return true;
+//        });
+//    }
 
     private void initDialogBox() {
 //        builder = new AlertDialog.Builder(WaitingAreaActivity.this);
@@ -978,7 +960,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     private void connectToRoom(String roomName) {
         swipeRefreshLayout.setRefreshing(true);
-        ConnectOptions.Builder connectOptionsBuilder = new ConnectOptions.Builder(TOKEN)
+        ConnectOptions.Builder connectOptionsBuilder = new ConnectOptions.Builder(token)
                 .roomName(roomName);
         room = Video.connect(this, connectOptionsBuilder.build(), roomListener());
     }
@@ -1168,7 +1150,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     @Override
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ONLINE_CONSULTATION_TOKEN:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     setViewsAfterCallingAPI();
                     TokenAndRoomServerResponse tokenAndRoomServerResponse = (TokenAndRoomServerResponse) response;
