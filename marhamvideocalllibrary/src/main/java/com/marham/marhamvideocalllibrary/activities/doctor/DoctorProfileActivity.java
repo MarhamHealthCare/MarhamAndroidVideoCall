@@ -316,7 +316,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_DOCTORS_DETAILS:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     setViewsAfterGettingDoctorsDetails();
                     extractDoctorsData((NewDoctorProfileServerResponse) response);
                 } else {

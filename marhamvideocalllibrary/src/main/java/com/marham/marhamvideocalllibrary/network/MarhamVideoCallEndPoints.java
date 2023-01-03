@@ -7,10 +7,12 @@ import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
+import com.marham.marhamvideocalllibrary.model.notification.UpdateDeviceTokenServerResponse;
 import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistoryResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.TokenAndRoomServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 
 import java.util.HashMap;
@@ -59,5 +61,21 @@ public interface MarhamVideoCallEndPoints {
 
     @GET("get-user-order-listing")
     Call<AllAppointmentListingServerResponse> getPatientOrderAndAppointmentList(@QueryMap HashMap<String, String> info);
+
+    @FormUrlEncoded
+    @POST("get-video-consultancy-token")
+    Call<TokenAndRoomServerResponse> getToken(@FieldMap HashMap<String, String> hashMap);
+
+    @FormUrlEncoded
+    @POST("adddevicetoken")
+    Call<UpdateDeviceTokenServerResponse> updateDeviceToken(@Field("userID") String userID, @Field("devicetoken") String devicetoken, @Field("deviceType") String deviceType, @Field("appType") String appType, @Field("deviceID") String deviceID);
+
+    @FormUrlEncoded
+    @POST("send-consultation-signal-notification")
+    Call<ServerResponseOld> sendOnlineConsultationSignal(@FieldMap HashMap<String, String> info);
+
+    @FormUrlEncoded
+    @POST("update-user-last-seen")
+    Call<ServerResponseOld> updateLastSeenTimeOfUser(@FieldMap HashMap<String, String> info);
 
 }

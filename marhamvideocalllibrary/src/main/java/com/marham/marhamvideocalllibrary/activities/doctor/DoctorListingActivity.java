@@ -25,7 +25,6 @@ import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.filter.DoctorListingFilter;
 import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
-import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.Speciality;
 import com.marham.marhamvideocalllibrary.network.APIClient;
 import com.marham.marhamvideocalllibrary.network.RetroFit2Callback;
@@ -295,7 +294,7 @@ public class DoctorListingActivity extends BaseActivity implements ServerConnect
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
                 isCallInProgress = false;
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     AllDoctorResponse allDoctorResponse = (AllDoctorResponse) response;
                     doctorInfoList.addAll(allDoctorResponse.getData().getDoctors());
                     if (doctorInfoList.size() > 0) {

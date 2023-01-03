@@ -190,7 +190,7 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
         switch (response.getRequestCode()) {
 
             case AppConstants.API.API_END_POINT_NUMBER.GET_USER_APPOINTMENT:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     setViewsAfterGettingDoctorsDetails();
                     AllAppointmentListingServerResponse allAppointmentsServerResponse = (AllAppointmentListingServerResponse) response;
                     setUpcomingAppointmentsViews(allAppointmentsServerResponse.getData());

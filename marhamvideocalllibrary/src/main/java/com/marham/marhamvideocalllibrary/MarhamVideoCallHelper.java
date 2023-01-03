@@ -16,6 +16,7 @@ public class MarhamVideoCallHelper {
     private String fireBaseToken;
     private String userPhoneNumber;
     private String userName;
+    private String deviceID;
     private MarhamUser marhamUser;
 
     private static MarhamVideoCallHelper utils;
@@ -94,5 +95,13 @@ public class MarhamVideoCallHelper {
 
     public String getUserId() {
         return marhamUser.getId();
+    }
+
+    public String getDeviceID() {
+        return deviceID;
+    }
+
+    public void setDeviceID(String deviceID) {
+        this.deviceID = deviceID;
     }
 }

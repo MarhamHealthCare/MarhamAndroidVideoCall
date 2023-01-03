@@ -465,7 +465,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_HOSPITAL_AVAILABLE_DAYS_AND_DATES:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     if (isHospitalDaysAndTimeSlotsRequest) {
                         setViewsAfterCallingAPI();
                     } else {
@@ -487,7 +487,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 }
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     setViewsAfterCallingAPI();
                     MarhamUtils.getInstance().showAPIResponseMessage(this, "Appointment Booked");
                 } else {

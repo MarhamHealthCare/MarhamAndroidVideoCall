@@ -152,7 +152,7 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
             case AppConstants.API.API_END_POINT_NUMBER.GET_PATIENT_PRESCRIPTIONS:
-                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_OLD)) {
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     setViewsAfterCallingPastPrescriptionApi();
                     PatientHistoryResponse patientHistoryResponse = (PatientHistoryResponse) response;
                     prescriptionList.clear();

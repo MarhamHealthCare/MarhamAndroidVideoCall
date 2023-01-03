@@ -71,4 +71,6 @@
     <string name="calling">Calling</string>
     <string name="deny">Deny</string>
     <string name="allow">Allow</string>
+    <string name="msg_on_call_permission_denied">You have denied call permission, inorder to provide permission click on settings</string>
+    <string name="doctor">Doctor</string>
 </resources>

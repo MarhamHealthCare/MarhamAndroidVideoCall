@@ -9,11 +9,14 @@ import com.marham.marhamvideocalllibrary.model.disease.DashboardDiseasesServerRe
 import com.marham.marhamvideocalllibrary.model.doctor.AllDoctorResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.DashboardDoctorServerResponse;
 import com.marham.marhamvideocalllibrary.model.doctor.NewDoctorProfileServerResponse;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
+import com.marham.marhamvideocalllibrary.model.notification.UpdateDeviceTokenServerResponse;
 import com.marham.marhamvideocalllibrary.model.patientrecord.PatientHistoryResponse;
 import com.marham.marhamvideocalllibrary.model.speciality.NewAllSpecialitiesServerResponse;
 import com.marham.marhamvideocalllibrary.model.user.MarhamUserServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
+import com.marham.marhamvideocalllibrary.model.videoconsultation.TokenAndRoomServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
 import com.marham.marhamvideocalllibrary.utils.AppConstants;
 
@@ -196,6 +199,22 @@ public class APIClient {
 
     public Call<AllAppointmentListingServerResponse> getPatientOrderAndAppointmentList(HashMap<String, String> info) {
         return apiService.getPatientOrderAndAppointmentList(info);
+    }
+
+    public Call<TokenAndRoomServerResponse> getToken(HashMap<String, String> hashMap) {
+        return apiService.getToken(hashMap);
+    }
+
+    public Call<UpdateDeviceTokenServerResponse> updateDeviceToken(String userID, String devicetoken, String deviceType, String appType, String deviceID) {
+        return apiService.updateDeviceToken(userID, devicetoken, deviceType, appType, deviceID);
+    }
+
+    public Call<ServerResponseOld> sendOnlineConsultationSignal(HashMap<String, String> info) {
+        return apiService.sendOnlineConsultationSignal(info);
+    }
+
+    public Call<ServerResponseOld> updateLastSeenTimeOfUser(HashMap<String, String> info) {
+        return apiService.updateLastSeenTimeOfUser(info);
     }
 
 }
