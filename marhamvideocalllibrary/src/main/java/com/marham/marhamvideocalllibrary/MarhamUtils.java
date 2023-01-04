@@ -151,7 +151,7 @@ public class MarhamUtils {
 
     //Logs
     public void generateLog(String log) {
-        Log.d(AppConstants.TAG, log);
+        Log.e(AppConstants.TAG, log);
     }
 
     //Unique IDs

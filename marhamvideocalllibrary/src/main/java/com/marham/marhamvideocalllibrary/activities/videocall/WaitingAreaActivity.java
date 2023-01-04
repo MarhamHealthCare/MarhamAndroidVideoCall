@@ -1,7 +1,5 @@
 package com.marham.marhamvideocalllibrary.activities.videocall;
 
-import static android.icu.lang.UProperty.INT_START;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -84,9 +82,8 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private CircleImageView doctorImageView1;
     private BodyText doctorNameTextView1;
 
-    private BodyText drSpecialityTextView1;
-
-    private BodyText drSpecialityTextView2;
+    private BodyText doctorSpecialityTextView1;
+    private BodyText doctorSpecialityTextView2;
 
     private CircleImageView doctorImageView2;
     private BodyText doctorNameTextView2;
@@ -135,11 +132,11 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     public static final boolean USE_TOKEN_SERVER = false;
     private boolean isDoctorOnline = false;
     private boolean canAutoConnect = false;
-    private long currentTime = 1527145082611L; //6 Seconds Behind
+    private long currentTime = 1527145082611L;
 
     private LocalParticipant localParticipant;
-//    private long apptTime = currentTime + 86400000; //1 day added
-    private long apptTime = currentTime + 8640;// 8 Secs
+    //    private long apptTime = currentTime + 86400000; //1 day added
+    private long apptTime = currentTime + 8640;// 8 Secs Behind
 
     long patientWaitingTime = currentTime - apptTime;
     long maxWaitingTime = 600000L;//10 Minutes
@@ -478,14 +475,16 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         disabledView = findViewById(R.id.disabled_view);
 
         parenLayout = findViewById(R.id.parent_layout);
+
         doctorImageView1 = findViewById(R.id.doctor_image_view_1);
         doctorNameTextView1 = findViewById(R.id.doctor_name_text_view_1);
-        drSpecialityTextView1 = findViewById(R.id.doctor_speciality_text_view_1);
+        doctorSpecialityTextView1 = findViewById(R.id.doctor_speciality_text_view_1);
 
-        drSpecialityTextView2 = findViewById(R.id.doctor_speciality_text_view_2);
 
         doctorImageView2 = findViewById(R.id.doctor_image_view_2);
         doctorNameTextView2 = findViewById(R.id.doctor_name_text_view_2);
+        doctorSpecialityTextView2 = findViewById(R.id.doctor_speciality_text_view_2);
+
         timerTextViewsContainer = findViewById(R.id.timer_text_views_container);
 
         newCallButton = findViewById(R.id.new_call_button);
@@ -513,14 +512,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
         swipeRefreshLayout.setColorSchemeColors(MarhamUtils.getInstance().getColor(this, R.color.colorPrimary));
         swipeRefreshLayout.setEnabled(false);
-
-        try {
-            doctorNameTextView1.setText(appointment.getDocName());
-            doctorNameTextView2.setText(appointment.getDocName());
-        } catch (Exception e) {
-            doctorNameTextView1.setText(getString(R.string.doctor));
-            doctorNameTextView2.setText(getString(R.string.doctor));
-        }
 
     }
 
@@ -591,8 +582,8 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private void setDoctorInfo() {
         doctorNameTextView1.setText(appointment.getDoctorName());
         doctorNameTextView2.setText(appointment.getDoctorName());
-        doctorNameTextView1.setText(appointment.getSpeciality());
-        doctorNameTextView2.setText(appointment.getSpeciality());
+        doctorSpecialityTextView1.setText(appointment.getSpeciality());
+        doctorSpecialityTextView2.setText(appointment.getSpeciality());
 
         Picasso.get().load(appointment.getDoctorImageUrl()).into(doctorImageView1, new Callback() {
             @Override
@@ -681,8 +672,8 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         timerTextViewsContainer.setVisibility(View.GONE);
         newCallButton.setVisibility(View.VISIBLE);
 
-        drSpecialityTextView1.setText(appointment.getCatName());
-        drSpecialityTextView2.setText(appointment.getCatName());
+//        doctorSpecialityTextView1.setText(appointment.getCatName());
+//        doctorSpecialityTextView2.setText(appointment.getCatName());
 
         autoConnectCallWhenDoctorHasArrived();
     }
@@ -881,7 +872,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
         return new Room.Listener() {
             @Override
             public void onConnected(Room room) {
-
                 identifyScenarioAndTakeAction();
                 if (room.getRemoteParticipants().size() == 1) {
                     localParticipant = room.getLocalParticipant();

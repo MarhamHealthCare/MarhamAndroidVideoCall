@@ -70,7 +70,7 @@
                             android:layout_marginTop="@dimen/five"
                             android:gravity="center"
                             android:paddingBottom="@dimen/five"
-                            android:text="Date and Time"
+                            android:text="@string/dash"
                             android:textColor="@color/white"
                             android:textSize="@dimen/forteen_text_size"
                             android:textStyle="bold"
@@ -117,7 +117,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:text="@string/doctor_name"
+                                android:text="@string/dash"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/fifteen_text_size"
                                 android:textStyle="bold"
@@ -131,7 +131,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/one"
                                 android:gravity="center"
-                                android:text="@string/speciality"
+                                android:text="@string/dash"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/thirteen_text_size"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +166,7 @@
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/timer_views_container"
-                                android:layout_width="@dimen/hundred_fifty"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/ten"
                                 android:layout_marginBottom="@dimen/fifteen"
@@ -178,7 +178,7 @@
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/timer_text_views_container"
-                                    android:layout_width="@dimen/zero"
+                                    android:layout_width="@dimen/hundred_fifty"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/five"
                                     android:background="@drawable/rounded_corners_color_primary_5_dp"
@@ -222,18 +222,17 @@
 
                                 <com.marham.marhamvideocalllibrary.customviews.MyButton
                                     android:id="@+id/new_call_button"
-                                    android:layout_width="@dimen/two_hundred"
+                                    android:layout_width="@dimen/hundred_fifty"
                                     android:layout_height="@dimen/thirty_five"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="@dimen/twelve"
                                     android:layout_marginBottom="@dimen/five"
                                     android:background="@drawable/rounded_corners_color_primary_5_dp"
-                                    android:drawablePadding="9dp"
+
                                     android:enabled="false"
                                     android:focusable="false"
                                     android:gravity="center"
-                                    android:minWidth="0dp"
-                                    android:minHeight="0dp"
+
                                     android:text="@string/call_doctor"
                                     android:textAllCaps="false"
                                     android:textColor="@android:color/white"
