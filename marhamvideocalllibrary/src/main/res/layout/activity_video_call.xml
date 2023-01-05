@@ -46,7 +46,8 @@
             android:layout_width="@dimen/zero"
             android:layout_height="@dimen/zero"
             android:layout_gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/action_buttons_container"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -289,41 +290,30 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_buttons_container"
-            android:layout_width="@dimen/zero"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_marginStart="@dimen/ten"
+            android:layout_marginEnd="@dimen/ten"
+            android:background="@color/red"
             android:paddingTop="@dimen/twenty"
-            android:paddingBottom="@dimen/ten"
+            android:paddingBottom="@dimen/twenty"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
-                android:id="@+id/switch_camera_button"
+                android:id="@+id/switch_mic_button"
                 android:layout_width="@dimen/thirty_five"
                 android:layout_height="@dimen/thirty_five"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/twenty_five"
-                android:background="@drawable/flip_camera_blue"
+                android:layout_marginEnd="@dimen/forty"
+                android:background="@drawable/enable_mic_blue"
                 android:elevation="@dimen/two"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:elevation="@dimen/ten"
-
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/switch_local_video_button"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/switch_camera_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/five"
-                android:text="@string/flip_camera"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/ten_text_size"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/switch_camera_button"
-                app:layout_constraintRight_toRightOf="@id/switch_camera_button"
-                app:layout_constraintTop_toBottomOf="@+id/switch_camera_button" />
 
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
@@ -331,124 +321,50 @@
                 android:layout_width="@dimen/thirty_five"
                 android:layout_height="@dimen/thirty_five"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/twenty_five"
+                android:layout_marginEnd="@dimen/forty"
                 android:background="@drawable/enable_video_blue"
-                android:visibility="gone"
-                app:layout_constraintLeft_toRightOf="@+id/switch_camera_button"
+                android:visibility="visible"
+                app:layout_constraintEnd_toStartOf="@+id/line1"
+                app:layout_constraintStart_toEndOf="@+id/switch_mic_button"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/switch_local_video_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/five"
-                android:text="@string/stop_video"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/ten_text_size"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/switch_local_video_button"
-                app:layout_constraintRight_toRightOf="@id/switch_local_video_button"
-                app:layout_constraintTop_toBottomOf="@+id/switch_camera_button" />
+            <View
+                android:id="@+id/line1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="@dimen/one"
+                android:layout_height="@dimen/zero"/>
+
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
-                android:id="@+id/switch_mic_button"
+                android:id="@+id/switch_camera_button"
                 android:layout_width="@dimen/thirty_five"
                 android:layout_height="@dimen/thirty_five"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/twenty_five"
-                android:background="@drawable/enable_mic_blue"
-                android:visibility="gone"
-                app:layout_constraintEnd_toStartOf="@id/end_call_button"
+                android:background="@drawable/flip_camera_blue"
+                android:visibility="visible"
+                app:layout_constraintEnd_toStartOf="@+id/end_call_button"
+                app:layout_constraintStart_toEndOf="@+id/line1"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/switch_mic_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/five"
-                android:text="@string/mute_mic"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/ten_text_size"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/switch_mic_button"
-                app:layout_constraintRight_toRightOf="@id/switch_mic_button"
-                app:layout_constraintTop_toBottomOf="@+id/switch_mic_button" />
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
                 android:id="@+id/end_call_button"
                 android:layout_width="@dimen/thirty_five"
                 android:layout_height="@dimen/thirty_five"
-                android:layout_marginEnd="@dimen/twenty_five"
+
                 android:background="@drawable/end_call_red"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
 
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/end_call_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/five"
-                android:text="@string/end_call"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/ten_text_size"
-                android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/end_call_button"
-                app:layout_constraintRight_toRightOf="@id/end_call_button"
-                app:layout_constraintTop_toBottomOf="@id/end_call_button" />
-
-
-            <com.marham.marhamvideocalllibrary.customviews.BodyText
-                android:id="@+id/send_reports_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/send_reports"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/twelve_text_size"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/send_report_views_container"
-            android:layout_width="@dimen/sixty"
-            android:layout_height="@dimen/sixty"
-            android:layout_marginBottom="-30dp"
-            android:visibility="visible"
-            app:cardCornerRadius="@dimen/thirty"
-
-            app:layout_constraintBottom_toTopOf="@id/action_buttons_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/end_call_red" />
-
-            <ProgressBar
-                android:id="@+id/chat_progress_bar"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
