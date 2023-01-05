@@ -47,5 +47,7 @@
     <dimen name="three_hundred">300dp</dimen>
     <dimen name="hundred_forty">140dp</dimen>
     <dimen name="seven">7dp</dimen>
+    <dimen name="thirty_text_size">30sp</dimen>
+    <dimen name="seventeen_text_size">17sp</dimen>
 
 </resources>
