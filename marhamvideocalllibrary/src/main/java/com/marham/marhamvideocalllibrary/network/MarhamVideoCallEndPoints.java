@@ -78,4 +78,8 @@ public interface MarhamVideoCallEndPoints {
     @POST("update-user-last-seen")
     Call<ServerResponseOld> updateLastSeenTimeOfUser(@FieldMap HashMap<String, String> info);
 
+    @FormUrlEncoded
+    @POST("update-appointment-sub-status")
+    Call<ServerResponseOld> updateUserAppointmentSubStatus(@FieldMap HashMap<String, String> hashMap);
+
 }

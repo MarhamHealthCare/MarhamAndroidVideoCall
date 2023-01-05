@@ -2,6 +2,8 @@ package com.marham.marhamvideocalllibrary;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AppOpsManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -47,6 +49,8 @@ public class MarhamUtils {
     private Context context;
     private View view;
 
+    private ProgressDialog progressDialog;
+
     public static MarhamUtils getInstance() {
         if (ourInstance == null) {
             return ourInstance = new MarhamUtils();
@@ -78,6 +82,13 @@ public class MarhamUtils {
 
     public void showMessage(Context context, String message, int length) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void showLoader(Context context, String title, DialogInterface.OnDismissListener dismissListener) {
+        progressDialog = ProgressDialog.show(context, title, context.getString(R.string.please_wait));
+        progressDialog.setOnKeyListener((DialogInterface.OnKeyListener) context);
+
     }
 
     //Background
@@ -147,6 +158,12 @@ public class MarhamUtils {
             permissionsHashMap.put(context.getResources().getString(R.string.notification), AppConstants.PERMISSIONS.PERMISSION_NOT_ALLOWED);
         }
         return permissionsHashMap;
+    }
+
+    public boolean checkPictureInPictureModePermissionisGranted(Context context) {
+        AppOpsManager appOpsManager = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+        return (AppOpsManager.MODE_ALLOWED == appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_PICTURE_IN_PICTURE,
+                context.getApplicationInfo().uid, context.getPackageName()));
     }
 
     //Logs
@@ -224,6 +241,8 @@ public class MarhamUtils {
         }
     }
 
+
+    //Pop Ups
     public void showMarhamHelpLineNumbersPopUp(Context context) {
         if (!((Activity) context).isFinishing()) {
             AlertWindowForPhone alertWindowForPhone = new AlertWindowForPhone(context, makeCallListener, getMarhamHelplingNumbers(context));
@@ -303,5 +322,6 @@ public class MarhamUtils {
         context.startActivity(intent);
 
     }
+
 
 }

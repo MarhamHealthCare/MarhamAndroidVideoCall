@@ -1118,7 +1118,6 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     }
 
     public void getTokenFromServer() {
-        setViewsBeforeCallingAPI();
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(AppConstants.API.API_KEYS.APPLICATION_TYPE_KEY, AppConstants.API.APPLICATION_TYPE.TELENOR);
         hashMap.put(AppConstants.API.API_KEYS.ONLINE_CONSULATATION_ID_KEY, appointment.getOnlineConsultationId());
@@ -1204,7 +1203,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     @Override
     public void onFailure(ServerResponseOld response) {
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ONLINE_CONSULTATION_TOKEN:
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;
@@ -1224,7 +1223,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     @Override
     public void onSessionExpiry(ServerResponseOld response) {
         switch (response.getRequestCode()) {
-            case AppConstants.API.API_END_POINT_NUMBER.GET_VC_DOCTORS_LISTING:
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ONLINE_CONSULTATION_TOKEN:
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
                 break;

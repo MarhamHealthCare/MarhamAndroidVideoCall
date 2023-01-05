@@ -218,4 +218,8 @@ public class APIClient {
         return apiService.updateLastSeenTimeOfUser(info);
     }
 
+    public Call<ServerResponseOld> updateUserAppointmentSubStatus(HashMap<String, String> hashMap) {
+        return apiService.updateUserAppointmentSubStatus(hashMap);
+    }
+
 }

@@ -83,4 +83,7 @@
     <string name="don_t_worry_we_re_trying_to_get_back_to_you">Don\'t worry, we\'re trying to get back to you.</string>
     <string name="try_again">Try Again</string>
     <string name="help">Help</string>
+    <string name="is_doctor_requested_call">isDoctorRequestedCall</string>
+    <string name="heading">Heading</string>
+    <string name="please_wait">Please Wait</string>
 </resources>

@@ -44,6 +44,7 @@ public class AppConstants {
             public static final String NOTIFICATION_TYPE_KEY = "notificationType";
             public static final String SEND_TO_PATIENT_KEY = "sendToPatient";
             public static final String SEND_TO_DOCTOR_KEY = "sendToDoctor";
+            public static final String STATUS_KEY = "status";
 
         }
 
@@ -63,6 +64,7 @@ public class AppConstants {
             public static final int UPDATE_DEVICE_TOKEN = 13;
             public static final int SEND_ONLINE_CONSULTATION_NOTIFICATION_SIGNAL = 14;
             public static final int UPDATE_LAST_SEEN_OF_USER = 15;
+            public static final int UPDATE_APPOINTMENT_SUB_STATUS = 16;
         }
 
         public static class API_ERROR_MESSAGE {
@@ -130,6 +132,12 @@ public class AppConstants {
         }
 
 
+    }
+
+    public static class OCAlertBoxKeys {
+        public static final int VIDEO = 0;
+        public static final int MIC = 1;
+        public static final int END_CALL = 2;
     }
 
 }
