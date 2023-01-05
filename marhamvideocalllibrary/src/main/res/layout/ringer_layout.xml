@@ -96,10 +96,11 @@
             app:layout_constraintTop_toBottomOf="@+id/dr_name_text_view" />
 
 
+        //TODO: Replace with correct accept call icon
         <com.marham.marhamvideocalllibrary.customviews.MyButton
             android:id="@+id/accept_call_button"
-            android:layout_width="@dimen/fifty"
-            android:layout_height="@dimen/fifty"
+            android:layout_width="@dimen/forty_five"
+            android:layout_height="@dimen/forty_five"
             android:layout_marginStart="@dimen/hundred"
             android:layout_marginBottom="@dimen/eighty"
             android:background="@drawable/end_call_red_icon"
@@ -108,13 +109,11 @@
 
         <com.marham.marhamvideocalllibrary.customviews.MyButton
             android:id="@+id/reject_call_button"
-            android:layout_width="@dimen/fifty"
-            android:layout_height="@dimen/fifty"
+            android:layout_width="@dimen/forty_five"
+            android:layout_height="@dimen/forty_five"
             android:layout_marginEnd="@dimen/hundred"
             android:layout_marginBottom="@dimen/eighty"
-
             android:background="@drawable/end_call_red_icon"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 

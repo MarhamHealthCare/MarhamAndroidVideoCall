@@ -74,4 +74,13 @@
     <string name="msg_on_call_permission_denied">You have denied call permission, inorder to provide permission click on settings</string>
     <string name="doctor">Doctor</string>
     <string name="for_video_consultation">For Video Consultation</string>
+    <string name="flip_camera">Flip Camera</string>
+    <string name="stop_video">Stop Video</string>
+    <string name="mute_mic">Mute mic</string>
+    <string name="end_call">End Call</string>
+    <string name="send_reports">Send Reports</string>
+    <string name="something_went_wrong">Something went wrong!</string>
+    <string name="don_t_worry_we_re_trying_to_get_back_to_you">Don\'t worry, we\'re trying to get back to you.</string>
+    <string name="try_again">Try Again</string>
+    <string name="help">Help</string>
 </resources>

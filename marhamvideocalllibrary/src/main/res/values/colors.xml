@@ -13,7 +13,7 @@
     <color name="poor_wifi_text_view_color">#DA4655</color>
     <color name="waiting_area_progress_bar_color">#B3E1FA</color>
     <color name="red">#c02942</color>
-
+    <color name="light_black">#515557</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
