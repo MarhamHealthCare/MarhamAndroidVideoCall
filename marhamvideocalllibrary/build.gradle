@@ -14,35 +14,30 @@ android {
     }
 
     buildTypes {
+//        release {
+//
+//            minifyEnabled true
+//            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "false")
+//
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            debuggable false
+//
+//            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_LIVE)
+//            buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_LIVE)
+//
+//        }
+
         release {
-
             minifyEnabled true
-            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "false")
-
 //            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable false
+            ext.enableCrashlytics = false
+            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
 
-//            buildConfigField('String', 'BASE_URL', BASE_URL_LIVE)
-//            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_LIVE)
-            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_LIVE)
-            buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_LIVE)
 
+            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_STAGING)
+            buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_STAGGING)
         }
-
-//        release {
-//            minifyEnabled true
-////            useProguard true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            ext.enableCrashlytics = false
-//            resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
-//
-////            buildConfigField('String', 'BASE_URL', BASE_URL_STAGING)
-////            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_STAGING)
-//
-//            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_STAGING)
-//            buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_STAGGING)
-//        }
 
 
         debug {
@@ -66,8 +61,6 @@ android {
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 //            ext.enableCrashlytics = false
 //
-////            buildConfigField('String', 'BASE_URL', BASE_URL_LIVE)
-////            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_LIVE)
 //            buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_LIVE)
 //            buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_LIVE)
 //
