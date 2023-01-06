@@ -56,12 +56,12 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
         super.onClick(view);
         int viewId = view.getId();
         if (R.id.retry_button == viewId) {
-            getPatientPastPrescriptions("");
+            getPatientPastPrescriptions();
         }
     }
 
     private void fetchData() {
-        getPatientPastPrescriptions("");
+        getPatientPastPrescriptions();
     }
 
     protected void initializeViews() {
@@ -70,7 +70,7 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
         patientrReportsLayout = findViewById(R.id.patient_reports_layout);
     }
 
-    private void initVariables(){
+    private void initVariables() {
         receiveIntent();
     }
 
@@ -137,25 +137,15 @@ public class PrescriptionActivity extends BaseActivity implements ServerConnectL
     };
 
 
-    public void getPatientPastPrescriptions(String patientId) {
+    public void getPatientPastPrescriptions() {
         setViewsBeforeCallingAPI();
         HashMap<String, String> hashMap = new HashMap<>();
         APIClient apiClient = new APIClient();
 
         hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, appointment.getPatientID());
-        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, appointment.getDoctorUserId());
-        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, appointment.getId());
+        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, appointment.getDID());
+        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, appointment.getApptID());
 
-        //TODO: Replace After implementing Appointment Listing
-//        //Dev
-//        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, "511");
-//        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, "6596");
-//        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, "1022171913");
-
-        //Live
-//        hashMap.put(AppConstants.API.API_KEYS.PATIENT_ID_KEY, "366024");
-//        hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY_2, "6596");
-//        hashMap.put(AppConstants.API.API_KEYS.APPOINTMENT_ID_KEY, "102217633818");
         Call<PatientHistoryResponse> call = apiClient.getPastPrescription(hashMap);
         retroFit2Callback = new RetroFit2Callback<>(this, this, AppConstants.API.API_END_POINT_NUMBER.GET_PATIENT_PRESCRIPTIONS);
         call.enqueue(retroFit2Callback);
