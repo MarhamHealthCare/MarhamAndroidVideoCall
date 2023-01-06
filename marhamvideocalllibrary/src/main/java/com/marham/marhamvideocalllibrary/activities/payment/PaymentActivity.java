@@ -7,6 +7,7 @@ import com.marham.marhamvideocalllibrary.MarhamVideoCallHelper;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.activities.appointments.AllVideoConsultationsScreenMainActivity;
 import com.marham.marhamvideocalllibrary.activities.general.BaseActivity;
+import com.marham.marhamvideocalllibrary.activities.videocall.WaitingAreaActivity;
 import com.marham.marhamvideocalllibrary.model.appointment.Appointment;
 import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.network.APIClient;
@@ -36,6 +37,12 @@ public class PaymentActivity extends BaseActivity implements ServerConnectListen
 
     public void receiveIntent() {
         appointment = (Appointment) getIntent().getSerializableExtra(Appointment.class.getCanonicalName());
+    }
+
+    private void openWaitingArea(Appointment appointment) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Appointment.class.getCanonicalName(), appointment);
+        MarhamUtils.getInstance().startActivity(this, WaitingAreaActivity.class, true, bundle);
     }
 
     public void informOurServerThatPaymentIsDone(String finalAmountForOurServer) {
@@ -70,6 +77,7 @@ public class PaymentActivity extends BaseActivity implements ServerConnectListen
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     MarhamUtils.getInstance().generateLog("Transaction Saved");
                     MarhamUtils.getInstance().startActivity(this, AllVideoConsultationsScreenMainActivity.class, true);
+//                    openWaitingArea(appointment);
                 } else {
                     onTransactionFailed();
                 }

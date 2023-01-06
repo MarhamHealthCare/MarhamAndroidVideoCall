@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Keep;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -40,6 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+@Keep
 public class MarhamUtils {
 
     private static MarhamUtils ourInstance;
