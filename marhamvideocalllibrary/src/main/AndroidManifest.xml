@@ -76,15 +76,26 @@
             android:screenOrientation="portrait"
             android:exported="false" />
 
+<!--        <provider-->
+<!--            android:name=".utils.MyFileProvider"-->
+<!--            android:authorities="com.codepath.fileprovider_telenor"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/new_fileprovider" />-->
+<!--        </provider>-->
+
         <provider
             android:name=".utils.MyFileProvider"
-            android:authorities="com.codepath.fileprovider_telenor"
+            android:authorities="com.marham.marhamvideocallapp"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/new_fileprovider" />
         </provider>
+
     </application>
 
 </manifest>
