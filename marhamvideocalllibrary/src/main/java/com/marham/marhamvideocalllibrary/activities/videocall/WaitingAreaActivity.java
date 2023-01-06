@@ -518,7 +518,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
     private void initVariables() {
         receiveIntent();
         if (appointment != null && appointment.getApptTimeInMiliSeconds() != null) {
-//            apptTime = Long.parseLong(appointment.getApptTimeInMiliSeconds());
+            apptTime = Long.parseLong(appointment.getApptTimeInMiliSeconds());
         } else {
             WaitingAreaActivity.this.finish();
         }
@@ -544,7 +544,7 @@ public class WaitingAreaActivity extends BaseActivity implements RuntimeAndSpeci
 
     public void setRoomData(TokenAndRoom tokenAndRoom) {
         token = tokenAndRoom.getToken();
-//        currentTime = Long.parseLong(tokenAndRoom.getCurrent_time_miliseconds());
+        currentTime = Long.parseLong(tokenAndRoom.getCurrent_time_miliseconds());
         connectToRoom(tokenAndRoom.getRoom());
         swipeRefreshLayout.setRefreshing(false);
     }

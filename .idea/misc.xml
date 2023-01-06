@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/help_line_dummy.xml" value="0.13" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14356884057971014" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/calender_icon_white_vector.xml" value="0.115" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/call_icon_white_vector.xml" value="0.1375" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/camera_icon_permissions_svg.xml" value="0.1" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/doctor_profile_header_gradient.xml" value="0.1535" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/download_icon.xml" value="0.1035" />
@@ -18,6 +19,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient.xml" value="0.1915" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_light_blue_and_white_gradient_vertical.xml" value="0.115" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corner_primary_color_and_gradient.xml" value="0.183" />
+        <entry key="marhamvideocalllibrary/src/main/res/drawable/round_corners_red_with_shade_5dp.xml" value="0.1375" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corner_aqua_blue_and_second_color_top_to_button.xml" value="0.13" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corners_color_primary_10_dp.xml" value="0.13" />
         <entry key="marhamvideocalllibrary/src/main/res/drawable/rounded_corners_color_primary_5_dp.xml" value="0.116" />
@@ -47,6 +49,7 @@
         <entry key="marhamvideocalllibrary/src/main/res/layout/layout_top_bar.xml" value="0.14356884057971014" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/ringer_layout.xml" value="0.18297101449275363" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/round_corner_light_blue_and_white_gradient.xml" value="0.16847826086956522" />
+        <entry key="marhamvideocalllibrary/src/main/res/layout/round_corners_blue_with_shade_5dp.xml" value="0.16304347826086957" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_disease.xml" value="0.17300724637681159" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_all_specialities.xml" value="0.10054347826086957" />
         <entry key="marhamvideocalllibrary/src/main/res/layout/single_row_doctor_experience.xml" value="0.335" />

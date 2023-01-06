@@ -36,13 +36,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -122,19 +120,14 @@ import tvi.webrtc.VideoSink;
 
 public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecialPermissionsBottomSheetListener, Function2<List<? extends AudioDevice>, AudioDevice, Unit>, ServerConnectListener {
 
-    private Ringtone ringtone;
-
-
     //Ringer Views
     private View ringerViewsContainer;
     private BodyText doctorNameTextView;
     private BodyText doctorSpecialityTextView;
-    private FloatingActionButton rejectCallButton;
-    private FloatingActionButton acceptCallButton;
+    private MyButton rejectCallButton;
+    private MyButton acceptCallButton;
     private ConstraintLayout parentLayout;
-    private RelativeLayout progressBarLayout;
 
-    private CardView topBar;
     private ConstraintLayout actionButtonsContainer;
 
     private BodyText internetStatusMessageTextView;
@@ -164,6 +157,8 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     private MyButton noInternetTryAgainButton;
     private ConstraintLayout noInternetHelpButton;
 
+    private int icon;
+
     private Appointment appointment;
     private String isDoctorRequestedCall = "0";
     private String gender;
@@ -180,7 +175,6 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     private String LOG_TAG = "Marham";
     private AlertDialog.Builder builder;
     private static boolean active = false;
-    private View view;
     private AlertDialog dialog;
     private ConnectOptions.Builder connectOptionsBuilder;
     private boolean isFirstTime;
@@ -190,6 +184,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     private boolean isUserRendered = false;
 
 
+    private Ringtone ringtone;
     private boolean settingsButtonTapped;
     private AudioSwitch audioSwitch;
     private AudioDevice selectedDevice;
@@ -203,10 +198,6 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     //    private MyImageView patientDisabledTheVideoImageview;
     private HashMap<String, String> permissionsList;
     private NetworkQualityConfiguration configuration;
-
-    //    private LinearLayout floatingButtonLayout;
-    private int icon;
-
 
     private static final int CAMERA_MIC_PERMISSION_REQUEST_CODE = 1;
     private static final String TAG = "VideoActivity";
@@ -233,6 +224,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
      * or the request to the token server.
      */
     private String accessToken;
+    private String roomString;
 
     /*
      * A Room represents communication between a local participant and one or more participants.
@@ -294,7 +286,6 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     private boolean isSpeakerPhoneEnabled = true;
     private boolean enableAutomaticSubscription;
 
-    private RelativeLayout noRecordLayoutContainer;
     private BroadcastReceiver mReceiver;
 
     private boolean misInPictureInPictureMode = false;
@@ -306,7 +297,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     protected void onCreate(Bundle savedInstanceState) {
         allowPermissionForCallingEvenWhenTheScreenIsLocked();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_video_consultations_screen_main);
+        setContentView(R.layout.activity_video_call);
         initGui();
         setListeners();
         initVariables();
@@ -354,16 +345,12 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
 //
 //                break;
         else if (R.id.end_call_button == viewId) {
-
             AlertWindowConfirmationOC dialog = new AlertWindowConfirmationOC(VideoCallActivity.this, ocAlertBoxListener, AppConstants.OCAlertBoxKeys.END_CALL, "Are you sure you want to \nend the consultation?", "No, Return back to call", "Yes, End the call", true);
             dialog.show();
-
         } else if (R.id.try_again_button_2 == viewId) {
             openUserPanel();
         } else if (R.id.help_button_2_container == viewId) {
-
             MarhamUtils.getInstance().callMarhamHelpline(this, this, parentLayout);
-
         }
 
     }
@@ -377,15 +364,13 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     }
 
     private void initGui() {
-        ringerViewsContainer = view.findViewById(R.id.ringer_views_container);
-        doctorNameTextView = view.findViewById(R.id.doctor_name_text_view);
-        doctorSpecialityTextView = view.findViewById(R.id.doctor_speciality_text_view);
-        rejectCallButton = view.findViewById(R.id.reject_call_button);
-        parentLayout = view.findViewById(R.id.parent_layout);
-        progressBarLayout = view.findViewById(R.id.progress_bar_layout);
-        acceptCallButton = view.findViewById(R.id.accept_call_button);
+        ringerViewsContainer = findViewById(R.id.ringer_views_container);
+        doctorNameTextView = findViewById(R.id.doctor_name_text_view);
+        doctorSpecialityTextView = findViewById(R.id.doctor_speciality_text_view);
+        rejectCallButton = findViewById(R.id.reject_call_button);
+        parentLayout = findViewById(R.id.parent_layout);
+        acceptCallButton = findViewById(R.id.accept_call_button);
 
-        topBar = findViewById(R.id.top_bar);
         actionButtonsContainer = findViewById(R.id.action_buttons_container);
 
         parentLayout = findViewById(R.id.parent_layout);
@@ -416,10 +401,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
         noInternetTryAgainButton = findViewById(R.id.try_again_button_2);
         noInternetHelpButton = findViewById(R.id.help_button_2_container);
 
-        progressBarLayout = findViewById(R.id.progress_bar_layout);
-
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
-        noRecordLayoutContainer = findViewById(R.id.no_record_layout);
         parentLayout = findViewById(R.id.parent_layout);
 
         primaryVideoView = findViewById(R.id.primary_video_view);
@@ -472,7 +454,6 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     }
 
     private void setUpCall() {
-        topBar.setVisibility(View.VISIBLE);
         ringerViewsContainer.setVisibility(View.GONE);
 
         audioCodec = getAudioCodecPreference(SettingsActivity.PREF_AUDIO_CODEC,
@@ -608,7 +589,6 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_MIC_PERMISSION_REQUEST_CODE) {
-
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                 createAudioAndVideoTracks();
@@ -1590,14 +1570,14 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
         };
     }
 
-    private View.OnClickListener connectActionClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                VideoCallActivity.this.showConnectDialog();
-            }
-        };
-    }
+//    private View.OnClickListener connectActionClickListener() {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                VideoCallActivity.this.showConnectDialog();
+//            }
+//        };
+//    }
 
     private DialogInterface.OnClickListener cancelConnectDialogClickListener() {
         return new DialogInterface.OnClickListener() {
@@ -2099,11 +2079,9 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     }
 
     private void setPIPViewsVisibility(int visibilityStatus) {
-        topBar.setVisibility(visibilityStatus);
         actionButtonsContainer.setVisibility(visibilityStatus);
         thumbnailVideoView.setVisibility(visibilityStatus);
         internetStatusMessageTextView.setVisibility(visibilityStatus);
-        progressBarLayout.setVisibility(visibilityStatus);
         drVideoAndMicStatusViewsContainer.setVisibility(visibilityStatus);
         patientVideoAndMicStatusViewsContainer.setVisibility(visibilityStatus);
     }
@@ -2245,6 +2223,19 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
     @Override
     public void onSuccess(ServerResponseOld response) {
         switch (response.getRequestCode()) {
+
+            case AppConstants.API.API_END_POINT_NUMBER.GET_ONLINE_CONSULTATION_TOKEN:
+                if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
+                    TokenAndRoomServerResponse tokenAndRoomServerResponse = (TokenAndRoomServerResponse) response;
+                    this.accessToken = tokenAndRoomServerResponse.getData().getToken();
+                    this.roomString = tokenAndRoomServerResponse.getData().getRoom();
+                    connectToRoomForLiveStreaming(tokenAndRoomServerResponse);
+                } else {
+                    Toast.makeText(this, response.getMessage(), Toast.LENGTH_LONG).show();
+                    this.finish();
+                }
+                break;
+
             case AppConstants.API.API_END_POINT_NUMBER.SEND_ONLINE_CONSULTATION_NOTIFICATION_SIGNAL:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
                     MarhamUtils.getInstance().generateLog("Consultation Signal Sent");

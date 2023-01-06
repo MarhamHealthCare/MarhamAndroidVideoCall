@@ -8,7 +8,7 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name="activities.videocall.VideoCallActivity"
+            android:name=".activities.videocall.VideoCallActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="false"
             android:launchMode="singleTask"
@@ -26,7 +26,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="activities.general.ImageViewerActivity"
+            android:name=".activities.general.ImageViewerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

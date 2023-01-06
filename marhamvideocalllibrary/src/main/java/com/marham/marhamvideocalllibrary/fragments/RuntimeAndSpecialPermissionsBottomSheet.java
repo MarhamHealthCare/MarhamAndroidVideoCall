@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.firebase.installations.Utils;
 import com.marham.marhamvideocalllibrary.MarhamUtils;
 import com.marham.marhamvideocalllibrary.R;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
@@ -84,6 +83,9 @@ public class RuntimeAndSpecialPermissionsBottomSheet extends BottomSheetDialogFr
             case AppConstants.PERMISSIONS.PermissionTypes.CAMERA_AND_GALLERY_PERMISSION:
                 setUpViewsForCameraAndMicrophonePermission();
                 break;
+            case AppConstants.PERMISSIONS.PermissionTypes.CALL_GSM:
+                setUpViewsForCallGSMPermission();
+                break;
         }
     }
 
@@ -96,6 +98,16 @@ public class RuntimeAndSpecialPermissionsBottomSheet extends BottomSheetDialogFr
         imageView2.getLayoutParams().height = 80;
         imageView2.getLayoutParams().width = 100;
         permissionDetailTextView.setText("Marham will use Camera and Microphone permissions to enable you:\n\n1. To take video consultation from doctor.");
+    }
+
+    private void setUpViewsForCallGSMPermission() {
+        headingTextView.setText("Allow Marham to make Phone Calls?");
+        MarhamUtils.getInstance().setBackground(context, imageView1, R.drawable.call_icon_permission_svg);
+        imageView1.getLayoutParams().height = 100;
+        imageView1.getLayoutParams().width = 100;
+        imageView2.setVisibility(View.GONE);
+        permissionDetailTextView.setText("Marham will use your phone call permission to enable you:\n\n1. Giving permission will help you to call Marham’s helpline\n" +
+                "for your assistance.");
     }
 
 

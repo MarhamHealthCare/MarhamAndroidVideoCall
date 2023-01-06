@@ -72,8 +72,7 @@ public class PhoneNumbersAdapter extends BaseAdapter {
         } else {
             holder = (Holder) convertView.getTag();
         }
-        Typeface tf = Typeface.createFromAsset(context.getAssets(), "fonts/OpenSans_Semibold.ttf");
-        holder.tvNumber.setTypeface(tf);
+
         if (phoneNumbers.get(position) != null && !phoneNumbers.get(position).isEmpty()) {
             holder.tvNumber.setText(phoneNumbers.get(position));
         }

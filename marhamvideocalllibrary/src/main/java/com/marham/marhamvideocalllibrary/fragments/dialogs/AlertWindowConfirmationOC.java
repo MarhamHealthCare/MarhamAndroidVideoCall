@@ -63,18 +63,15 @@ public class AlertWindowConfirmationOC extends Dialog implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cancel_button:
-                this.dismissDialog();
-                listener.onCancelled(requestType);
-                break;
-            case R.id.proceed_button:
-                this.dismissDialog();
-                listener.onProcees(requestType);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + v.getId());
+    public void onClick(View view) {
+        int viewId = view.getId();
+
+        if (R.id.cancel_button == viewId) {
+            this.dismissDialog();
+            listener.onCancelled(requestType);
+        } else if (R.id.proceed_button == viewId) {
+            this.dismissDialog();
+            listener.onProcees(requestType);
         }
 
     }

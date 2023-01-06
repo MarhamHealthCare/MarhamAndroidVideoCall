@@ -52,8 +52,6 @@ android {
             ext.enableCrashlytics = false
             resValue("bool", "FIREBASE_ANALYTICS_DEACTIVATED", "true")
 
-//            buildConfigField('String', 'BASE_URL', BASE_URL_STAGING)
-//            buildConfigField('String', 'NEW_BASE_URL', NEW_BASE_URL_STAGING)
             buildConfigField('String', 'SDK_BASE_URL', SDK_BASE_URL_STAGING)
             buildConfigField('String', 'SDK_BASE_URL_ACTION_BASED', SDK_BASE_URL_ACTION_BASED_STAGGING)
 

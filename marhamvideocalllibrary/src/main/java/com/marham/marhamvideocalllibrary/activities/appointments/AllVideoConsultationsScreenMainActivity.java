@@ -161,6 +161,10 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
                 openWaitingArea(appointment);
                 break;
 
+            case Appointment.INPROGRRSS:
+                openWaitingArea(appointment);
+                break;
+
             case Appointment.VIEW_PRESCRIPTION:
                 openViewPrescriptionScreen(appointment);
                 break;
