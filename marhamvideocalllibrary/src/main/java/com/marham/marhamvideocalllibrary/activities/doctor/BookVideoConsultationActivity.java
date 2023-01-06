@@ -20,11 +20,11 @@ import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.customviews.MyImageView;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
-import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
-import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotOfHospital;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotsOfHospitalContainer;
+import com.marham.marhamvideocalllibrary.model.general.ServerResponseOld;
 import com.marham.marhamvideocalllibrary.model.hospital.Days;
+import com.marham.marhamvideocalllibrary.model.hospital.Hospital;
 import com.marham.marhamvideocalllibrary.model.hospital.HospitalAvailableDaysAndDateServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.BookConsultationServerResponse;
 import com.marham.marhamvideocalllibrary.model.videoconsultation.VideoConsultanceModel;
@@ -102,7 +102,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         super.onClick(view);
         int viewId = view.getId();
         if (R.id.confirm_booking_button == viewId) {
-            if(hasUserEnteredRequiredInformation()){
+            if (hasUserEnteredRequiredInformation()) {
                 bookOnlineConsultation(selectedDate);
             }
         }
@@ -152,44 +152,15 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
     }
 
     private void setDoctor(DoctorInfo doctorInfo) {
-
-        //TODO: Get dlID here
-
         setDoctorPicture(doctorInfo);
         doctorNameTextView.setText(doctorInfo.getDocName());
         doctorSpecialityTextView.setText(doctorInfo.getSpeciality());
-
-        //TODO: Get Doctor Degree here
         doctorDegreesTextView.setText(doctorInfo.getDocDegree());
-
-        //TODO: Get Years of Experience here
         doctorExperienceTextView.setText("Exp." + doctorInfo.getDocExp() + " Year(s)");
         doctorFeeTextView.setText("Rs. " + hospital.getDocFee());
-
-        //TODO: Get Doctor Rating and Reviews here
-//        if (doctorInfo.getRating().equals("0")) {
-//            doctorRatingsStar.setVisibility(View.INVISIBLE);
-//            doctorReviewsTextView.setVisibility(View.INVISIBLE);
-//        } else {
-//            doctorRatingsStar.setVisibility(View.VISIBLE);
-//            doctorReviewsTextView.setVisibility(View.VISIBLE);
-//
-//            if (doctorInfo.getTotalReviews() != null) {
-//                int reviewsCount = Integer.parseInt(doctorInfo.getTotalReviews());
-//                if (reviewsCount >= 100) {
-//                    doctorReviewsTextView.setText("100+ reviews");
-//                } else {
-//                    doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
-//                }
-//            } else {
-//                doctorReviewsTextView.setText(doctorInfo.getTotalReviews() + " reviews");
-//            }
-//
-//        }
     }
 
     private void setDoctorPicture(DoctorInfo doctorInfo) {
-
         //TODO: Get Doctor Gender Here
 //        int doctorPicturePlaceHolder;
 //        if (doctorInfo.getGender().equals("0")) {
@@ -435,7 +406,7 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
         call.enqueue(retroFit2Callback);
     }
 
-    public void bookOnlineConsultation( String date) {
+    public void bookOnlineConsultation(String date) {
         setViewsBeforeCallingAPI();
         videoConsultanceModel = new VideoConsultanceModel();
         videoConsultanceModel.setLoggedInUserId(MarhamVideoCallHelper.getInstance().getUserId());

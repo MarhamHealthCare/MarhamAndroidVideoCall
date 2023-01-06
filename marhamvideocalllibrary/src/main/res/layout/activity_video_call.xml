@@ -59,7 +59,7 @@
             android:background="@drawable/blur_image_for_marham"
 
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/action_buttons_container"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -294,8 +294,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/ten"
             android:layout_marginEnd="@dimen/ten"
-            android:background="@color/red"
             android:paddingTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/twenty"
             android:paddingBottom="@dimen/twenty"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -303,10 +303,10 @@
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
                 android:id="@+id/switch_mic_button"
-                android:layout_width="@dimen/thirty_five"
-                android:layout_height="@dimen/thirty_five"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
                 android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/forty"
+                android:layout_marginEnd="@dimen/twenty"
                 android:background="@drawable/enable_mic_blue"
                 android:elevation="@dimen/two"
                 android:visibility="visible"
@@ -318,10 +318,10 @@
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
                 android:id="@+id/switch_local_video_button"
-                android:layout_width="@dimen/thirty_five"
-                android:layout_height="@dimen/thirty_five"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
                 android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/forty"
+                android:layout_marginEnd="@dimen/twenty"
                 android:background="@drawable/enable_video_blue"
                 android:visibility="visible"
                 app:layout_constraintEnd_toStartOf="@+id/line1"
@@ -330,20 +330,20 @@
 
             <View
                 android:id="@+id/line1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="@dimen/one"
-                android:layout_height="@dimen/zero"/>
+                android:layout_height="@dimen/zero"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
                 android:id="@+id/switch_camera_button"
-                android:layout_width="@dimen/thirty_five"
-                android:layout_height="@dimen/thirty_five"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
                 android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/twenty_five"
+                android:layout_marginEnd="@dimen/twenty"
                 android:background="@drawable/flip_camera_blue"
                 android:visibility="visible"
                 app:layout_constraintEnd_toStartOf="@+id/end_call_button"
@@ -353,8 +353,8 @@
 
             <com.marham.marhamvideocalllibrary.customviews.MyButton
                 android:id="@+id/end_call_button"
-                android:layout_width="@dimen/thirty_five"
-                android:layout_height="@dimen/thirty_five"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/forty"
 
                 android:background="@drawable/end_call_red"
                 android:visibility="visible"

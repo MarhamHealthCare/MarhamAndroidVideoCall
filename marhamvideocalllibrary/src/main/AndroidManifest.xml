@@ -8,6 +8,9 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".VideoCallEndedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.videocall.VideoCallActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="false"
@@ -66,7 +69,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-
         <provider
             android:name=".utils.MyFileProvider"
             android:authorities="com.codepath.fileprovider_telenor"
@@ -76,7 +78,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/new_fileprovider" />
         </provider>
-
     </application>
 
 </manifest>

@@ -98,17 +98,17 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
     }
 
     private void setUpcomingAppointmentsViews(AllAppointmentListingData allAppointmentListingData) {
-//        if (allAppointmentListingData.getUpcoming() != null && allAppointmentListingData.getUpcoming().size() > 0) {
-//            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getUpcoming()));
-//            setUpcomingAppointmentsRecyclerView(upcomingAppointmentsList);
-//        } else {
+        if (allAppointmentListingData.getUpcoming() != null && allAppointmentListingData.getUpcoming().size() > 0) {
+            upcomingAppointmentsList.addAll(getUpcomingAppointmentsListFromGenericOrdersList(allAppointmentListingData.getUpcoming()));
+            setUpcomingAppointmentsRecyclerView(upcomingAppointmentsList);
+        } else {
             upcomingAppointmentsViewsContainer.setVisibility(View.GONE);
-//        }
+        }
     }
 
     private void setPreviousAppointmentsViews(AllAppointmentListingData allAppointmentListingData) {
-        if (allAppointmentListingData.getUpcoming() != null && allAppointmentListingData.getUpcoming().size() > 0) {
-            pastAppointmentsList.addAll(getPastAppointmentsListFromGenericOrdersList(allAppointmentListingData.getUpcoming()));
+        if (allAppointmentListingData.getPast() != null && allAppointmentListingData.getPast().size() > 0) {
+            pastAppointmentsList.addAll(getPastAppointmentsListFromGenericOrdersList(allAppointmentListingData.getPast()));
             setPastAppointmentsRecyclerView(pastAppointmentsList);
         } else {
             previousAppointmentsViewsContainer.setVisibility(View.GONE);

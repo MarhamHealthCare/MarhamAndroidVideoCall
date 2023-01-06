@@ -765,7 +765,6 @@ public class PhotoModule {
     }
 
     public Uri getUri(Context context, Bitmap image) {
-        //TODO - Should be processed in another thread
         File imagesFolder = new File(context.getCacheDir(), "images");
         Uri uri = null;
         try {

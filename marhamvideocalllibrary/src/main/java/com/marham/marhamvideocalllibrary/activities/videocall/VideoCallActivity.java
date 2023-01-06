@@ -31,6 +31,7 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Rational;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -118,7 +119,7 @@ import kotlin.jvm.functions.Function2;
 import retrofit2.Call;
 import tvi.webrtc.VideoSink;
 
-public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecialPermissionsBottomSheetListener, Function2<List<? extends AudioDevice>, AudioDevice, Unit>, ServerConnectListener {
+public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecialPermissionsBottomSheetListener, Function2<List<? extends AudioDevice>, AudioDevice, Unit>, ServerConnectListener, DialogInterface.OnKeyListener {
 
     //Ringer Views
     private View ringerViewsContainer;
@@ -318,33 +319,9 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
             stopRingTone();
             sendOnlineConsultationSignal(AppConstants.NOTIFICATIONS.PUSH_NOTIFICATIONS.PATIENT_ACCPETED_CALL);
             setUpCall();
-
         } else if (R.id.reject_call_button == viewId) {
             patientRejectedCall();
-
-        }
-
-//            case R.id.backBtn:
-//                onBackPressed();
-//                break;
-
-//            case R.id.share_button_container:
-//                Utils.getInstance().callMarhamHelpline(this, this, parentLayout);
-//                break;
-
-//            case R.id.send_report_views_container:
-//                if (isUserRendered) {
-//                    if (!presenter.isChatButtonPressed()) {
-//                        openChatScreen();
-//                    } else {
-//                        Toast.makeText(this, "Loading Chat, Please Wait ...", Toast.LENGTH_LONG).show();
-//                    }
-//                } else {
-//                    Toast.makeText(this, "Please wait for the call to connect ...", Toast.LENGTH_LONG).show();
-//                }
-//
-//                break;
-        else if (R.id.end_call_button == viewId) {
+        } else if (R.id.end_call_button == viewId) {
             AlertWindowConfirmationOC dialog = new AlertWindowConfirmationOC(VideoCallActivity.this, ocAlertBoxListener, AppConstants.OCAlertBoxKeys.END_CALL, "Are you sure you want to \nend the consultation?", "No, Return back to call", "Yes, End the call", true);
             dialog.show();
         } else if (R.id.try_again_button_2 == viewId) {
@@ -665,7 +642,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
                 VideoCallActivity.this.finish();
                 break;
             case AppConstants.NOTIFICATIONS.PUSH_NOTIFICATIONS.DOCTOR_ENDED_CALL:
-                //TODO: Open End Call Screen
+                MarhamUtils.getInstance().startActivity(this, VideoCallEndedActivity.class, true);
 
                 break;
         }
@@ -2002,7 +1979,7 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //TODO: OPEN HOME SCREEN
+                MarhamUtils.getInstance().startActivity(VideoCallActivity.this, VideoCallEndedActivity.class, true);
             }
         }, 4000);
 
@@ -2287,5 +2264,10 @@ public class VideoCallActivity extends BaseActivity implements RuntimeAndSpecial
                 MarhamUtils.getInstance().generateLog("Appointment sub status not updated");
                 break;
         }
+    }
+
+    @Override
+    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+        return false;
     }
 }

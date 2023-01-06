@@ -292,6 +292,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
     }
 
     public void getDoctorDetails(String dlID) {
+        setViewsBeforeGettingDoctorsDetails();
 
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(AppConstants.API.API_KEYS.DOCTOR_ID_KEY, dlID);
@@ -299,7 +300,7 @@ public class DoctorProfileActivity extends BaseActivity implements ServerConnect
         hashMap.put(AppConstants.API.API_KEYS.LOGGED_IN_USER_ID_KEY, MarhamVideoCallHelper.getInstance().getUserId());
         hashMap.put(AppConstants.API.API_KEYS.DEVICE_TOKEN_KEY, MarhamVideoCallHelper.getInstance().getFireBaseToken());
         hashMap.put(AppConstants.API.API_KEYS.DEVICE_TYPE_KEY, AppConstants.API.DEVICE_TYPE.ANDROID);
-//        hashMap.put(AppConstants.API.API_KEYS.LANGUAGE_KEY, AppConstants.API.LANGUAGE.ENGLISH);
+        hashMap.put(AppConstants.API.API_KEYS.LANGUAGE_KEY, AppConstants.API.LANGUAGE.ENGLISH);
         hashMap.put(AppConstants.API.API_KEYS.APPLICATION_TYPE_KEY, AppConstants.API.APPLICATION_TYPE.TELENOR);
 
         Call<NewDoctorProfileServerResponse> call;
