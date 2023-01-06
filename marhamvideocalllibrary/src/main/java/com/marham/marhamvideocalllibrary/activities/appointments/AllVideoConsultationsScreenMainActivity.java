@@ -157,10 +157,13 @@ public class AllVideoConsultationsScreenMainActivity extends BaseActivity implem
 
     private void navigateOnAppointment(Appointment appointment) {
         switch (appointment.getAppointmentSubStatusID()) {
-            case Appointment.SCHEDULE:
-                openWaitingArea(appointment);
+            case Appointment.INPROCESS:
+                if (!appointment.getPaymentStatus().equals(Appointment.PENDING)) {
+                    MarhamVideoCallHelper.getInstance().getMarhamPaymentListener().onPaymentRequested(appointment);
+                }
                 break;
 
+            case Appointment.SCHEDULE:
             case Appointment.INPROGRRSS:
                 openWaitingArea(appointment);
                 break;

@@ -222,4 +222,8 @@ public class APIClient {
         return apiService.updateUserAppointmentSubStatus(hashMap);
     }
 
+    public Call<ServerResponseOld> saveOrderTransaction(HashMap<String, String> hashMap) {
+        return apiService.saveOrderTransaction(hashMap);
+    }
+
 }

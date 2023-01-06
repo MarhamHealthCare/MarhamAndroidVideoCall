@@ -82,4 +82,8 @@ public interface MarhamVideoCallEndPoints {
     @POST("update-appointment-sub-status")
     Call<ServerResponseOld> updateUserAppointmentSubStatus(@FieldMap HashMap<String, String> hashMap);
 
+    @FormUrlEncoded
+    @POST("save-order-transaction")
+    Call<ServerResponseOld> saveOrderTransaction(@FieldMap HashMap<String, String> hashMap);
+
 }

@@ -1,6 +1,5 @@
 package com.marham.marhamvideocalllibrary.viewHolders.doctor;
 
-import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -8,7 +7,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marham.marhamvideocalllibrary.R;
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyImageView;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;

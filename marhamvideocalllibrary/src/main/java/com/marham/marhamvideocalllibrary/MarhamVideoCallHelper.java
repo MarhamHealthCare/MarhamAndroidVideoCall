@@ -1,11 +1,16 @@
 package com.marham.marhamvideocalllibrary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.Keep;
 
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
+import com.marham.marhamvideocalllibrary.activities.dashboard.MarhamDashboardActivity;
+import com.marham.marhamvideocalllibrary.activities.payment.PaymentActivity;
+import com.marham.marhamvideocalllibrary.listeners.payment.MarhamPaymentListener;
+import com.marham.marhamvideocalllibrary.model.appointment.Appointment;
 import com.marham.marhamvideocalllibrary.model.user.MarhamUser;
 
 @Keep
@@ -18,6 +23,7 @@ public class MarhamVideoCallHelper {
     private String userName;
     private String deviceID;
     private MarhamUser marhamUser;
+    private MarhamPaymentListener marhamPaymentListener;
 
     private static MarhamVideoCallHelper utils;
 
@@ -48,6 +54,11 @@ public class MarhamVideoCallHelper {
 
     public MarhamVideoCallHelper setUserName(String userName) {
         this.userName = userName;
+        return this;
+    }
+
+    public MarhamVideoCallHelper setMarhamPaymentListener(MarhamPaymentListener marhamPaymentListener) {
+        this.marhamPaymentListener = marhamPaymentListener;
         return this;
     }
 
@@ -93,6 +104,12 @@ public class MarhamVideoCallHelper {
         context.startActivity(intent);
     }
 
+    public void openPaymentScreen(Activity activity,Appointment appointment){
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Appointment.class.getCanonicalName(), appointment);
+        MarhamUtils.getInstance().startActivity(activity, PaymentActivity.class, false, bundle);
+    }
+
     public String getUserId() {
         return marhamUser.getId();
     }
@@ -104,4 +121,9 @@ public class MarhamVideoCallHelper {
     public void setDeviceID(String deviceID) {
         this.deviceID = deviceID;
     }
+
+    public MarhamPaymentListener getMarhamPaymentListener() {
+        return marhamPaymentListener;
+    }
+
 }

@@ -86,4 +86,6 @@
     <string name="is_doctor_requested_call">isDoctorRequestedCall</string>
     <string name="heading">Heading</string>
     <string name="please_wait">Please Wait</string>
+    <string name="processing_payment">Processing Payment ...</string>
+    <string name="saving_transaction">Saving Transaction ...</string>
 </resources>

@@ -19,6 +19,7 @@ import com.marham.marhamvideocalllibrary.customviews.BodyText;
 import com.marham.marhamvideocalllibrary.customviews.MyButton;
 import com.marham.marhamvideocalllibrary.customviews.MyImageView;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
+import com.marham.marhamvideocalllibrary.model.appointment.Appointment;
 import com.marham.marhamvideocalllibrary.model.doctor.DoctorInfo;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotOfHospital;
 import com.marham.marhamvideocalllibrary.model.doctor.TimeSlotsOfHospitalContainer;
@@ -459,8 +460,10 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
-                    setViewsAfterCallingAPI();
                     MarhamUtils.getInstance().showAPIResponseMessage(this, "Appointment Booked");
+                    Appointment appointment = new Appointment();
+                    MarhamVideoCallHelper.getInstance().getMarhamPaymentListener().onPaymentRequested(appointment);
+                    finish();
                 } else {
                     setViewsIncaseNoRecordFoundWhileCallingAPI();
                     MarhamUtils.getInstance().showAPIResponseMessage(this, response.getMessage());

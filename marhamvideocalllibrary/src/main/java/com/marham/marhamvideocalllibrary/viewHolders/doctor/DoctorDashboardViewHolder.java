@@ -1,11 +1,9 @@
 package com.marham.marhamvideocalllibrary.viewHolders.doctor;
 
-import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import com.marham.marhamvideocalllibrary.activities.MarhamDashboardActivity;
 import com.marham.marhamvideocalllibrary.adapters.doctor.BaseDoctorsAdapter;
 import com.marham.marhamvideocalllibrary.listeners.AdapterViewItemClickedListener;
 

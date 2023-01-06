@@ -8,9 +8,6 @@
 
     <application android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".VideoCallEndedActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.videocall.VideoCallActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:exported="false"
@@ -65,9 +62,19 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.MarhamDashboardActivity"
+            android:name=".activities.dashboard.MarhamDashboardActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.videocall.VideoCallEndedActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.payment.PaymentActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
 
         <provider
             android:name=".utils.MyFileProvider"

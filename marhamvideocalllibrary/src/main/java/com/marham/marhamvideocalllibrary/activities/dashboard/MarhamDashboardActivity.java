@@ -1,4 +1,4 @@
-package com.marham.marhamvideocalllibrary.activities;
+package com.marham.marhamvideocalllibrary.activities.dashboard;
 
 import android.os.Bundle;
 import android.view.View;
@@ -79,7 +79,6 @@ public class MarhamDashboardActivity extends BaseActivity implements ServerConne
     private ProgressBar topSpecialitiesProgressBar;
     private ConstraintLayout viewAllSpecialitiesViewsContainer;
     private List<Speciality> specialityList = new ArrayList<>();
-
 
     private RetroFit2Callback<ServerResponseOld> retroFit2Callback;
 

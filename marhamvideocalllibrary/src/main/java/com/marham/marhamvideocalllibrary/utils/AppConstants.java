@@ -45,6 +45,11 @@ public class AppConstants {
             public static final String SEND_TO_PATIENT_KEY = "sendToPatient";
             public static final String SEND_TO_DOCTOR_KEY = "sendToDoctor";
             public static final String STATUS_KEY = "status";
+            public static final String ORDER_ID_KEY = "orderId";
+            public static final String PAYMENT_METHOD_ID_KEY = "paymentMethodId";
+            public static final String ORDER_AMOUNT_KEY = "orderAmount";
+            public static final String BIN_LOCKED_KEY = "binLocked";
+            public static final String WALLET_APPLIED_KEY = "walletApplied";
 
         }
 
@@ -65,6 +70,7 @@ public class AppConstants {
             public static final int SEND_ONLINE_CONSULTATION_NOTIFICATION_SIGNAL = 14;
             public static final int UPDATE_LAST_SEEN_OF_USER = 15;
             public static final int UPDATE_APPOINTMENT_SUB_STATUS = 16;
+            public static final int SAVE_ORDER_TRANSACTION = 17;
         }
 
         public static class API_ERROR_MESSAGE {
