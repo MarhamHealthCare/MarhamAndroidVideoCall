@@ -460,8 +460,9 @@ public class BookVideoConsultationActivity extends BaseActivity implements Serve
                 break;
             case AppConstants.API.API_END_POINT_NUMBER.BOOK_ONLINE_CONSULTATION:
                 if (response.getReturn_status().equals(AppConstants.API.API_CALL_STATUS.SUCCESS_ACTION_BASED_APIS)) {
+                    BookConsultationServerResponse bookConsultationServerResponse = (BookConsultationServerResponse) response;
                     MarhamUtils.getInstance().showAPIResponseMessage(this, "Appointment Booked");
-                    Appointment appointment = new Appointment();
+                    Appointment appointment = bookConsultationServerResponse.getData();
                     MarhamVideoCallHelper.getInstance().getMarhamPaymentListener().onPaymentRequested(appointment);
                     finish();
                 } else {
