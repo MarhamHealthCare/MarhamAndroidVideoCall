@@ -776,7 +776,7 @@ public class PhotoModule {
             image.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
             stream.close();
-            uri = FileProvider.getUriForFile(context, "com.codepath.fileprovider", file);
+            uri = FileProvider.getUriForFile(context, "com.codepath.fileprovider_telenor", file);
 
         } catch (IOException e) {
             Log.d("TAG", "IOException while trying to write file for sharing: " + e.getMessage());
